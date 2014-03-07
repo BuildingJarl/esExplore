@@ -6,7 +6,7 @@ body {
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
-#visulisationViewPort {
+#visualizationViewPort {
   position: fixed;
   top: 40px;
   left: 0;
@@ -22,10 +22,9 @@ body {
   right: 0;
   height: 40px;
   background-color: grey;
-
-  padding-top: 6px;
   padding-left: 10px;
   z-index: 1;
+  line-height: 50px;
 }
 
 #menubarContainer ul {

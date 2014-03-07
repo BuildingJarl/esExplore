@@ -1,6 +1,10 @@
 'use strict';
 
-angular.module('esExploreApp', ['ui.router']);
+angular.module('esExploreApp', [
+	'ui.router',
+	'mgcrea.ngStrap.modal',
+	'mgcrea.ngStrap.aside'
+	]);
 
 angular.module('esExploreApp')
 	.config(function($stateProvider,$urlRouterProvider) {
