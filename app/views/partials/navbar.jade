@@ -1,0 +1,12 @@
+.header(ng-controller='NavbarCtrl')
+	nav(class="navbar navbar-default navbar-static-top")
+
+		div(class="container")
+
+			a(class="navbar-brand" ui-sref="home")
+				|esExplore
+
+			ul(class="nav navbar-nav navbar-right")
+				li(ng-repeat='item in menu' ui-sref-active="active")
+					a(ui-sref='{{item.state}}') 
+						|{{item.title}}
