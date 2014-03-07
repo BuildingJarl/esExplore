@@ -1,2 +1,3 @@
-div(ng-include="'partials/visualizationMenubar'")
-div(ui-view id="visualizationViewPort")
+div( id="visualizationViewPort" )
+	div(ng-include="'partials/visualizationMenubar'" ng-controller='VisualizationMenubarCtrl' id="visualizationMenubar")
+	div(ui-view id="visualizationCanvas")

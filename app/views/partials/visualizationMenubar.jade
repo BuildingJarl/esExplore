@@ -1,16 +1,15 @@
-.header(ng-controller='VisualizationMenubarCtrl')
-	
-	nav(id="menubarContainer")
+div(class="visualizationMenubarItem left" bs-aside="createAside" data-placement="left" data-animation="am-slide-left" data-template="partials/createAside")
+	div( class="sameAsP" bs-tooltip="tooltip.create"  data-placement="right" data-animation="" )
+		i(class="fa fa-plus fa-2x")
 
-		ul
-			li(bs-tooltip="tooltip.home"  data-placement="bottom-left")
-				i(class="fa fa-home fa-2x" ui-sref="home")
+div(class="visualizationMenubarItem right" bs-aside="settingsAside" data-placement="right" data-animation="am-slide-right" data-template="partials/createAside")
+	div( class="sameAsP" bs-tooltip="tooltip.settings"  data-placement="left" data-animation="" )
+		i(class="fa fa-cog fa-2x")
 
-			li(bs-tooltip="tooltip.create" data-placement="bottom-left")
-				i(class="fa fa-plus fa-2x")
+div(class="visualizationMenubarItem right" bs-aside="helpAside" data-placement="right" data-animation="am-slide-right" data-template="partials/createAside")
+	div( class="sameAsP" bs-tooltip="tooltip.help"  data-placement="left" data-animation="" )
+		i(class="fa fa-question-circle fa-2x")
 
-			li(bs-tooltip="tooltip.settings" data-placement="bottom-left")
-				i(class="fa fa-cog fa-2x")
-
-			li(bs-tooltip="tooltip.help" data-placement="bottom-left")
-				i(class="fa fa-question-circle fa-2x")
+div(class="visualizationMenubarItem right" ui-sref="home")
+	div( class="sameAsP" bs-tooltip="tooltip.home"  data-placement="left" data-animation="" )
+		i(class="fa fa-home fa-2x" )

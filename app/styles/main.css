@@ -7,39 +7,55 @@ body {
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 #visualizationViewPort {
-  position: fixed;
-  top: 40px;
+  position: absolute;
+  top: 0;
   left: 0;
   right:0;
   bottom:0;
   background-color: green;
+  overflow: hidden;
 }
 
-#menubarContainer {
-  position: fixed;
-  top:0;
-  left: 0;
-  right: 0;
+#visualizationMenubar {
   height: 40px;
+  width:100%;
   background-color: grey;
-  padding-left: 10px;
   z-index: 1;
   line-height: 50px;
+  cursor: pointer;
 }
 
-#menubarContainer ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+#visualizationMenubar .visualizationMenubarItem {
+  float: left;
+  background-color: blue;
+  width:60px;
+  height:100%;
+  text-align: center;
 }
 
-#menubarContainer ul li {
-  display: inline;
-  margin-right:15px;
-  width:20px;
-  height:40px;
+#visualizationMenubar .visualizationMenubarItem:hover{
+  background-color: red;
+  color: blue;
 }
 
-#menubarContainer ul li:hover {
-  color:red;
+.right {
+  float:right !important;
+}
+
+.left {
+  float:left !important;
+}
+
+.sameAsP {
+  height: 100%;
+  width:100%;
+}
+
+#visualizationCanvas {
+  position: absolute;
+  top:40px;
+  bottom:0;
+  right:0;
+  left:0;
+  background-color: whitesmoke;
 }
