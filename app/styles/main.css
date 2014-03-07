@@ -36,6 +36,8 @@ body {
 #menubarContainer ul li {
   display: inline;
   margin-right:15px;
+  width:20px;
+  height:40px;
 }
 
 #menubarContainer ul li:hover {

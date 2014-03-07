@@ -3,5 +3,9 @@
 angular.module('esExploreApp')
 	.controller('VisualizationMenubarCtrl', function ($scope) {
 		
-		$scope.useme = true;
+		$scope.tooltip = {};
+		$scope.tooltip.home = { title:'Home'};
+		$scope.tooltip.create = ({ title:'Create'});
+		$scope.tooltip.settings = ({ title:'Settings'});
+		$scope.tooltip.help = ({ title:'Help'});
 	});

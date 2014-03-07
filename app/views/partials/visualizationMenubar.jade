@@ -3,14 +3,14 @@
 	nav(id="menubarContainer")
 
 		ul
-			li
+			li(bs-tooltip="tooltip.home"  data-placement="bottom-left")
 				i(class="fa fa-home fa-2x" ui-sref="home")
 
-			li
+			li(bs-tooltip="tooltip.create" data-placement="bottom-left")
 				i(class="fa fa-plus fa-2x")
 
-			li
+			li(bs-tooltip="tooltip.settings" data-placement="bottom-left")
 				i(class="fa fa-cog fa-2x")
 
-			li
+			li(bs-tooltip="tooltip.help" data-placement="bottom-left")
 				i(class="fa fa-question-circle fa-2x")

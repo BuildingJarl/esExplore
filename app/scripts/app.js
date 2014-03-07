@@ -2,8 +2,11 @@
 
 angular.module('esExploreApp', [
 	'ui.router',
+	'ngAnimate',
 	'mgcrea.ngStrap.modal',
-	'mgcrea.ngStrap.aside'
+	'mgcrea.ngStrap.aside',
+	'mgcrea.ngStrap.helpers.dimensions',
+	'mgcrea.ngStrap.tooltip'
 	]);
 
 angular.module('esExploreApp')
