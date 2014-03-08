@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Controller: HomeCtrl', function () {
+describe('Controller: appCtrl', function () {
 
   // load the controller's module
   beforeEach(module('esExploreApp'));
 
-  var HomeCtrl;
+  var appCtrl;
   var scope;
 
   // Initialize the controller and a mock scope
   beforeEach( inject( function ( $controller, $rootScope ) {
     
     scope = $rootScope.$new();
-    HomeCtrl = $controller('HomeCtrl', {
+    appCtrl = $controller('appCtrl', {
       $scope: scope
     });
   }));

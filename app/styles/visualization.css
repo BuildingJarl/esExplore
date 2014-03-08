@@ -1,0 +1,86 @@
+#visualisationViewport{
+	position: absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+}
+
+#visualisationTopMenuContainer{
+	position: absolute;
+	top:0;
+	right: 0;
+	left: 0;
+	height: 40px;
+
+	background-color: #272822;
+}
+
+.menu {
+	height: 40px;
+}
+
+
+.menuItem {
+	display: inline-block;
+	width: 40px;
+	height:40px;
+	text-align: center;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.menuItem:hover{
+	color: #899282;
+	cursor: pointer;
+}
+
+.pushRight {
+	margin-left: 50px;
+}
+
+#ng-pageslide {
+	background: #272822;
+}
+
+.pageSlideContentContainer {
+
+}
+
+.pageSlideHeader {
+
+	min-height: 40px;
+	text-align: center;
+	border-bottom: 1px solid #333434;
+	line-height: 40px;
+	margin-bottom: 10px;
+}
+.pageSlideHeaderTitle {
+	font-size: 1.3em;
+}
+
+.buttonArrange{
+	width: 350px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.buttonArrange button{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.tableContainer {
+
+	border: 1px solid #333434;
+	padding: 10px;
+	border-radius: 4px;
+	min-height: 50px;
+	max-height: 60%;
+	width: 350px;
+	overflow: auto;
+	background-color: #1B171B;
+	margin-right: auto;
+	margin-left: auto;
+}

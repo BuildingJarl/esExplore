@@ -1,0 +1,32 @@
+div(id="visualisationViewport")
+	
+	div(id="visualisationTopMenuContainer")
+		div( class="menu" )
+			div( class="menuItem" ng-click="open( 'create' )")
+				i(class="fa fa-plus fa-2x")
+			div( class="menuItem" ng-click="open( 'settings' )")
+				i(class="fa fa-cog fa-2x")
+			div( class="menuItem" ng-click="open( 'help' )")
+				i(class="fa fa-question fa-2x")
+			div( class="menuItem")
+				i(class="fa fa-info fa-2x")
+			div( class="menuItem pushRight")
+				i(class="fa fa-globe fa-2x")
+			div( class="menuItem")
+				i(class="fa fa-eye fa-2x")
+
+	div( pageslide="left" ps-size="400px" ps-open="showCreate" ps-target="#createPageSlide" ps-custom-top="41px" )
+	div( pageslide="right" ps-open="showSettings" ps-target="#settingsPageSlide" ps-custom-top="41px" )
+	div( pageslide="right" ps-open="showHelp" ps-target="#helpPageSlide" ps-custom-top="41px" )
+
+
+	div(id="createPageSlide")
+		ng-include( src="'partials/createPageSlideContent'" )
+
+	div(id="settingsPageSlide")
+		ng-include( src="'partials/settingsPageSlide'" )
+
+	div(id="helpPageSlide")
+		ng-include( src="'partials/helpPageSlideContent'" )
+
+	div(ui-view)

@@ -1,61 +1,12 @@
-/* Space out content a bit */
 body {
   padding: 0;
   margin: 0;
-}
-
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-
-#visualizationViewPort {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right:0;
-  bottom:0;
-  background-color: green;
-  overflow: hidden;
-}
-
-#visualizationMenubar {
-  height: 40px;
-  width:100%;
-  background-color: grey;
-  z-index: 1;
-  line-height: 50px;
-  cursor: pointer;
-}
-
-#visualizationMenubar .visualizationMenubarItem {
-  float: left;
-  background-color: blue;
-  width:60px;
-  height:100%;
-  text-align: center;
-}
-
-#visualizationMenubar .visualizationMenubarItem:hover{
-  background-color: red;
-  color: blue;
-}
-
-.right {
-  float:right !important;
-}
-
-.left {
-  float:left !important;
-}
-
-.sameAsP {
   height: 100%;
   width:100%;
+
+  color: #dadbd5;
+
+  font-family: Arial, sans-serif;
+  font-size: 1em;
 }
 
-#visualizationCanvas {
-  position: absolute;
-  top:40px;
-  bottom:0;
-  right:0;
-  left:0;
-  background-color: whitesmoke;
-}

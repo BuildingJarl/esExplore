@@ -2,12 +2,7 @@
 
 angular.module('esExploreApp', [
 	'ui.router',
-	'ngAnimate',
-	'mgcrea.ngStrap.modal',
-	'mgcrea.ngStrap.aside',
-	'mgcrea.ngStrap.helpers.dimensions',
-	'mgcrea.ngStrap.tooltip'
-	]);
+]);
 
 angular.module('esExploreApp')
 	.config(function($stateProvider,$urlRouterProvider) {
@@ -15,29 +10,9 @@ angular.module('esExploreApp')
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
-			.state('home', {
+			.state('app', {
 				url: '/',
-				templateUrl: 'partials/home',
-				controller: 'HomeCtrl'
-			})
-			.state('about', {
-				url: '/about',
-				templateUrl: 'partials/about',
-				controller: 'AboutCtrl'
-			})
-			.state('visualization', {
-				url: '/visualization',
-				templateUrl: 'partials/visualization',
-				controller: 'VisualizationCtrl'
-			})
-			.state('visualization.explore', {
-				url: '/visualization',
-				templateUrl: 'partials/visualizationExplore',
-				controller: 'VisualizationExploreCtrl'
-			})
-			.state('visualization.detail', {
-				url: '/visualization',
-				templateUrl: 'partials/visulizationDetail',
-				controller: 'VisualizationDetailCtrl'
+				templateUrl: 'partials/visualisation',
+				controller: 'visualisationCtrl'
 			});
 	});
