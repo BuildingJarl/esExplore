@@ -27,7 +27,7 @@ ES_EX.GLRenderer = function( ) {
 	    this.camera = new THREE.PerspectiveCamera( 45, width/height, 0.1, 150000);
 	    this.renderer = new THREE.WebGLRenderer( {antialias: true } );
 	    this.renderer.sortObjects = false;
-	    this.renderer.setClearColor(0x272822, 1);
+	    this.renderer.setClearColor(0x120712, 1);
 	    this.projector = new THREE.Projector();
 
       	this.renderer.domElement.style.display = "block";

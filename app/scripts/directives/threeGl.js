@@ -9,7 +9,7 @@ angular.module('esExploreApp')
 
 			angular.element($window).bind ('resize', function( ){
  				
- 				glRenderer.visEnvService.onResize();	
+ 				visEnvService.glRenderer.onResize();	
  			});
 
 			var firstPos = { x:-999, y:-999 };
@@ -37,7 +37,7 @@ angular.module('esExploreApp')
     				}
     			}
     			if( event.which == 3 || event.button == 2 ) {
-    				visEnvService.glRenderer.visEnvService.onRightClick( event );
+    				visEnvService.glRenderer.onRightClick( event );
     			}
  			});
 

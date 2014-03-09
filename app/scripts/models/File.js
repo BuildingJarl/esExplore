@@ -13,7 +13,6 @@ ES_EX.File = function( f ) {
 	this.addAst = function( ast ) {
 
 		this.ast = ast;
-		this.scope = new ES_EX.Scope(  )
 	};
 
 	this.addScope = function( scope ) {

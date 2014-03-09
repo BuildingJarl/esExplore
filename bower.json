@@ -8,7 +8,8 @@
     "topcoat": "~0.8.0",
     "esprima": "~1.0.4",
     "escope": "~1.0.0",
-    "threejs": "*"
+    "threejs": "*",
+    "d3": "~3.4.3"
   },
   "devDependencies": {
     "angular-mocks": "1.2.14",

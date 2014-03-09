@@ -67,11 +67,12 @@ angular.module('esExploreApp')
 
             } catch(e) {
 
+               file.isValid = false;
                file.errors = true;
                file.errorsList.push(e);
             }
 
-            if(ast) {
+            if(file.isValid && ast) {
                file.addAst(ast); 
                file.addScope( escope.analyze( ast ).scopes[0] ); 
             }
