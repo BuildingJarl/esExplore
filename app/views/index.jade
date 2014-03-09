@@ -17,15 +17,38 @@ html(lang="en")
     link(rel="stylesheet" href="styles/visualization.css")
     link(rel="stylesheet" href="styles/helpers.css")
 
+    script(src="bower_components/threejs/build/three.js")
+    script(src="other/Stats.js")
+    script(src="other/OrbitControls.js")
+    script(src="other/tween.min.js")
+
     script(src="bower_components/angular/angular.js")
     script(src="bower_components/angular-ui-router/release/angular-ui-router.js")
+
+    script(src="bower_components/esprima/esprima.js")
+    script(src="bower_components/estraverse/estraverse.js")
+    script(src="bower_components/escope/escope.js")
    
     script(src="scripts/app.js")
     
     script(src="scripts/controllers/appCtrl.js")
     script(src="scripts/controllers/visualisationCtrl.js")
+    script(src="scripts/controllers/exploreCtrl.js")
 
     script(src="scripts/directives/pageslide.js")
+    script(src="scripts/directives/uploader.js")
+    script(src="scripts/directives/threeGl.js")
+ 
+    script(src="scripts/services/repositoryService.js")
+    script(src="scripts/services/fileService.js")
+    script(src="scripts/services/layoutService.js")
+    script(src="scripts/services/visEnvService.js")
+
+    script(src="scripts/models/ES_EX.js")
+    script(src="scripts/models/Repository.js")
+    script(src="scripts/models/File.js")
+    script(src="scripts/models/Scope.js")
+    script(src="scripts/models/GLRenderer.js")
 
   body(ng-app="esExploreApp")
  

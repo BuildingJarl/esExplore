@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('esExploreApp')
-	.controller('visualisationCtrl', function ( $scope ) {
+	.controller('visualisationCtrl', function ( $scope, repositoryService ) {
 		
-		$scope.testestest = "hello";
-		
+		$scope.viewSelection = "explore"; 
 		$scope.showCreate = false;
 		$scope.showSettings = false
 		$scope.showHelp = false;
+		$scope.repo = repositoryService.repo;
 
-		$scope.open = function( what ) {
+		$scope.toggleSlider = function( what ) {
 
 			switch( what ) {
 
@@ -51,9 +51,11 @@ angular.module('esExploreApp')
 					$scope.showSettings = false;
 					break;
 				};
-
 			}
+		};
 
+		$scope.createVisualisation = function() {
 
-		}
+			console.log(JSON.stringify($scope.repo));
+		};
 });
