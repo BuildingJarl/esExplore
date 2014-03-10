@@ -61,9 +61,9 @@ angular.module('esExploreApp')
 		$scope.createVisualisation = function() {
 
 			var jsontree = JSON.stringify($scope.repo);
-			var ctrl = layoutService.create( jsontree, selectCallback );
+			var visTree = layoutService.create( jsontree, selectCallback );
 
-			$scope.$broadcast('createVis', ctrl);
+			$scope.$broadcast('createVis', visTree );
 			$scope.toggleSlider('create');
 		};
 });

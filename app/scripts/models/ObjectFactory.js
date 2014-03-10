@@ -107,4 +107,14 @@ ES_EX.ObjectFactory = function( ) {
 
     	return obj;
     };
+
+    this.createLabel = function( text ) {
+
+    	var element = document.createElement('span');
+    	element.textContent = text;
+
+    	var obj = new THREE.CSS3DObject( element );
+
+    	return obj;
+    };
 };

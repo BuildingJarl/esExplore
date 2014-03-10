@@ -15,7 +15,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	var history = [];
 	var historyExpand = [];
 
-	this.init = function( camera, controls ) {
+	this.init = function( camera, controls, scene ) {
 
 		this.camera = camera,
 		this.controls = controls;

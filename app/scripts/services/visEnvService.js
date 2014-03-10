@@ -33,8 +33,9 @@ angular.module('esExploreApp')
          rendererCtrl.onRightClick(event);
       };
 
-   	this.addCtrl = function( ctrl ) {
+   	this.addTree = function( tree ) {
 
-   		rendererCtrl.addTreeCtrl(ctrl);
-   	}
+   		rendererCtrl.addTreeCtrl(tree);
+   	};
+      
    });

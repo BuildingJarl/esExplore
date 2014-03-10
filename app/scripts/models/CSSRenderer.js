@@ -31,5 +31,5 @@ ES_EX.CSSRenderer = function( ) {
 	this.render = function() {
 		
 		renderer.render( scene, camera );
-	}
+	};
 };

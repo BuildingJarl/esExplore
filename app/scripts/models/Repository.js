@@ -48,7 +48,6 @@ ES_EX.Repository = function() {
 			name: "Global Scope",
 			type: "GS",
 			vars: 0,
-			dim: this.scopes.length,
 			children: validFiles
 		};
 	};
