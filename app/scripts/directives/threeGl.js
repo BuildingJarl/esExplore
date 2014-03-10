@@ -5,11 +5,12 @@ angular.module('esExploreApp')
 		restrict: "EA",
 		link: function( scope, element, iAttrs ) {
 
-			visEnvService.glRenderer.init( element[0], true );
+			visEnvService.init( element[0], true );
+
 
 			angular.element($window).bind ('resize', function( ){
  				
- 				visEnvService.glRenderer.onResize();	
+ 				visEnvService.onResize();	
  			});
 
 			var firstPos = { x:-999, y:-999 };
@@ -33,11 +34,11 @@ angular.module('esExploreApp')
     			if( event.which == 1 || event.button == 1 ) {
 
     				if( event.clientX == firstPos.x  && event.clientY == firstPos.y ) {
-    					visEnvService.glRenderer.onLeftClick(event);
+    					visEnvService.onLeftClick(event);
     				}
     			}
     			if( event.which == 3 || event.button == 2 ) {
-    				visEnvService.glRenderer.onRightClick( event );
+    				visEnvService.onRightClick( event );
     			}
  			});
 

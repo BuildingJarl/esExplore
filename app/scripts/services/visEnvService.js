@@ -1,23 +1,40 @@
 angular.module('esExploreApp')
    .service( 'visEnvService', function( $q ) {
 
-   	this.glRenderer = new ES_EX.GLRenderer();
+      var rendererCtrl = new ES_EX.RendererCtrl();
+
+      this.init = function( element, debug ) {
+        
+         rendererCtrl.init( element, debug );
+      };
 
    	this.start = function() {
 
-   		this.glRenderer.start();
-   	}
+   		rendererCtrl.start();
+   	};
 
    	this.stop = function() {
 
-   		this.glRenderer.stop();
-   	}
+   		rendererCtrl.stop();
+   	};
+
+      this.onResize = function(){
+
+         rendererCtrl.onResize();
+      };
+
+      this.onLeftClick = function(event){
+
+         rendererCtrl.onLeftClick(event);
+      };
+
+      this.onRightClick = function(event){
+
+         rendererCtrl.onRightClick(event);
+      };
 
    	this.addCtrl = function( ctrl ) {
 
-   		console.log(ctrl);
-   		this.glRenderer.addCtrl(ctrl);
+   		rendererCtrl.addTreeCtrl(ctrl);
    	}
-
-
    });

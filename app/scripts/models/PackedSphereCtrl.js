@@ -15,7 +15,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	var history = [];
 	var historyExpand = [];
 
-	this.init = function( camera, controls, scene ) {
+	this.init = function( camera, controls ) {
 
 		this.camera = camera,
 		this.controls = controls;
@@ -28,12 +28,6 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		selectedObj.getObjectByName("selected").visible = true;
 
 		history.push(initalCamPos);
-
-		//sort order in off so add inner objects first
-		for(var i = this.sceneObjects.length -1 ; i >= 0; i--) {
-
-			scene.add(this.sceneObjects[i]);
-		}
 	};
 
 	this.update = function( delta ) {
