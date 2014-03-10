@@ -78,6 +78,8 @@ ES_EX.PackedSphereTree = function( data ) {
 
 			var node = this.treeNodes[i];
 
+			console.log(node.name);
+
 			var obj;
 			var r = node.r;
 			var x = node.x - offsetX;

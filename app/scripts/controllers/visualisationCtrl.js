@@ -64,5 +64,6 @@ angular.module('esExploreApp')
 			var ctrl = layoutService.create( jsontree, selectCallback );
 
 			$scope.$broadcast('createVis', ctrl);
+			$scope.toggleSlider('create');
 		};
 });
