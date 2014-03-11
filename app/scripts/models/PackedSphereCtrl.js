@@ -171,20 +171,17 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 							child.position.z += 18000;
 						});
-						
+
 						controls.target.set( targetPosition.x, targetPosition.y, parentObj.position.z );
 					})
 					.start();
 
-
-
 				parentObj.expanded = false;
-
 			}
 		}
 
 	};
-
+	/*
 	this.onHover = function( intersects ) {
 		
 		if(intersects.length > 0) {
@@ -194,13 +191,5 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 		}
 	};
-
-	function trav( obj, func ) {
-		for(var i = 0; i < obj.userData.children.length; i ++) {
-
-			var child = obj.userData.children[i];
-			func(child);
-			trav(child, func);
-		}
-	};
+	*/
 };

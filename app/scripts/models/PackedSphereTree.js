@@ -26,6 +26,17 @@ ES_EX.PackedSphereTree = function() {
 		return objects;
 	};
 
+	this.getLabels = function() {
+
+		var labels = [];
+
+		for(var i = 0; i < nodes.length; i++) {
+			labels.push(nodes[i].label);
+		}
+
+		return labels;
+	}
+
 	this.traverse = function( action ) {
 
 		for(var i = 0; i < nodes.length; i ++) {

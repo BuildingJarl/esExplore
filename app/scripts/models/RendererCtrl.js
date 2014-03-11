@@ -42,6 +42,9 @@ ES_EX.RendererCtrl = function( ) {
 
 		glRenderer.clearScene();
 		glRenderer.addObjectsToScene( treeCtrl.tree.getGLSceneObjects() );
+
+		cssRenderer.clearScene();
+		cssRenderer.addObjectsToScene( treeCtrl.tree.getLabels() );
 	};
 
 	this.start = function() {
