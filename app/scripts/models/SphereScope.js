@@ -4,9 +4,14 @@ ES_EX.SphereScope = function() {
 
 	this.label;
 	this.drawObject;
-	this.children = [];
-	this.position = new THREE.Vector3();
+
+	this.position;
+
+	this.type;
+
+	this.fid;
+	this.sid;
+
 	this.expanded = false;
 	this.selected = false;
-
 };

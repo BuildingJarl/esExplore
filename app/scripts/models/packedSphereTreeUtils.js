@@ -103,4 +103,55 @@ ES_EX.PackedSphereTreeUtils = function() {
 			node.y -= offsetY;
 		}
 	};
+
+	this.addSpheresToNodes = function( nodes ) {
+
+		var objectFactory = new ES_EX.ObjectFactory();
+
+		for( var i = 0; i < nodes.length; i++ ) {
+
+			var node = nodes[i];
+
+			var sphere = new ES_EX.SphereScope();
+			
+			sphere.type = node.type;
+			sphere.position = new THREE.Vector3( node.x,node.y,0 );
+
+			sphere.label = objectFactory.createLabel( node.name, sphere.position );
+
+
+			switch( node.type ) {
+
+				case 'GS': {
+
+					sphere.drawObject = objectFactory.createGlobalScopeSphere(r, sphere.position);
+
+					break;
+				}
+
+				case 'FGS': {
+
+					sphere.drawObject = objectFactory.createFileGlobalScopeSphere(r, sphere.position);
+					
+					sphere.fid = node.fid;
+					sphere.sid = node.sid;
+
+					break;
+				}
+
+				case 'CS': {
+
+					sphere.drawObject = objectFactory.createScopeSphere(r, node.depth, sphere.position);
+					
+					sphere.fid = node.fid;
+					sphere.sid = node.sid;
+					
+					break;
+				}
+			}
+
+			node.sphere = sphere;
+		}
+
+	};
 };

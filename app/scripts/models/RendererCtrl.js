@@ -38,7 +38,7 @@ ES_EX.RendererCtrl = function( ) {
 	this.addTreeCtrl = function( ctrl ) {
 
 		treeCtrl = ctrl;
-		treeCtrl.init( camera,controls);
+		treeCtrl.init( camera, controls );
 
 		glRenderer.clearScene();
 		glRenderer.addObjectsToScene( treeCtrl.sceneObjects );

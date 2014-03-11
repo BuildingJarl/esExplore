@@ -2,8 +2,7 @@
 
 ES_EX.PackedSphereTree = function() {
 	
-	this.treeNodes;
-	this.sceneObjects = [];
+	var treeNodes;
 
 	var objectFactory = new ES_EX.ObjectFactory();
 	var utils = new ES_EX.PackedSphereTreeUtils();
@@ -11,17 +10,16 @@ ES_EX.PackedSphereTree = function() {
 
 	this.create = function ( jsonTree ) {
 
-		this.treeNodes = utils.calculateLayout( 10000, JSON.parse(jsonTree) );
-
+		treeNodes = utils.calculateLayout( 12000, JSON.parse( jsonTree ) );
 	};
 
 	this.getDrawObjects = function() {
 
 		var drawObjects = [];
 
-		for( var i = 0; i < this.treeNodes.length; i ++ ) {
+		for( var i = 0; i < treeNodes.length; i ++ ) {
 
-			var node = this.treeNodes[i];
+			var node = treeNodes[i];
 
 			console.log(node.name);
 
@@ -72,7 +70,7 @@ ES_EX.PackedSphereTree = function() {
 		}
 
 		//attach links to children to each draw object!
-		var node = this.treeNodes[0];
+		var node = treeNodes[0];
 		var obj = node.drawObject;
 		addChildren( obj, node.children );
 
