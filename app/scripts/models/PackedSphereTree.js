@@ -30,17 +30,7 @@ ES_EX.PackedSphereTree = function() {
 
 		for(var i = 0; i < nodes.length; i ++) {
 
-			var node = nodes[i];
-			action(node);
-			console.log(node.name);
+			action(nodes[i]);
 		}
 	};
-
-	this.updateGlow = function( camera ) {
-		for(var i = 0; i < nodes.length; i ++) {
-
-			var c = nodes[i].sphere.drawObject;
-			c.material.uniforms.viewVector.value = new THREE.Vector3().subVectors( camera.position, c.position );
-		}
-	}
 };

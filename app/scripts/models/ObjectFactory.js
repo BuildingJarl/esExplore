@@ -8,7 +8,7 @@ ES_EX.ObjectFactory = function( ) {
 			"c":   { type: "f", value: 1 },
 			"p":   { type: "f", value: 2 },
 			glowColor: { type: "c", value: new THREE.Color( 0xff00ff ) },
-			viewVector: { type: "v3", value: {x:0, y:0, z:10000} }
+			viewVector: { type: "v3", value: {x:0, y:0, z:0} }
 		},
 		vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
 		fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
@@ -24,7 +24,7 @@ ES_EX.ObjectFactory = function( ) {
 			"c":   { type: "f", value: 1 },
 			"p":   { type: "f", value: 2 },
 			glowColor: { type: "c", value: new THREE.Color(  0xFD0987 ) },
-			viewVector: { type: "v3", value: {x:0, y:0, z:10000} }
+			viewVector: { type: "v3", value: {x:0, y:0, z:0} }
 		},
 		vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
 		fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
@@ -41,7 +41,7 @@ ES_EX.ObjectFactory = function( ) {
 			"c":   { type: "f", value: 1 },
 			"p":   { type: "f", value: 2 },
 			glowColor: { type: "c", value: new THREE.Color( 0x00ff00 ) },
-			viewVector: { type: "v3", value: {x:0, y:0, z:10000} }
+			viewVector: { type: "v3", value: {x:0, y:0, z:0} }
 		},
 		vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
 		fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
@@ -105,7 +105,7 @@ ES_EX.ObjectFactory = function( ) {
     	sprite.name = "selected";
     	sprite.visible = false;
     	obj.add( sprite );
-
+    	obj.position = pos;
     	return obj;
     };
 

@@ -33,15 +33,12 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	};
 
 	this.update = function( delta ) {
-		/*
+
 		this.tree.traverse( function( node ) {
-
+			
 			node.sphere.updateGlowViewVector( camera.position )
-
 		});
-		*/
-	
-		//this.tree.updateGlow(camera);
+
 		TWEEN.update();	
 	};
 
