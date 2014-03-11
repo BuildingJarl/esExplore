@@ -23,7 +23,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 		var initalCamPos = new THREE.Vector3( 0, 0, root.r * 2.8 );
 		camera.position = new THREE.Vector3().copy(initalCamPos);
-		
+		console.log(root);
 		selectedNode = root;
 		selectedNode.select();
 
@@ -49,15 +49,19 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 			//Check if a new node has been selected
 			//if new obj
-			if( intersectedObj.id != selectedNode.doid  ) {
+			if( selectedNode == null || intersectedObj.id != selectedNode.doid  ) {
 
 				//Clear selected property of current Selected Node
-				selectedNode.deSelect();
-
+				if(selectedNode) {
+					selectedNode.deSelect();
+				}
+				
 				selectedNode = tree.getNodeById(intersectedObj.id);
 				selectedNode.select();
 
 				//calc new position/look/orbti point of camera
+
+				controls.target.copy( selectedNode.position );
 
 				var pos = new THREE.Vector3().copy( camera.position );
 				var newPos = new THREE.Vector3().copy(selectedNode.position);
@@ -73,9 +77,41 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					.start();
 			} else
 			//if same obj has been selected again then its time to go into to sphere 
-			if( intersectedObj.id === selectedNode.id ) {
+			if( intersectedObj.id === selectedNode.doid ) {
 
-				//if( selectedNode. )
+				if( !selectedNode.expanded && selectedNode.canBeExpanded ) {
+
+					selectedNode.deSelect();
+					selectedNode.expanded = true;
+
+					selectedNode.traverse( function( child ) {
+
+						child.position.z -= 18000;
+					});
+
+					//set new Controlls target pos
+					controls.target.copy(selectedNode.position);
+
+					//setTweenForCamera
+					var pos = new THREE.Vector3().copy( camera.position );
+					var newPos = new THREE.Vector3().copy(selectedNode.position);
+					newPos.z += selectedNode.r;
+					//targetPos.z = (obj.position.z - offsetZ) + (obj.scale.z * 3);
+
+					history.push( newPos );
+					historyExpand.push( selectedNode );
+
+					var tween = new TWEEN.Tween( pos )
+						.to( newPos, 200 )
+						.onUpdate( function() {
+							camera.position.x = pos.x;
+							camera.position.y = pos.y;
+							camera.position.z = pos.z;
+						})
+						.start();
+
+					selectedNode = null;
+				}
 			}
 
 		}
@@ -84,69 +120,65 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	this.onRightClick = function() {
 		
 		//go back to overview position
-		if(selectedObj != null) {
+		if(selectedNode != null) {
 
-			var currentPosition = new THREE.Vector3().copy(this.camera.position);
+			var currentPosition = new THREE.Vector3().copy(camera.position);
 			var targetPosition = new THREE.Vector3().copy(history[history.length-1]);
-			var cam = this.camera;
 
-			this.controls.target.set( targetPosition.x, targetPosition.y, selectedObj.position.z );
+			controls.target.set( targetPosition.x, targetPosition.y, selectedNode.position.z );
 
-			tween = new TWEEN.Tween( currentPosition )
+			var tween = new TWEEN.Tween( currentPosition )
 				.to( targetPosition, 200 )
 				.onUpdate( function() {
-					cam.position.x = currentPosition.x;
-					cam.position.y = currentPosition.y;
-					cam.position.z = currentPosition.z;
+					camera.position.x = currentPosition.x;
+					camera.position.y = currentPosition.y;
+					camera.position.z = currentPosition.z;
 				})
 				.start();
 
 
 			if( history.length > 1) {
-				selectedObj.userData.selected = false;
-				selectedObj.getObjectByName("selected").visible = false;
-				selectedObj = null;	
+				selectedNode.deSelect();
+				selectedNode = null;	
 			}
 		}
 
 		//rollback Expand
-		else if(selectedObj === null) {
+		else if(selectedNode === null) {
 			if(historyExpand.length > 0) {
 
 				var parentObj = historyExpand.pop();
 				history.pop();
 
-				var currentPosition = new THREE.Vector3().copy(this.camera.position);
+				var currentPosition = new THREE.Vector3().copy(camera.position);
 				var targetPosition = new THREE.Vector3().copy(history[history.length-1]);
-				var cam = this.camera;
-				var con = this.controls;
 
-				tween = new TWEEN.Tween( currentPosition )
+				var tween = new TWEEN.Tween( currentPosition )
 					.to( targetPosition, 300 )
 					.onUpdate( function() {
-						cam.position.x = currentPosition.x;
-						cam.position.y = currentPosition.y;
-						cam.position.z = currentPosition.z;
+						camera.position.x = currentPosition.x;
+						camera.position.y = currentPosition.y;
+						camera.position.z = currentPosition.z;
 					})
 					.onComplete(function() {
 
 						if(history.length == 1) {
-							selectedObj = parentObj;	
-							selectedObj.userData.selected = true;
-							selectedObj.getObjectByName("selected").visible = true;	
+							selectedNode = parentObj;	
+							selectedNode.select();
 						}
 
-						trav(parentObj, function( child ) {
-					
-							child.position.z += offsetZ;
+						parentObj.traverse( function( child ) {
+
+							child.position.z += 18000;
 						});
-						con.target.set( targetPosition.x, targetPosition.y, parentObj.position.z );
+						
+						controls.target.set( targetPosition.x, targetPosition.y, parentObj.position.z );
 					})
 					.start();
 
 
 
-				parentObj.userData.expanded = false;
+				parentObj.expanded = false;
 
 			}
 		}

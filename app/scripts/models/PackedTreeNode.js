@@ -5,6 +5,7 @@ ES_EX.PackedTreeNode = function( node ) {
 	node.label = undefined;
 	node.drawObject = undefined;;
 	node.position;
+	node.canBeExpanded = cbex();
 	node.expanded = false;
 	node.selected = false;
 
@@ -24,5 +25,28 @@ ES_EX.PackedTreeNode = function( node ) {
 
 		var newViewVec = new THREE.Vector3().subVectors( camPos, this.position );
 		this.drawObject.material.uniforms.viewVector.value = newViewVec	;	
+	};
+
+	node.traverse = function( action ) {
+
+		if(this.children) {
+			for(var i = 0; i < this.children.length; i++) {
+
+				action( this.children[i] );
+				this.children[i].traverse( action );
+			}
+		}
+	}
+
+	function cbex() {
+
+		if(node.children) {
+
+			if(node.children.length != 0) {
+				return true;
+			}
+		}
+
+		return false;
 	};
 };
