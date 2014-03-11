@@ -1,36 +1,28 @@
 'use strict';
 
-ES_EX.SphereScope = function() {
+ES_EX.PackedTreeNode = function( node ) {
 
-	this.label;
-	this.drawObject;
+	node.label = undefined;
+	node.drawObject = undefined;;
+	node.position;
+	node.expanded = false;
+	node.selected = false;
 
-	this.position;
-
-	this.type;
-	this.radius;
-
-	this.fid;
-	this.sid;
-
-	this.expanded = false;
-	this.selected = false;
-
-	this.select = function() {
+	node.select = function() {
 		
 		this.selected = true;
 		this.drawObject.getObjectByName('selected').visible = true;
 	};
 
-	this.deSelect = function() {
+	node.deSelect = function() {
 		
 		this.selected = false;
 		this.drawObject.getObjectByName('selected').visible = false;
 	};
 
-	this.updateGlowViewVector = function( camPos ) {
+	node.updateGlowViewVector = function( camPos ) {
 
 		var newViewVec = new THREE.Vector3().subVectors( camPos, this.position );
 		this.drawObject.material.uniforms.viewVector.value = newViewVec	;	
-	}
+	};
 };

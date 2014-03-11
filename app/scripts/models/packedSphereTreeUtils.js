@@ -21,8 +21,18 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 		makePositionsRelativeToZero( nodes );
 
+		expandNodes( nodes );
+
 		return nodes;
 	};
+
+	function expandNodes( nodes) {
+		
+		for(var i = 0; i < nodes.length; i++) {
+
+			ES_EX.PackedTreeNode(nodes[i] );
+		}
+	}
 
 	function addPlaceholders( node ) {
 
@@ -112,46 +122,38 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 			var node = nodes[i];
 
-			var sphere = new ES_EX.SphereScope();
-			
-			sphere.type = node.type;
-			sphere.position = new THREE.Vector3( node.x,node.y,0 );
+			node.position = new THREE.Vector3( node.x,node.y,0 );
 
-			sphere.label = objectFactory.createLabel( node.name, sphere.position );
+			node.label = objectFactory.createLabel( node.name, node.position );
 
 
 			switch( node.type ) {
 
 				case 'GS': {
 
-					sphere.drawObject = objectFactory.createGlobalScopeSphere( node.r, sphere.position);
+					node.drawObject = objectFactory.createGlobalScopeSphere( node.r, node.position);
 
 					break;
 				}
 
 				case 'FGS': {
 
-					sphere.drawObject = objectFactory.createFileGlobalScopeSphere( node.r, sphere.position);
-					
-					sphere.fid = node.fid;
-					sphere.sid = node.sid;
-
+					node.drawObject = objectFactory.createFileGlobalScopeSphere( node.r, node.position);
+				
 					break;
 				}
 
 				case 'CS': {
 
-					sphere.drawObject = objectFactory.createScopeSphere( node.r, node.depth, sphere.position);
-					
-					sphere.fid = node.fid;
-					sphere.sid = node.sid;
-					
+					node.drawObject = objectFactory.createScopeSphere( node.r, node.depth, node.position);
+						
 					break;
 				}
 			}
 
-			node.sphere = sphere;
-			node.id = sphere.drawObject.id;
+			node.doid = node.drawObject.id;
 		}
 	};
+
+
 };

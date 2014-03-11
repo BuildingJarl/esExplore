@@ -25,7 +25,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		camera.position = new THREE.Vector3().copy(initalCamPos);
 		
 		selectedNode = root;
-		selectedNode.sphere.select();
+		selectedNode.select();
 
 		history.push(initalCamPos);
 	};
@@ -34,7 +34,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 		this.tree.traverse( function( node ) {
 
-			node.sphere.updateGlowViewVector( camera.position )
+			node.updateGlowViewVector( camera.position )
 		});
 
 		TWEEN.update();	
@@ -49,18 +49,18 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 			//Check if a new node has been selected
 			//if new obj
-			if( intersectedObj.id != selectedNode.id  ) {
+			if( intersectedObj.id != selectedNode.doid  ) {
 
 				//Clear selected property of current Selected Node
-				selectedNode.sphere.deSelect();
+				selectedNode.deSelect();
 
 				selectedNode = tree.getNodeById(intersectedObj.id);
-				selectedNode.sphere.select();
+				selectedNode.select();
 
 				//calc new position/look/orbti point of camera
 
 				var pos = new THREE.Vector3().copy( camera.position );
-				var newPos = new THREE.Vector3().copy(selectedNode.sphere.position);
+				var newPos = new THREE.Vector3().copy(selectedNode.position);
 				newPos.z += selectedNode.r * 2.8;
 
 				var tween = new TWEEN.Tween( pos )

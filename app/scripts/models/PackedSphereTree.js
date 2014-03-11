@@ -20,7 +20,7 @@ ES_EX.PackedSphereTree = function() {
 		var objects = [];
 
 		for(var i = 0; i < nodes.length; i++) {
-			objects.push(nodes[i].sphere.drawObject);
+			objects.push(nodes[i].drawObject);
 		}
 
 		return objects;
@@ -38,7 +38,7 @@ ES_EX.PackedSphereTree = function() {
 
 		for(var i = 0; i < nodes.length; i++) {
 			
-			if(nodes[i].sphere.drawObject.id === id) {
+			if(nodes[i].doid === id) {
 				return nodes[i];
 			}	
 		}
