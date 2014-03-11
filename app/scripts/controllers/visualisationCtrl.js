@@ -66,4 +66,13 @@ angular.module('esExploreApp')
 			$scope.$broadcast('createVis', visTree );
 			$scope.toggleSlider('create');
 		};
+
+		$scope.changeView = function( what ) {
+
+			if( what === 'explore' ) {
+				$scope.viewSelection = "detail";
+			} else {
+				$scope.viewSelection = "explore";
+			}
+		}
 });
