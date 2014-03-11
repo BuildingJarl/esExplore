@@ -33,4 +33,14 @@ ES_EX.PackedSphereTree = function() {
 			action(nodes[i]);
 		}
 	};
+
+	this.getNodeById = function( id ) {
+
+		for(var i = 0; i < nodes.length; i++) {
+			
+			if(nodes[i].sphere.drawObject.id === id) {
+				return nodes[i];
+			}	
+		}
+	};
 };

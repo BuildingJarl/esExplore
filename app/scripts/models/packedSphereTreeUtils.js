@@ -151,6 +151,7 @@ ES_EX.PackedSphereTreeUtils = function() {
 			}
 
 			node.sphere = sphere;
+			node.id = sphere.drawObject.id;
 		}
 	};
 };

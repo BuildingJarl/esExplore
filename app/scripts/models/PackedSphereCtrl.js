@@ -7,10 +7,8 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	var controls;
 	var camera;
 
-	var selectedObj = null;
+	var selectedNode = null;
 	var selectedTheta = 0.0;
-	var tween;
-	//var offsetZ = this.sceneObjects[0].scale.z * 4;
 	var offsetZ =  10000;
 
 	var history = [];
@@ -26,8 +24,8 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		var initalCamPos = new THREE.Vector3( 0, 0, root.r * 2.8 );
 		camera.position = new THREE.Vector3().copy(initalCamPos);
 		
-		selectedObj = root;
-		selectedObj.sphere.select();
+		selectedNode = root;
+		selectedNode.sphere.select();
 
 		history.push(initalCamPos);
 	};
@@ -35,7 +33,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	this.update = function( delta ) {
 
 		this.tree.traverse( function( node ) {
-			
+
 			node.sphere.updateGlowViewVector( camera.position )
 		});
 
@@ -46,90 +44,40 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 		if(intersects.length > 0) {
 			
-			var obj = intersects[0].object;
+			var intersectedObj = intersects[0].object;
+			console.log(intersectedObj);
 
-			callback( obj.userData );
+			//Check if a new node has been selected
+			//if new obj
+			if( intersectedObj.id != selectedNode.id  ) {
 
-			if( obj != selectedObj ) {
+				//Clear selected property of current Selected Node
+				selectedNode.sphere.deSelect();
 
-				//reset previous selected objt
-				if(selectedObj) {
-					selectedObj.userData.selected = false;
-					selectedObj.getObjectByName("selected").visible = false;
-				}
+				selectedNode = tree.getNodeById(intersectedObj.id);
+				selectedNode.sphere.select();
 
-				//set new selcted object
-				selectedObj = obj;
-				obj.userData.selected = true;
-				obj.getObjectByName("selected").visible = true;
-				//-----------------
+				//calc new position/look/orbti point of camera
 
-				//set new controls target pos
-				this.controls.target.copy( obj.position );
+				var pos = new THREE.Vector3().copy( camera.position );
+				var newPos = new THREE.Vector3().copy(selectedNode.sphere.position);
+				newPos.z += selectedNode.r * 2.8;
 
-				var cam = this.camera;
-
-				var oldCamPos = new THREE.Vector3().copy(this.camera.position);
-
-				var newCamPos = new THREE.Vector3();
-				newCamPos.x = obj.position.x;
-				newCamPos.y = obj.position.y;
-				newCamPos.z = obj.position.z + (obj.scale.z * 2.8);
-
-				tween = new TWEEN.Tween( oldCamPos )
-					.to( newCamPos, 200 )
+				var tween = new TWEEN.Tween( pos )
+					.to( newPos, 200 )
 					.onUpdate( function() {
-						cam.position.x = oldCamPos.x;
-						cam.position.y = oldCamPos.y;
-						cam.position.z = oldCamPos.z;
+						camera.position.x = pos.x;
+						camera.position.y = pos.y;
+						camera.position.z = pos.z;
 					})
 					.start();
+			} else
+			//if same obj has been selected again then its time to go into to sphere 
+			if( intersectedObj.id === selectedNode.id ) {
 
-			} 
-			else if( selectedObj === obj ) {
+				//if( selectedNode. )
+			}
 
-				//expand
-				if( !obj.userData.expanded  && obj.userData.children.length != 0 ) {
-
-					selectedObj.userData.selected = false;
-					selectedObj.getObjectByName("selected").visible = false;
-					
-					obj.userData.expanded = true;
-
-					//traverse through children and set new pos for each child
-					//this pos is - offset on z axis
-					trav(obj, function( child ) {
-						child.position.z -= offsetZ;
-					});
-
-					//set a new target position for orbit controls
-					//x is same, y is same, z - plus offset
-					this.controls.target.set( obj.position.x, obj.position.y, obj.position.z - offsetZ );
-
-					//set tween for camera
-					var oldCamPos = new THREE.Vector3().copy(this.camera.position);
-					var targetPos = new THREE.Vector3();
-					targetPos.x = obj.position.x;
-					targetPos.y = obj.position.y;
-					targetPos.z = (obj.position.z - offsetZ) + (obj.scale.z * 3);
-					
-					history.push( targetPos );
-					historyExpand.push( obj );
-
-					var cam = this.camera;
-
-					tween = new TWEEN.Tween( oldCamPos )
-						.to( targetPos, 200 )
-						.onUpdate( function() {
-							cam.position.x = oldCamPos.x;
-							cam.position.y = oldCamPos.y;
-							cam.position.z = oldCamPos.z;
-						})
-						.start();
-
-					selectedObj = null;
-				}
-			} 
 		}
 	};
 
