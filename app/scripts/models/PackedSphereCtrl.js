@@ -26,6 +26,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		console.log(root);
 		selectedNode = root;
 		selectedNode.select();
+		selectedNode.showLabel();
 
 		history.push(initalCamPos);
 	};
@@ -54,6 +55,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				//Clear selected property of current Selected Node
 				if(selectedNode) {
 					selectedNode.deSelect();
+					selectedNode.hideLabel();
 				}
 				
 				selectedNode = tree.getNodeById(intersectedObj.id);
@@ -82,6 +84,8 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				if( !selectedNode.expanded && selectedNode.canBeExpanded ) {
 
 					selectedNode.deSelect();
+					selectedNode.hideLabel();
+					selectedNode.showChildrenLabels();
 					selectedNode.expanded = true;
 
 					selectedNode.traverse( function( child ) {
@@ -95,8 +99,8 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					//setTweenForCamera
 					var pos = new THREE.Vector3().copy( camera.position );
 					var newPos = new THREE.Vector3().copy(selectedNode.position);
-					newPos.z += selectedNode.r;
-					//targetPos.z = (obj.position.z - offsetZ) + (obj.scale.z * 3);
+					newPos.z += selectedNode.r * 0.75;
+					//newPos.z = (selectedNode.position.z - 18000) + (selectedNode.r * 3);
 
 					history.push( newPos );
 					historyExpand.push( selectedNode );
@@ -177,6 +181,8 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					.start();
 
 				parentObj.expanded = false;
+				parentObj.hideChildrenLabels();
+				parentObj.showLabel();
 			}
 		}
 

@@ -36,7 +36,35 @@ ES_EX.PackedTreeNode = function( node ) {
 				this.children[i].traverse( action );
 			}
 		}
-	}
+	};
+
+	node.showLabel = function() {
+
+		this.label.getObjectByName('label').element.style.display = 'block';
+	};
+
+	node.showChildrenLabels = function() {
+
+		for( var i = 0; i < this.children.length; i ++ ) {
+
+			var child = this.children[i];
+			child.label.getObjectByName('label').element.style.display = 'block';
+		}
+	};
+
+	node.hideLabel = function() {
+
+		this.label.getObjectByName('label').element.style.display = 'none';
+	};
+
+	node.hideChildrenLabels = function() {
+
+		for( var i = 0; i < this.children.length; i ++ ) {
+
+			var child = this.children[i];
+			child.label.getObjectByName('label').element.style.display = 'none';
+		}
+	};
 
 	function cbex() {
 

@@ -109,14 +109,23 @@ ES_EX.ObjectFactory = function( ) {
     	return obj;
     };
 
-    this.createLabel = function( text, pos ) {
+    this.createLabel = function( r,text, pos ) {
+
+    	var container = new THREE.Object3D();
 
     	var element = document.createElement('span');
     	element.textContent = text;
+    	element.className = 'SphereLabel';
+    	element.style.display = 'none';
+    	element.style.fontSize = '80pt';
 
     	var obj = new THREE.CSS3DObject( element );
-    	obj.position = pos;
+ 		obj.position.z += r;
+ 		obj.name = 'label';
 
-    	return obj;
+    	container.add(obj);
+    	container.position = pos;
+
+    	return container;
     };
 };

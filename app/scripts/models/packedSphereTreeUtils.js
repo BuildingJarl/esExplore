@@ -124,7 +124,7 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 			node.position = new THREE.Vector3( node.x,node.y,0 );
 
-			node.label = objectFactory.createLabel( node.name, node.position );
+			node.label = objectFactory.createLabel( node.r, node.name, node.position );
 
 
 			switch( node.type ) {
