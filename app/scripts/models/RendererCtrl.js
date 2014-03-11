@@ -41,7 +41,7 @@ ES_EX.RendererCtrl = function( ) {
 		treeCtrl.init( camera, controls );
 
 		glRenderer.clearScene();
-		glRenderer.addObjectsToScene( treeCtrl.sceneObjects );
+		glRenderer.addObjectsToScene( treeCtrl.tree.getGLSceneObjects() );
 	};
 
 	this.start = function() {

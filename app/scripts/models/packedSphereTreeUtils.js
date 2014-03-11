@@ -124,14 +124,14 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 				case 'GS': {
 
-					sphere.drawObject = objectFactory.createGlobalScopeSphere(r, sphere.position);
+					sphere.drawObject = objectFactory.createGlobalScopeSphere( node.r, sphere.position);
 
 					break;
 				}
 
 				case 'FGS': {
 
-					sphere.drawObject = objectFactory.createFileGlobalScopeSphere(r, sphere.position);
+					sphere.drawObject = objectFactory.createFileGlobalScopeSphere( node.r, sphere.position);
 					
 					sphere.fid = node.fid;
 					sphere.sid = node.sid;
@@ -141,7 +141,7 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 				case 'CS': {
 
-					sphere.drawObject = objectFactory.createScopeSphere(r, node.depth, sphere.position);
+					sphere.drawObject = objectFactory.createScopeSphere( node.r, node.depth, sphere.position);
 					
 					sphere.fid = node.fid;
 					sphere.sid = node.sid;
@@ -152,6 +152,5 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 			node.sphere = sphere;
 		}
-
 	};
 };

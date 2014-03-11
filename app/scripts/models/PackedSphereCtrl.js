@@ -3,56 +3,45 @@
 ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 	this.tree = tree;
-	this.sceneObjects = tree.getDrawObjects();
-	this.controls;
-	this.camera;
+
+	var controls;
+	var camera;
 
 	var selectedObj = null;
 	var selectedTheta = 0.0;
 	var tween;
-	var offsetZ = this.sceneObjects[0].scale.z * 4;
+	//var offsetZ = this.sceneObjects[0].scale.z * 4;
+	var offsetZ =  10000;
 
 	var history = [];
 	var historyExpand = [];
 
-	this.init = function( camera, controls, scene ) {
+	this.init = function( ccamera, ccontrols ) {
 
-		this.camera = camera,
-		this.controls = controls;
+		camera = ccamera,
+		controls = ccontrols;
 
-		var initalCamPos = new THREE.Vector3( 0, 0, this.sceneObjects[0].scale.x * 2.8 );
-		this.camera.position = new THREE.Vector3().copy(initalCamPos);
+		var root = this.tree.getRoot();
+
+		var initalCamPos = new THREE.Vector3( 0, 0, root.r * 2.8 );
+		camera.position = new THREE.Vector3().copy(initalCamPos);
 		
-		selectedObj = this.sceneObjects[0];
-		selectedObj.userData.selected = true;
-		selectedObj.getObjectByName("selected").visible = true;
+		selectedObj = root;
+		selectedObj.sphere.select();
 
 		history.push(initalCamPos);
 	};
 
 	this.update = function( delta ) {
+		/*
+		this.tree.traverse( function( node ) {
 
-		selectedTheta += delta;
-		var scale = Math.sin(selectedTheta) * 5;
-		
-		for(var i = 0; i < this.sceneObjects.length; i ++) {
+			node.sphere.updateGlowViewVector( camera.position )
 
-			var c = this.sceneObjects[i];
-			c.material.uniforms.viewVector.value = new THREE.Vector3().subVectors( this.camera.position, c.position );
-			
-			if( c.userData.selected ) {
-
-				var sel = c.getObjectByName("selected");
-
-				//sel.scale.x += scale;
-				//sel.scale.y += scale;
-			}
-		}
-
-		if(selectedTheta >= Math.PI * 2) {
-			selectedTheta = 0.0;
-		}
-
+		});
+		*/
+	
+		//this.tree.updateGlow(camera);
 		TWEEN.update();	
 	};
 

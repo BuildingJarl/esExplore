@@ -8,7 +8,7 @@ ES_EX.ObjectFactory = function( ) {
 			"c":   { type: "f", value: 1 },
 			"p":   { type: "f", value: 2 },
 			glowColor: { type: "c", value: new THREE.Color( 0xff00ff ) },
-			viewVector: { type: "v3", value: {x:0, y:0, z:0} }
+			viewVector: { type: "v3", value: {x:0, y:0, z:10000} }
 		},
 		vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
 		fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
@@ -24,7 +24,7 @@ ES_EX.ObjectFactory = function( ) {
 			"c":   { type: "f", value: 1 },
 			"p":   { type: "f", value: 2 },
 			glowColor: { type: "c", value: new THREE.Color(  0xFD0987 ) },
-			viewVector: { type: "v3", value: {x:0, y:0, z:0} }
+			viewVector: { type: "v3", value: {x:0, y:0, z:10000} }
 		},
 		vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
 		fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
@@ -41,7 +41,7 @@ ES_EX.ObjectFactory = function( ) {
 			"c":   { type: "f", value: 1 },
 			"p":   { type: "f", value: 2 },
 			glowColor: { type: "c", value: new THREE.Color( 0x00ff00 ) },
-			viewVector: { type: "v3", value: {x:0, y:0, z:0} }
+			viewVector: { type: "v3", value: {x:0, y:0, z:10000} }
 		},
 		vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
 		fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
@@ -62,7 +62,7 @@ ES_EX.ObjectFactory = function( ) {
 		blending: THREE.AdditiveBlending
 	});
 
-	this.createGlobalScopeSphere = function( radius ) {
+	this.createGlobalScopeSphere = function( radius, pos ) {
 
     	var obj = new THREE.Mesh( sphereGeo, globalMaterial );
     	obj.scale.set(radius,radius,radius);
@@ -72,11 +72,11 @@ ES_EX.ObjectFactory = function( ) {
     	sprite.name = "selected";
     	sprite.visible = false;
     	obj.add( sprite );
-
+    	obj.position = pos;
     	return obj;
     };
     
-    this.createFileGlobalScopeSphere = function( radius ) {
+    this.createFileGlobalScopeSphere = function( radius, pos ) {
 
     	var obj = new THREE.Mesh( sphereGeo, fileGlobalMaterial.clone() );
     	var scale =  radius ;
@@ -88,10 +88,11 @@ ES_EX.ObjectFactory = function( ) {
     	sprite.visible = false;
 
     	obj.add( sprite );
+    	obj.position = pos;
     	return obj;
     };
 
-    this.createScopeSphere = function( radius, depth ) {
+    this.createScopeSphere = function( radius, depth, pos ) {
 
     	var obj = new THREE.Mesh( sphereGeo, scopeMaterial.clone() );
     	var col = new THREE.Color( 0x00ff00 );
@@ -108,12 +109,13 @@ ES_EX.ObjectFactory = function( ) {
     	return obj;
     };
 
-    this.createLabel = function( text ) {
+    this.createLabel = function( text, pos ) {
 
     	var element = document.createElement('span');
     	element.textContent = text;
 
     	var obj = new THREE.CSS3DObject( element );
+    	obj.position = pos;
 
     	return obj;
     };
