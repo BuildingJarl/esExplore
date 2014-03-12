@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('esExploreApp')
-	.controller('visualisationCtrl', function ( $scope, repositoryService, layoutService ) {
+	.controller('explorerMenubarCtrl', function ( $scope, repositoryService ) {
 		
-		$scope.viewSelection = "explore"; 
 		$scope.showCreate = false;
 		$scope.showSettings = false
 		$scope.showHelp = false;
+
 		$scope.repo = repositoryService.repo;
 
 		function selectCallback( data ) {
@@ -60,19 +60,7 @@ angular.module('esExploreApp')
 
 		$scope.createVisualisation = function() {
 
-			var jsontree = JSON.stringify($scope.repo);
-			var visTree = layoutService.create( jsontree, selectCallback );
-
-			$scope.$broadcast('createVis', visTree );
+			$scope.$emit('createVisualisation', JSON.stringify($scope.repo) );
 			$scope.toggleSlider('create');
-		};
-
-		$scope.changeView = function( what ) {
-
-			if( what === 'explore' ) {
-				$scope.viewSelection = "detail";
-			} else {
-				$scope.viewSelection = "explore";
-			}
 		};
 });

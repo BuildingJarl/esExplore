@@ -12,7 +12,7 @@ angular.module('esExploreApp')
 		$stateProvider
 			.state('app', {
 				url: '/',
-				templateUrl: 'partials/visualisation',
-				controller: 'visualisationCtrl'
+				templateUrl: 'partials/explorer',
+				controller: 'explorerCtrl'
 			});
 	});

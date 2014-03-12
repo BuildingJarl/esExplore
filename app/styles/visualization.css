@@ -1,12 +1,4 @@
-#visualisationViewport{
-	position: absolute;
-	top:0;
-	bottom:0;
-	right:0;
-	left:0;
-}
-
-#visualisationTopMenuContainer{
+#explorerMenubarContainer {
 	position: absolute;
 	top:0;
 	right: 0;
@@ -16,18 +8,9 @@
 	background-color: #272822;
 }
 
-#visualisationContentContainer { 
-	position: absolute;
-	top:40px;
-	right: 0;
-	left: 0;
-	bottom: 0;
-}
-
 .menu {
 	height: 40px;
 }
-
 
 .menuItem {
 	display: inline-block;
@@ -41,10 +24,6 @@
 .menuItem:hover{
 	color: #899282;
 	cursor: pointer;
-}
-
-.pushRight {
-	margin-left: 50px;
 }
 
 #ng-pageslide {
@@ -92,13 +71,37 @@
 	margin-right: auto;
 	margin-left: auto;
 }
+/*-----------------------------------*/
 
-.exploreView {
+#explorerViewport {
+	position: absolute;
+	top: 40px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+
+#explorerViewport { 
+	position: absolute;
+	top:40px;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
+#scopeViewer {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
-	right: 0;
+}
+
+#sourceViewer{
+	position: absolute;
+	top:0;
+	bottom:0;
+	right:0;
 }
 
 .SphereLabel {

@@ -35,12 +35,13 @@ html(lang="en")
     script(src="scripts/app.js")
     
     script(src="scripts/controllers/appCtrl.js")
-    script(src="scripts/controllers/visualisationCtrl.js")
-    script(src="scripts/controllers/exploreCtrl.js")
+    script(src="scripts/controllers/explorerCtrl.js")
+    script(src="scripts/controllers/explorerMenubarCtrl.js")
 
     script(src="scripts/directives/pageslide.js")
     script(src="scripts/directives/uploader.js")
     script(src="scripts/directives/three.js")
+    script(src="scripts/directives/resizebar.js")
  
     script(src="scripts/services/repositoryService.js")
     script(src="scripts/services/fileService.js")
@@ -83,5 +84,5 @@ html(lang="en")
             gl_FragColor = vec4( glow, 1.0 );
         }
  
-    div(ui-view class="inheritFromParent")
+    div(ui-view)
 

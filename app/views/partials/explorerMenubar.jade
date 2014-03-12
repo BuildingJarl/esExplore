@@ -1,0 +1,25 @@
+div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCtrl")
+	
+	div( class="menu" )
+		div( class="menuItem" ng-click="toggleSlider( 'create' )")
+			i(class="fa fa-plus fa-2x")
+		div( class="menuItem" ng-click="toggleSlider( 'settings' )")
+			i(class="fa fa-cog fa-2x")
+		div( class="menuItem" ng-click="toggleSlider( 'help' )")
+			i(class="fa fa-question fa-2x")
+		div( class="menuItem")
+			i(class="fa fa-info fa-2x")
+
+	div( pageslide="left" ps-size="400px" ps-open="showCreate" ps-target="#createPageSlide" ps-custom-top="41px" )
+	div( pageslide="right" ps-open="showSettings" ps-target="#settingsPageSlide" ps-custom-top="41px" )
+	div( pageslide="right" ps-open="showHelp" ps-target="#helpPageSlide" ps-custom-top="41px" )
+
+
+	div(id="createPageSlide")
+		div(ng-include="'partials/createPageSlideContent'" )
+
+	div(id="settingsPageSlide")
+		div(ng-include="'partials/settingsPageSlide'" )
+
+	div(id="helpPageSlide")
+		div(ng-include="'partials/helpPageSlideContent'" )

@@ -5,6 +5,7 @@ angular.module('esExploreApp')
 		restrict: "EA",
 		link: function( scope, element, iAttrs ) {
 
+            console.log("sad");
 			threeService.init( element[0], true );
 
 			angular.element($window).bind ('resize', function( ){

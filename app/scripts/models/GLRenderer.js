@@ -11,7 +11,7 @@ ES_EX.GLRenderer = function( ) {
 
 		var width = container.clientWidth;
 		var height = container.clientHeight;
-
+		console.log(width + " " + height);
 		scene = new THREE.Scene();
 	    camera = ccamera;
 	    renderer = new THREE.WebGLRenderer( {antialias: true } );
