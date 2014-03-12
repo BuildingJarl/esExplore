@@ -74,5 +74,5 @@ angular.module('esExploreApp')
 			} else {
 				$scope.viewSelection = "explore";
 			}
-		}
+		};
 });

@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('esExploreApp')
-	.controller('exploreCtrl', function ( $scope, visEnvService ) {
+	.controller('exploreCtrl', function ( $scope, threeService ) {
 
-		$scope.$on('createVis', function( event, tree ){
+		$scope.$on('createVis', function( event, data ){
 
-			visEnvService.stop();
-			visEnvService.addTree( tree );
-			visEnvService.start();
+			threeService.stop();
+			threeService.addData( data );
+			threeService.start();
 		});
 });

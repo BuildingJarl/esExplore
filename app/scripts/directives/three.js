@@ -1,16 +1,15 @@
 angular.module('esExploreApp')
-   .directive( "threeGl", function( $window, visEnvService )  {
+   .directive( 'three', function( $window, threeService )  {
 
 	return {
 		restrict: "EA",
 		link: function( scope, element, iAttrs ) {
 
-			visEnvService.init( element[0], true );
-
+			threeService.init( element[0], true );
 
 			angular.element($window).bind ('resize', function( ){
  				
- 				visEnvService.onResize();	
+ 				threeService.onResize();	
  			});
 
 			var firstPos = { x:-999, y:-999 };
@@ -34,11 +33,11 @@ angular.module('esExploreApp')
     			if( event.which == 1 || event.button == 1 ) {
 
     				if( event.clientX == firstPos.x  && event.clientY == firstPos.y ) {
-    					visEnvService.onLeftClick(event);
+    					threeService.onLeftClick(event);
     				}
     			}
     			if( event.which == 3 || event.button == 2 ) {
-    				visEnvService.onRightClick( event );
+    				threeService.onRightClick( event );
     			}
  			});
 

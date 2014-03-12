@@ -1,5 +1,5 @@
 angular.module('esExploreApp')
-   .service( 'visEnvService', function( $q ) {
+   .service( 'threeService', function( $q ) {
 
       var rendererCtrl = new ES_EX.RendererCtrl();
 
@@ -33,9 +33,9 @@ angular.module('esExploreApp')
          rendererCtrl.onRightClick(event);
       };
 
-   	this.addTree = function( tree ) {
+   	this.addData = function( data ) {
 
-   		rendererCtrl.addTreeCtrl(tree);
+   		rendererCtrl.addTreeCtrl( data );
    	};
       
    });
