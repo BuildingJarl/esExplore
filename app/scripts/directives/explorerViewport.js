@@ -14,14 +14,15 @@ angular.module('esExploreApp')
 				var initialX;
 
 				var lastWinSize = { w: $document[0].documentElement.clientWidth, h: $document[0].documentElement.clientHeight };
-				
+				//var lastWinSize = { w: $window.innerWidth, h: $window.innerHeight };
+
 				var leftSide = angular.element(element.children()[0]);
 				var rightSide = angular.element(element.children()[1]);
 
 				var resizebar = angular.element('<div id="resizebar"> </div>');
 				var resizebarActive = angular.element('<div id="resizebarActive"> </div>');
 				
-				resizebar.css({ left: '90%' });
+				resizebar.css({ left: lastWinSize.w - 100 + 'px' });
 				element.append(resizebar);
 				element.append(resizebarActive);
 
