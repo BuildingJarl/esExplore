@@ -79,17 +79,9 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
+	overflow:hidden;
+	background: blue;
 }
-
-
-#explorerViewport { 
-	position: absolute;
-	top:40px;
-	right: 0;
-	left: 0;
-	bottom: 0;
-}
-
 #scopeViewer {
 	position: absolute;
 	top: 0;
@@ -102,6 +94,30 @@
 	top:0;
 	bottom:0;
 	right:0;
+	background: yellow;
+}
+
+#resizebar {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 5px;
+	z-index: 1;
+	background: red;
+	cursor: ew-resize;
+}
+#resizebar:hover {
+	background: green;
+}
+#resizebarActive {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 5px;
+	z-index: 2;
+	background: green;
+	cursor: ew-resize;
+	display: none;
 }
 
 .SphereLabel {

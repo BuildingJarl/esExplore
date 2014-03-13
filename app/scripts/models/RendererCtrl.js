@@ -79,7 +79,7 @@ ES_EX.RendererCtrl = function( ) {
 
 		var newWidth = container.clientWidth;
 		var newHeight = container.clientHeight;
-
+		
 		camera.aspect = newWidth/newHeight;
       	camera.updateProjectionMatrix();
 

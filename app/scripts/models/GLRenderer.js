@@ -19,7 +19,11 @@ ES_EX.GLRenderer = function( ) {
 	    
 	    projector = new THREE.Projector();
 
-      	renderer.domElement.style.display = "block";
+      	renderer.domElement.style.position = "absolute";
+      	renderer.domElement.style.top = "0";
+      	renderer.domElement.style.bottom = "0";
+      	renderer.domElement.style.left = "0";
+      	renderer.domElement.style.zIndex = "0";
       	renderer.setSize( width, height );
 
 		container.appendChild( renderer.domElement );

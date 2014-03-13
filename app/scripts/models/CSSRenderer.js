@@ -15,9 +15,11 @@ ES_EX.CSSRenderer = function( ) {
 	    camera = ccamera;
 	    renderer = new THREE.CSS3DRenderer();
 
-      	renderer.domElement.style.display = "block";
       	renderer.domElement.style.position = "absolute";
       	renderer.domElement.style.top = "0";
+      	renderer.domElement.style.bottom = "0";
+      	renderer.domElement.style.left = "0";
+      	renderer.domElement.style.zIndex = "1";
       	renderer.setSize( width, height );
 
 		container.appendChild( renderer.domElement );

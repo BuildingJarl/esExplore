@@ -8,11 +8,6 @@ angular.module('esExploreApp')
             console.log("sad");
 			threeService.init( element[0], true );
 
-			angular.element($window).bind ('resize', function( ){
- 				
- 				threeService.onResize();	
- 			});
-
 			var firstPos = { x:-999, y:-999 };
 			//only left button
  			element.bind( "mousedown", function (event) {
