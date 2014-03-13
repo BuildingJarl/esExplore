@@ -37,7 +37,7 @@ angular.module('esExploreApp')
 					event.preventDefault();
 					
 					x = resizebar.prop('offsetLeft');
-					initialX = event.x;
+					initialX = event.clientX;
 					
 					resizebarActive.css( { left: x + 'px', display: 'block' } );
 
@@ -49,8 +49,9 @@ angular.module('esExploreApp')
 					
 					event.preventDefault();
 
-					var deltaX = event.x - initialX;
-					resizebarActive.css({ left: x + deltaX + 'px' } );
+					var deltaX = event.clientX - initialX;
+
+					resizebarActive.css( { left: x + deltaX + 'px' } );
 					
 					
 					if(event.x < 0) {
@@ -58,9 +59,9 @@ angular.module('esExploreApp')
 						resizebarActive.css({ left: 0 + 'px' } );
 						mouseup(event);
 					}
-					if(event.x > $window.innerWidth-5){
+					if(event.x > lastWinSize.w-5){
 						
-						resizebarActive.css({ left: $window.innerWidth - 5 + 'px' } );
+						resizebarActive.css({ left: lastWinSize.w - 5 + 'px' } );
 						mouseup(event);
 					}
 				};
