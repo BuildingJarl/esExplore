@@ -8,7 +8,8 @@ angular.module('esExploreApp')
 		};
 
 		function selectCallback( data ) {
-			console.log(data);
+			
+			$scope.$broadcast('objectSelected', data );
 		};
 
 		$scope.$on('createVisualisation', function( event,data ) {

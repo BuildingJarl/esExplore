@@ -129,6 +129,15 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		//go back to overview position
 		if(selectedNode != null) {
 
+			if(historyExpand[historyExpand.length-1]) {
+				callback( { 
+					type:historyExpand[historyExpand.length-1].type, 
+					fid:historyExpand[historyExpand.length-1].fid, 
+					sid:historyExpand[historyExpand.length-1].sid 
+				});
+			}
+
+
 			var currentPosition = new THREE.Vector3().copy(camera.position);
 			var targetPosition = new THREE.Vector3().copy(history[history.length-1]);
 
@@ -153,6 +162,12 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		//rollback Expand
 		else if(selectedNode === null) {
 			if(historyExpand.length > 0) {
+
+				callback( { 
+					type:historyExpand[historyExpand.length-1].type, 
+					fid:historyExpand[historyExpand.length-1].fid, 
+					sid:historyExpand[historyExpand.length-1].sid 
+				});
 
 				var parentObj = historyExpand.pop();
 				history.pop();

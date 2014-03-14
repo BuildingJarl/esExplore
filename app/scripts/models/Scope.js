@@ -48,12 +48,15 @@ ES_EX.Scope = function( scope, fid ) {
 
 	this.getName = function() {
 
+
+		console.log(this.data.type);
+		var name = '';
+
 		switch(this.data.block.type){
 
 			case 'FunctionExpression': {
 
-				var lineNR = "[" + this.data.block.loc.start.line + ":" + this.data.block.loc.start.column + "]";
-				var name = lineNR + " " + this.data.type + " (";
+				name += this.data.type + " (";
 
 				for( var i = 0; i < this.data.block.params.length; i++ ) {
 					name += " " + this.data.block.params[i].name;
@@ -68,7 +71,7 @@ ES_EX.Scope = function( scope, fid ) {
 			}
 			case 'FunctionDeclaration': {
 
-				var name = this.data.type + " " + this.data.block.id.name +  " (";
+				name += this.data.type + " " + this.data.block.id.name +  " (";
 
 				for( var i = 0; i < this.data.block.params.length; i++ ) {
 					name += " " + this.data.block.params[i].name;
@@ -84,6 +87,11 @@ ES_EX.Scope = function( scope, fid ) {
 		}
 
 		return name;
+	};
+
+	this.getVarCount = function() {
+
+		return this.data.variables.length;
 	};
 
 	this.getLineNr = function() {

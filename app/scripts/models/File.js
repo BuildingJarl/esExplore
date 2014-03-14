@@ -38,7 +38,8 @@ ES_EX.File = function( f ) {
 		return this.ast.body[ this.ast.body.length-1 ].loc.end.line;
 	};
 
-	this.getVarCount = function() {
+	this.getTotalVarCount = function() {
+		
 		var count = 0;
 		count += this.scope.data.variables.length;
 
@@ -59,5 +60,18 @@ ES_EX.File = function( f ) {
 
 		return count;
 	};
+
+	this.getScopeforView = function() {
+
+		var name = this.name;
+		var scope = this.scope;
+		
+		scope.getName = function() {
+			
+			return name + "Global Scope";
+		};
+
+		return scope;
+	}
 };
 

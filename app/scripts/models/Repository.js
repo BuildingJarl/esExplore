@@ -24,10 +24,11 @@ ES_EX.Repository = function() {
 			this.globalScopesSet[ file.scope.id ] = file.scope;
 
 			var self = this;
+
 			file.scope.traverse( function( child ) {
 
 				self.scopes.push( child );
-				self.scopeSet[ child.id ] = child.scope;
+				self.scopeSet[ child.id ] = child;
 			});	
 		}    
 	};
@@ -64,7 +65,7 @@ ES_EX.Repository = function() {
 				file.name = this.files[i].name;
 				file.ScopeCount = this.files[i].getScopeCount();
 				file.lineNr = this.files[i].getLineNr();
-				file.varCount = this.files[i].getVarCount();
+				file.varCount = this.files[i].getTotalVarCount();
 
 				files.push(file);
 			}
@@ -75,11 +76,11 @@ ES_EX.Repository = function() {
 
 	this.getGlobalScope = function() {
 
+		var self = this;
+
 		var scope = {};
-   		scope.name = 'Global Scope'
-   		scope.childrenCount = this.globalScopes.length;
+
    		scope.children = [];
-   		scope.vars;
 
    		for( var i = 0; i < this.globalScopes.length; i++ ) {
 
@@ -88,6 +89,27 @@ ES_EX.Repository = function() {
    				scope.children.push( this.globalScopes[i].children[j] );
    			}
    		}
+
+   		scope.getName = function() {
+   			
+   			return 'Global Scope';
+   		};
+
+   		scope.getVarCount = function() {
+   			
+   			var count = 0;
+
+   			for (var i = 0; i < self.globalScopes.length; i++) {
+   				count += self.globalScopes[i].getVarCount();
+   			}
+
+   			return count;
+   		};
+
+   		scope.getLineNr = function() {
+
+   			return '';
+   		};
 
    		return scope;
 	};

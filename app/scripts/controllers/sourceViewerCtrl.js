@@ -15,7 +15,24 @@ angular.module('esExploreApp')
 		//this gets called everytime the user selects a sphere!
 		$scope.$on('objectSelected', function( event, data ) {
 
-			console.log(data);
+			$scope.$apply( function() {
+
+				if(data.type === 'GS') {
+
+					$scope.selectedScope = repositoryService.getGlobalScope();
+
+				} else if ( data.type === 'FGS' ) {
+
+					$scope.selectedScope = repositoryService.getFileGlobalScope(data.fid);
+
+				} else if ( data.type === 'CS' ) {
+
+					$scope.selectedScope = repositoryService.getChildScope(data.sid);
+
+				}
+			});
+			console.log($scope.selectedScope);
+
 		});
 
 });
