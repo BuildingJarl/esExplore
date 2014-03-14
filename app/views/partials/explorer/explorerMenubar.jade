@@ -14,12 +14,11 @@ div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCt
 	div( pageslide="right" ps-open="showSettings" ps-target="#settingsPageSlide" ps-custom-top="41px" )
 	div( pageslide="right" ps-open="showHelp" ps-target="#helpPageSlide" ps-custom-top="41px" )
 
-
 	div(id="createPageSlide")
-		div(ng-include="'partials/createPageSlideContent'" )
+		include sliders/create
 
 	div(id="settingsPageSlide")
-		div(ng-include="'partials/settingsPageSlide'" )
+		include sliders/settings
 
 	div(id="helpPageSlide")
-		div(ng-include="'partials/helpPageSlideContent'" )
+		include sliders/help

@@ -7,11 +7,13 @@ angular.module('esExploreApp')
 		return {
 			
 			restrict: 'A',
-			template: template,
 			link: function( scope, element, attrs ) {
 
 				var x;
 				var initialX;
+
+				var minRight = 450;
+				var maxRight = 800;
 
 				var lastWinSize = { w: $document[0].documentElement.clientWidth, h: $document[0].documentElement.clientHeight };
 				//var lastWinSize = { w: $window.innerWidth, h: $window.innerHeight };
@@ -22,7 +24,8 @@ angular.module('esExploreApp')
 				var resizebar = angular.element('<div id="resizebar"> </div>');
 				var resizebarActive = angular.element('<div id="resizebarActive"> </div>');
 				
-				resizebar.css({ left: lastWinSize.w - 100 + 'px' });
+				resizebar.css({ left: lastWinSize.w - minRight + 'px' });
+				
 				element.append(resizebar);
 				element.append(resizebarActive);
 
@@ -51,20 +54,18 @@ angular.module('esExploreApp')
 					event.preventDefault();
 
 					var deltaX = event.clientX - initialX;
+					var newPos = x + deltaX;
+						
+					var newRight = lastWinSize.w - newPos;
+					console.log(newRight);
 
-					resizebarActive.css( { left: x + deltaX + 'px' } );
-					
-					
-					if(event.x < 0) {
-						
-						resizebarActive.css({ left: 0 + 'px' } );
-						mouseup(event);
+					if( newRight <= maxRight && newRight >= minRight ) {
+						resizebarActive.css( { left: newPos + 'px' } );	
+					} else {
+						//mouseup(event);
 					}
-					if(event.x > lastWinSize.w-5){
-						
-						resizebarActive.css({ left: lastWinSize.w - 5 + 'px' } );
-						mouseup(event);
-					}
+			
+							
 				};
 				
 				function mouseup(event) {

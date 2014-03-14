@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('esExploreApp', [
-	'ui.router',
+	'ui.router'
 ]);
 
 angular.module('esExploreApp')
@@ -12,7 +12,7 @@ angular.module('esExploreApp')
 		$stateProvider
 			.state('app', {
 				url: '/',
-				templateUrl: 'partials/explorer',
+				templateUrl: 'partials/explorerView',
 				controller: 'explorerCtrl'
 			});
 	});

@@ -1,0 +1,32 @@
+//-div(id="sourceViewer" ng-controller="sourceViewerCtrl")
+//-is container
+
+div( class="sourceViewerPanel" )
+	| Files
+	table
+		thead
+			tr
+				td.nameCell Name
+				td.numberCell Length
+				td.numberCell Scopes
+				td.numberCell Variables
+		tbody
+			tr(ng-repeat="file in files")
+				td.nameCell {{ file.name }}
+				td.numberCell {{ file.lineNr }}
+				td.numberCell {{ file.ScopeCount }}
+				td.numberCell {{ file.varCount }}
+
+div( class="sourceViewerPanel" )
+	| Selected Scope: Global
+	table
+		thead
+			tr
+				td Name
+				td Children
+				td Variables
+		tbody
+			tr
+				td function hello( ho )
+				td 5
+				td 90

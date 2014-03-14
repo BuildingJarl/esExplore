@@ -4,9 +4,17 @@ body {
   height: 100%;
   width:100%;
 
-  color: #dadbd5;
+  color: #A8A8A8;
+  background: #171A0B;
 
   font-family: Arial, sans-serif;
   font-size: 1em;
 }
 
+.Panel {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}

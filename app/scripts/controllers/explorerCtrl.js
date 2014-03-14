@@ -13,6 +13,8 @@ angular.module('esExploreApp')
 
 		$scope.$on('createVisualisation', function( event,data ) {
 
+			$scope.$broadcast('initSourceViewer');
+
 			var visTree = layoutService.create( data, selectCallback );
 
 			threeService.stop();

@@ -23,10 +23,12 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 		var initalCamPos = new THREE.Vector3( 0, 0, root.r * 2.8 );
 		camera.position = new THREE.Vector3().copy(initalCamPos);
-		console.log(root);
+
 		selectedNode = root;
 		selectedNode.select();
 		selectedNode.showLabel();
+
+		callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
 
 		history.push(initalCamPos);
 	};
@@ -46,7 +48,6 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		if(intersects.length > 0) {
 			
 			var intersectedObj = intersects[0].object;
-			console.log(intersectedObj);
 
 			//Check if a new node has been selected
 			//if new obj
@@ -60,6 +61,8 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				
 				selectedNode = tree.getNodeById(intersectedObj.id);
 				selectedNode.select();
+
+				callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
 
 				//calc new position/look/orbti point of camera
 

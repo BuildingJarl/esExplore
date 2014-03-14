@@ -1,0 +1,48 @@
+.sourceViewerPanel {
+
+	max-width: 800px;
+	min-width: 450px;
+
+	padding:10px;
+}
+
+.sourceViewerPanel table {
+
+	margin-top: 5px;
+
+	border: 1px solid #333434;
+	width: 90%;
+
+	max-width:800px;
+  	min-width:430px;
+  	border-collapse: collapse;
+
+}
+
+.nameCell {
+
+	width:100px; 
+  	max-width:200px;
+  	min-width:100px;
+  	overflow: hidden;
+}
+
+.numberCell {
+
+	width:50px; 
+  	overflow: hidden;
+  	text-align: center;
+}
+
+.sourceViewerPanel table tbody tr td{
+
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.sourceViewerPanel table tbody tr:nth-child(even) {
+	background: #CCC;
+}
+.sourceViewerPanel table tbody tr:nth-child(odd) {
+	background: #FFF;
+}

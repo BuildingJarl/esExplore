@@ -5,7 +5,12 @@ angular.module('esExploreApp')
 
    this.addFile = function( file ) {
 
-      this.repo.addFile(file);
+		this.repo.addFile(file);
+   };
+
+   this.getValidFilesForView = function() {
+
+   		return this.repo.getValidFiles();
    };
 
 });

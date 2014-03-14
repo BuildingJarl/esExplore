@@ -9,10 +9,6 @@ angular.module('esExploreApp')
 
 		$scope.repo = repositoryService.repo;
 
-		function selectCallback( data ) {
-			console.log(data);
-		};
-
 		$scope.toggleSlider = function( what ) {
 
 			switch( what ) {

@@ -1,0 +1,47 @@
+#ng-pageslide {
+	background: #171A0B;
+}
+
+.pageSlideContentContainer {
+
+}
+
+.pageSlideHeader {
+
+	min-height: 40px;
+	text-align: center;
+	border-bottom: 1px solid #333434;
+	line-height: 40px;
+	margin-bottom: 10px;
+}
+
+.pageSlideHeaderTitle {
+	font-size: 1.3em;
+}
+
+.buttonArrange{
+	width: 350px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.buttonArrange button{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.tableContainer {
+
+	border: 1px solid #333434;
+	padding: 10px;
+	border-radius: 4px;
+	min-height: 50px;
+	max-height: 400px;
+	width: 350px;
+	overflow-y: auto;
+	background-color: #1B171B;
+	margin-right: auto;
+	margin-left: auto;
+}

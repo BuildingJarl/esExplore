@@ -32,5 +32,32 @@ ES_EX.File = function( f ) {
 			children: this.scope.children
 		};
 	};
+
+	this.getLineNr = function() {
+
+		return this.ast.body[ this.ast.body.length-1 ].loc.end.line;
+	};
+
+	this.getVarCount = function() {
+		var count = 0;
+		count += this.scope.data.variables.length;
+
+		this.scope.traverse( function(child) {
+			count += child.data.variables.length;
+		});
+
+		return count;
+	};
+
+	this.getScopeCount = function() {
+		
+		var count = 1;
+
+		this.scope.traverse( function(child) {
+			count += 1;
+		});
+
+		return count;
+	};
 };
 

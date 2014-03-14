@@ -52,4 +52,25 @@ ES_EX.Repository = function() {
 		};
 	};
 
+	this.getValidFiles = function() {
+
+		var files = [];
+
+		for(var i = 0; i < this.files.length; i ++) {
+
+			if(this.files[i].isValid === true) {
+				var file = {};
+				file.id = this.files[i].id;
+				file.name = this.files[i].name;
+				file.ScopeCount = this.files[i].getScopeCount();
+				file.lineNr = this.files[i].getLineNr();
+				file.varCount = this.files[i].getVarCount();
+
+				files.push(file);
+			}
+		}
+
+		return files;
+	}
+
 };
