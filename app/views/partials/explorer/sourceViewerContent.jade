@@ -2,31 +2,49 @@
 //-is container
 
 div( class="sourceViewerPanel" )
+	| Current
+	table
+		thead
+			tr
+				td.nameCell Name
+				td.numberCell Children
+				td.numberCell Variables
+				td.numberCell Line Nr
+		tbody
+			tr
+				td.nameCell {{ selectedScope.name }}
+				td.numberCell {{ selectedScope.children.length }}
+				td.numberCell {{ selectedScope.varCount }}
+				td.numberCell {{ selectedScope.lineNr }}
+
+div( class="sourceViewerPanel" )
 	| Files
 	table
 		thead
 			tr
 				td.nameCell Name
 				td.numberCell Length
-				td.numberCell Scopes
 				td.numberCell Variables
+				td.numberCell Scopes
 		tbody
 			tr(ng-repeat="file in files")
 				td.nameCell {{ file.name }}
 				td.numberCell {{ file.lineNr }}
-				td.numberCell {{ file.ScopeCount }}
 				td.numberCell {{ file.varCount }}
+				td.numberCell {{ file.ScopeCount }}
 
 div( class="sourceViewerPanel" )
-	| Selected Scope: Global
+	| Children
 	table
 		thead
 			tr
-				td Name
-				td Children
-				td Variables
+				td.nameCell Name
+				td.numberCell Children
+				td.numberCell Variables
+				td.numberCell Line Nr
 		tbody
-			tr
-				td function hello( ho )
-				td 5
-				td 90
+			tr(ng-repeat="scope in selectedScope.children")
+				td.nameCell {{ scope.getName() }}
+				td.numberCell {{ scope.children.length }}
+				td.numberCell {{ scope.varCount() }}
+				td.numberCell {{ scope.lineNr }}

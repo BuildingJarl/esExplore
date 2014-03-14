@@ -71,6 +71,25 @@ ES_EX.Repository = function() {
 		}
 
 		return files;
-	}
+	};
+
+	this.getGlobalScope = function() {
+
+		var scope = {};
+   		scope.name = 'Global Scope'
+   		scope.childrenCount = this.globalScopes.length;
+   		scope.children = [];
+   		scope.vars;
+
+   		for( var i = 0; i < this.globalScopes.length; i++ ) {
+
+   			for( var j = 0; j < this.globalScopes[i].children.length; j ++) {
+
+   				scope.children.push( this.globalScopes[i].children[j] );
+   			}
+   		}
+
+   		return scope;
+	};
 
 };

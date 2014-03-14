@@ -7,6 +7,8 @@ angular.module('esExploreApp')
 		$scope.$on('initSourceViewer', function( event, data ) {
 
 			$scope.files = repositoryService.getValidFilesForView();
+			$scope.selectedScope = repositoryService.getGlobalScope();
+			
 			console.log("init source viwer");
 		});
 

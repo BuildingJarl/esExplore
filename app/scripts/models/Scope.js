@@ -7,6 +7,12 @@ ES_EX.Scope = function( scope, fid ) {
 	this.children = [];
 	this.fid = fid;
 
+	this.varCount = function() {
+
+		var c = this.data.variables.length;
+		return c;
+	};
+
 	this.traverse = function( func ) {
 	
 		for( var i = 0; i < this.children.length; i ++ ) {
@@ -78,44 +84,13 @@ ES_EX.Scope = function( scope, fid ) {
 		}
 
 		return name;
+	};
 
+	this.getLineNr = function() {
 
-		/*
-		if(this.data.type === "global") {
-			return "Global Scope";
-		}
-		else {
+	};
 
-			var type = this.data.block.type;
-			var msg = "";
+	this.getColNr = function() {
 
-			switch(type) {
-
-				case "FunctionExpression": {
-
-					msg += type;
-					break;
-				};
-
-				case "FunctionDeclaration": {
-
-					var name = this.data.block.id.name;
-					var params = []
-
-					for(var i = 0; i < this.data.block.params.length; i++) {
-
-						params.push(this.data.block.params[i].name);
-					}; 
-
-					msg += type + " " + name + " ( " + params.toString() + " )";
-
-					break;
-				}
-			}
-
-			return msg
-			
-			 
-		}*/
 	};
 };

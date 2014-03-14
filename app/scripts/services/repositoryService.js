@@ -13,4 +13,9 @@ angular.module('esExploreApp')
    		return this.repo.getValidFiles();
    };
 
+   this.getGlobalScope = function() {
+
+   		return this.repo.getGlobalScope();
+   };
+
 });
