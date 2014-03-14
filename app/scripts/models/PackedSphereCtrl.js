@@ -28,8 +28,6 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		selectedNode.select();
 		selectedNode.showLabel();
 
-		callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
-
 		history.push(initalCamPos);
 	};
 

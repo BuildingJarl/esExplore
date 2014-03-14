@@ -1,7 +1,8 @@
 angular.module('esExploreApp')
 	.controller('sourceViewerCtrl', function( $scope, repositoryService ) {
 
-		$scope.files = [];
+		$scope.files = [{name:''}];
+		$scope.selectedScope = {};
 
 		//get valid files from RepoService
 		$scope.$on('initSourceViewer', function( event, data ) {

@@ -95,7 +95,7 @@ ES_EX.Scope = function( scope, fid ) {
 	};
 
 	this.getLineNr = function() {
-
+		return this.data.block.loc.start.line;
 	};
 
 	this.getColNr = function() {

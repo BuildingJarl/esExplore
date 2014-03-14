@@ -4,27 +4,29 @@
 	margin-right: 1%;
 	margin-left: 1%;
 
-	padding-top: 10px;
-	padding-bottom: 10px;
 
-	border-top: 1px solid green;
+	padding-bottom: 15px;
+
+	border-top: 1px solid #333434;
 }
 
 .sourceViewerPanel .title {
-
-	background: blue;
+	margin-top:10px;
+	font-size: 1.1em;
 }
 
 .sourceViewerPanel table {
 
 	margin-top: 5px;
-
-	border: 1px solid #333434;
-	width: 90%;
+	background: #1B171B;
+	
+	border-radius: 5px;
 
 	width:100%;
   	border-collapse: collapse;
-
+  	min-height: 50px;
+  	max-height: 150px;
+  	overflow:auto;
 }
 
 .nameCell {
@@ -42,15 +44,19 @@
   	text-align: center;
 }
 
-.sourceViewerPanel table tbody tr td{
+.sourceViewerPanel table thead {
+	border-bottom: 1px solid #333434;
+}
 
+	
+.sourceViewerPanel table tbody tr td{
 	padding-top: 3px;
 	padding-bottom: 3px;
 }
 
 .sourceViewerPanel table tbody tr:nth-child(even) {
-	background: #CCC;
+
 }
 .sourceViewerPanel table tbody tr:nth-child(odd) {
-	background: #FFF;
+
 }
