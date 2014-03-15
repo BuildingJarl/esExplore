@@ -17,9 +17,9 @@ div.sourceViewerPanel
 			div.headerItem.three Scopes
 		div.bodyContainer
 			div.bodyRow(ng-repeat="file in files")
-				div.bodyItem.three  {{file.name}}
-				div.bodyItem.three  {{file.lineNr}}
-				div.bodyItem.three  {{file.ScopeCount}}
+				div.bodyItem.three  {{ file.name }}
+				div.bodyItem.three  {{ file.getLineNr() }}
+				div.bodyItem.three  {{ file.getScopeCount() }}
 
 //- Current selected scope panel
 div.sourceViewerPanel
@@ -61,3 +61,24 @@ div.sourceViewerPanel
 				div.bodyItem.four {{child.getEndLoc()}}
 				div.bodyItem.four {{child.children.length}}
 
+//- Source panel
+div.sourceViewerPanel
+	span.closeOpen(ng-click="showSource = !showSource")
+		span.fa.fa-minus-square-o.fa-2x(ng-show="showSource")
+		span.fa.fa-plus-square-o.fa-2x(ng-show="!showSource")
+	div.title()
+		| Source Code
+	div.sourceCode(ng-show="showSource")
+		
+		div(ng-show="source.global")
+			h3
+				|Global Scope is currently selected. 
+			h5
+				|To view Source code select a file global scope
+			ul
+				li Left click to select/expand
+				li Right click to undo
+		div(ng-repeat="file in files" ng-show="file.showSource")
+			pre
+				code
+					{{ file.getSource() }}

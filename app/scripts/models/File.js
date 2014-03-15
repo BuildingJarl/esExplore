@@ -10,6 +10,9 @@ ES_EX.File = function( f ) {
 	this.ast;
 	this.scope;
 
+	this.showSource = false;
+	this.selected = false;
+
 	this.addAst = function( ast ) {
 
 		this.ast = ast;
@@ -59,6 +62,15 @@ ES_EX.File = function( f ) {
 		};
 
 		return scope;
-	}
+	};
+
+	this.getSource = function() {
+
+		if(!this.source) {
+			this.source = escodegen.generate(this.ast);
+		}
+		
+		return this.source;
+	};
 };
 
