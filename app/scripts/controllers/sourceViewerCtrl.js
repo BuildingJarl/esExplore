@@ -1,6 +1,10 @@
 angular.module('esExploreApp')
 	.controller('sourceViewerCtrl', function( $scope, repositoryService ) {
 
+		$scope.showFiles = true;
+		$scope.showCurrent = true;
+		$scope.showChildren = true;
+
 		$scope.files = [{name:''}];
 		$scope.selectedScope = {};
 

@@ -7,12 +7,6 @@ ES_EX.Scope = function( scope, fid ) {
 	this.children = [];
 	this.fid = fid;
 
-	this.varCount = function() {
-
-		var c = this.data.variables.length;
-		return c;
-	};
-
 	this.traverse = function( func ) {
 	
 		for( var i = 0; i < this.children.length; i ++ ) {
@@ -89,16 +83,13 @@ ES_EX.Scope = function( scope, fid ) {
 		return name;
 	};
 
-	this.getVarCount = function() {
+	this.getStartLoc = function() {
 
-		return this.data.variables.length;
+		return this.data.block.loc.start.line; 
 	};
 
-	this.getLineNr = function() {
-		return this.data.block.loc.start.line;
-	};
+	this.getEndLoc = function() {
 
-	this.getColNr = function() {
-
+		return this.data.block.loc.end.line; 
 	};
 };

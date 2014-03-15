@@ -6,57 +6,77 @@
 
 
 	padding-bottom: 15px;
-
 	border-top: 1px solid #333434;
 }
 
+.sourceViewerPanel .closeOpen { 
+	float:right;
+}
+
 .sourceViewerPanel .title {
+	
 	margin-top:10px;
-	font-size: 1.1em;
+	font-size: 1.2em;
 }
 
-.sourceViewerPanel table {
-
-	margin-top: 5px;
-	background: #1B171B;
+.sourceViewerPanel .tableContainer {
 	
+	width: 100%;
+	border: 1px solid #333434;
 	border-radius: 5px;
+	min-height: 50px;
+	max-height: 300px;
 
+	background-color: #1B171B;
+}
+
+.sourceViewerPanel .tableContainer .headerContainer {
 	width:100%;
-  	border-collapse: collapse;
-  	min-height: 50px;
-  	max-height: 150px;
-  	overflow:auto;
-}
-
-.nameCell {
-
-	width:100px; 
-  	max-width:200px;
-  	min-width:100px;
-  	overflow: hidden;
-}
-
-.numberCell {
-
-	width:50px; 
-  	overflow: hidden;
-  	text-align: center;
-}
-
-.sourceViewerPanel table thead {
 	border-bottom: 1px solid #333434;
+	height:30px;
+	line-height: 30px;
 }
 
-	
-.sourceViewerPanel table tbody tr td{
-	padding-top: 3px;
-	padding-bottom: 3px;
+.sourceViewerPanel .tableContainer .headerContainer .headerItem {
+	float:left;
+	overflow: hidden;
+	font-size: 1.05em;
 }
 
-.sourceViewerPanel table tbody tr:nth-child(even) {
-
+.sourceViewerPanel .tableContainer .three:first-child {
+	width:59%;
+	padding-left: 1%;
 }
-.sourceViewerPanel table tbody tr:nth-child(odd) {
 
+.sourceViewerPanel .tableContainer .three:nth-child(n+2) {
+	width:20%;
+	text-align: center;
+}
+
+.sourceViewerPanel .tableContainer .bodyContainer {
+	width:100%;
+	max-height:250px;
+	overflow: auto;
+	padding-top: 5px;
+}
+.sourceViewerPanel .tableContainer .bodyContainer .bodyRow {
+
+	width: 99%;
+	padding-left: 1%;
+	height: 25px;
+	line-height: 25px;
+}
+.sourceViewerPanel .tableContainer .bodyContainer .bodyItem {
+	float: left;
+	overflow: hidden;
+}
+
+.sourceViewerPanel .tableContainer .four:first-child {
+	width:54%;
+	padding-left: 1%;
+}
+
+.sourceViewerPanel .tableContainer .four:nth-child(n+2) {
+	width:15%;
+	text-align: center;
 }

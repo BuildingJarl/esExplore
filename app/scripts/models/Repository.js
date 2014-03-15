@@ -65,7 +65,6 @@ ES_EX.Repository = function() {
 				file.name = this.files[i].name;
 				file.ScopeCount = this.files[i].getScopeCount();
 				file.lineNr = this.files[i].getLineNr();
-				file.varCount = this.files[i].getTotalVarCount();
 
 				files.push(file);
 			}
@@ -75,8 +74,6 @@ ES_EX.Repository = function() {
 	};
 
 	this.getGlobalScope = function() {
-
-		var self = this;
 
 		var scope = {};
 
@@ -95,20 +92,14 @@ ES_EX.Repository = function() {
    			return 'Global Scope';
    		};
 
-   		scope.getVarCount = function() {
-   			
-   			var count = 0;
+   		scope.getStartLoc = function() {
 
-   			for (var i = 0; i < self.globalScopes.length; i++) {
-   				count += self.globalScopes[i].getVarCount();
-   			}
-
-   			return count;
+   			return '*';
    		};
 
-   		scope.getLineNr = function() {
+   		scope.getEndLoc = function() {
 
-   			return '';
+   			return '*';
    		};
 
    		return scope;
