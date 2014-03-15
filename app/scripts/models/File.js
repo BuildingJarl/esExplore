@@ -38,7 +38,13 @@ ES_EX.File = function( f ) {
 
 	this.getLineNr = function() {
 
-		return this.ast.body[ this.ast.body.length-1 ].loc.end.line;
+		var nr = this.ast.body[ this.ast.body.length-1 ].loc.end.line;
+		
+		if(!nr) {
+			return '*';
+		}
+
+		return nr;
 	};
 
 	this.getScopeCount = function() {
@@ -69,7 +75,7 @@ ES_EX.File = function( f ) {
 		if(!this.source) {
 			this.source = escodegen.generate(this.ast);
 		}
-		
+
 		return this.source;
 	};
 };

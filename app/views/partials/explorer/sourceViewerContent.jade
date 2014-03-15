@@ -62,7 +62,7 @@ div.sourceViewerPanel
 				div.bodyItem.four {{child.children.length}}
 
 //- Source panel
-div.sourceViewerPanel
+div.sourceViewerPanel.sourceCodeViewAb
 	span.closeOpen(ng-click="showSource = !showSource")
 		span.fa.fa-minus-square-o.fa-2x(ng-show="showSource")
 		span.fa.fa-plus-square-o.fa-2x(ng-show="!showSource")
@@ -78,7 +78,8 @@ div.sourceViewerPanel
 			ul
 				li Left click to select/expand
 				li Right click to undo
+
 		div(ng-repeat="file in files" ng-show="file.showSource")
 			pre
-				code
+				code(class="language-javascript")
 					{{ file.getSource() }}

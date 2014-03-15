@@ -48,7 +48,7 @@ angular.module('esExploreApp')
 
 				}
 			});
-			console.log($scope.selectedScope);
+			//Prism.highlightAll();
 		});
 
 		function resetShowSource() {
