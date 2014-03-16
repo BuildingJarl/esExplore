@@ -9,7 +9,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 	var selectedNode = null;
 	var selectedTheta = 0.0;
-	var offsetZ =  10000;
+	var scaleTime =  500;
 
 	var history = [];
 	var historyExpand = [];
@@ -55,7 +55,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 				callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
 
-				controls.target.copy( selectedNode.position );
+
 				//constrict zoom --todo
 
 				var camPos = new THREE.Vector3().copy( camera.position );
@@ -63,11 +63,13 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				newCamPos.z += selectedNode.r * 2.6;
 
 				var tween = new TWEEN.Tween( camPos )
-					.to( newCamPos, 200 )
+					.to( newCamPos, scaleTime )
 					.onUpdate( function() {
 						camera.position.x = camPos.x;
 						camera.position.y = camPos.y;
 						camera.position.z = camPos.z;
+
+						controls.target.set( camPos.x, camPos.y, selectedNode.position.z );
 					})
 					.start();
 			} else
@@ -82,7 +84,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					selectedNode.expanded = true;
 
 
-					selectedNode.repositionSiblingsTo(100);
+					selectedNode.repositionSiblingsTo(10,scaleTime);
 					//get siblings and calc new pos
 
 					//set new Controlls target pos
@@ -96,28 +98,19 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					history.push( newPos );
 					historyExpand.push( selectedNode );
 
-					var tweenScale = new TWEEN.Tween( { s:selectedNode.r } )
-						.to( { s:selectedNode.r + 10000 }, 200)
-						.onUpdate( function() {
+					selectedNode.rescaleTo(10, scaleTime, function() {
 
-							selectedNode.drawObject.scale.x = this.s;
-							selectedNode.drawObject.scale.y = this.s;
-							selectedNode.drawObject.scale.z = this.s;
-						})
-						.onComplete( function() {
-							selectedNode = null;
-						});
+						selectedNode = null;
+					});
 
 					var tweenCam = new TWEEN.Tween( pos )
-						.to( newPos, 200 )
+						.to( newPos, scaleTime )
 						.onUpdate( function() {
 							camera.position.x = pos.x;
 							camera.position.y = pos.y;
 							camera.position.z = pos.z;
-						});
-
-					tweenScale.start();
-					tweenCam.start();
+						})
+						.start();
 				}
 			}
 
@@ -141,22 +134,23 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 			var currentPosition = new THREE.Vector3().copy(camera.position);
 			var targetPosition = new THREE.Vector3().copy(history[history.length-1]);
 
-			controls.target.set( targetPosition.x, targetPosition.y, selectedNode.position.z );
 
 			var tween = new TWEEN.Tween( currentPosition )
-				.to( targetPosition, 200 )
+				.to( targetPosition, scaleTime )
 				.onUpdate( function() {
 					camera.position.x = currentPosition.x;
 					camera.position.y = currentPosition.y;
 					camera.position.z = currentPosition.z;
+					controls.target.set( currentPosition.x, currentPosition.y, selectedNode.position.z );
+
+				})
+				.onComplete( function() {
+					if( history.length > 0) {
+						selectedNode.deSelect();
+						selectedNode = null;	
+					}
 				})
 				.start();
-
-
-			if( history.length > 0) {
-				selectedNode.deSelect();
-				selectedNode = null;	
-			}
 		}
 
 		//rollback Expand
@@ -172,7 +166,9 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 				var parentObj = historyExpand.pop();
 				history.pop();
-				parentObj.repositionSiblingsBack(100);
+
+				parentObj.rescaleBack(10,scaleTime);
+				parentObj.repositionSiblingsBack(10,scaleTime);
 
 				var currentPosition = new THREE.Vector3().copy(camera.position);
 				var targetPosition = new THREE.Vector3().copy(history[history.length-1]);
@@ -203,16 +199,6 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				parentObj.expanded = false;
 				parentObj.hideChildrenLabels();
 				parentObj.showLabel();
-
-				var testtest = new TWEEN.Tween( {s:parentObj.r + 10000} )
-					.to( {s:parentObj.r}, 200)
-					.onUpdate( function() {
-
-						parentObj.drawObject.scale.x = this.s;
-						parentObj.drawObject.scale.y = this.s;
-						parentObj.drawObject.scale.z = this.s;
-					})
-					.start();
 			}
 		}
 

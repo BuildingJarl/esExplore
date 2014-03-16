@@ -10,14 +10,13 @@ angular.module('esExploreApp')
 		$scope.selectedScope = {};
 
 		$scope.source = {};
-		$scope.source.global = true;
+		$scope.source.global = false;
 		/* id: {show:true/false, source: escodegen , start: int, end: int */
 
 		//get valid files from RepoService
 		$scope.$on('initSourceViewer', function( event, data ) {
 
 			$scope.files = repositoryService.getValidFilesForView();
-			$scope.selectedScope = repositoryService.getGlobalScope();
 		});
 
 		//this gets called everytime the user selects a sphere!
