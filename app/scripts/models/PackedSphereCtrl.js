@@ -9,7 +9,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 	var selectedNode = null;
 	var selectedTheta = 0.0;
-	var scaleTime =  500;
+	var scaleTime =  1000;
 
 	var history = [];
 	var historyExpand = [];
@@ -173,11 +173,12 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				var targetPosition = new THREE.Vector3().copy(history[history.length-1]);
 
 				var tween = new TWEEN.Tween( currentPosition )
-					.to( targetPosition, 300 )
+					.to( targetPosition, scaleTime )
 					.onUpdate( function() {
 						camera.position.x = currentPosition.x;
 						camera.position.y = currentPosition.y;
 						camera.position.z = currentPosition.z;
+						controls.target.set( currentPosition.x, currentPosition.y, parentObj.position.z );
 					})
 					.onComplete(function() {
 
@@ -185,12 +186,6 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 							selectedNode = parentObj;	
 							selectedNode.select();
 						}
-
-						parentObj.traverse( function( child ) {
-
-							//child.position.z += 18000;
-						});
-
 						controls.target.set( targetPosition.x, targetPosition.y, parentObj.position.z );
 					})
 					.start();

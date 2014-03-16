@@ -82,16 +82,12 @@ ES_EX.PackedTreeNode = function( node ) {
 
 		var self = this;
 
-		var from = {};
-		from.x = this.position.x;
-		from.y = this.position.y;
-
-		var tween = new TWEEN.Tween( from )
+		var tween = new TWEEN.Tween( {x:this.position.x, y:this.position.y} )
 			.to( to, time )
 			.onUpdate( function() {
 
-				self.position.x = from.x;
-				self.position.y = from.y;
+				self.position.x = this.x;
+				self.position.y = this.y;
 			})
 			.start();
 	};
@@ -102,7 +98,7 @@ ES_EX.PackedTreeNode = function( node ) {
 
 			var origin = new THREE.Vector3().copy( this.position );
 			scaler *= this.r;
-			
+
 			for( var i = 0; i < this.parent.children.length; i++ ) {
 
 				var child = this.parent.children[i];
@@ -116,9 +112,6 @@ ES_EX.PackedTreeNode = function( node ) {
 					var newPos = {};
 					newPos.x = child.position.x + (look.x * scaler);
 					newPos.y = child.position.y + (look.y * scaler); 
-
-					console.log(child.position);
-					console.log(newPos);
 
 					child.tween( newPos, time );
 
