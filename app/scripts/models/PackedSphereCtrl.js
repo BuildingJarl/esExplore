@@ -55,9 +55,6 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 				callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
 
-
-				//constrict zoom --todo
-
 				var camPos = new THREE.Vector3().copy( camera.position );
 				var newCamPos = new THREE.Vector3().copy(selectedNode.position);
 				newCamPos.z += selectedNode.r * 2.6;
@@ -70,6 +67,9 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 						camera.position.z = camPos.z;
 
 						controls.target.set( camPos.x, camPos.y, selectedNode.position.z );
+					})
+					.onComplete( function() {
+						//restictZoom
 					})
 					.start();
 			} else
@@ -85,7 +85,6 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 
 					selectedNode.repositionSiblingsTo(10,scaleTime);
-					//get siblings and calc new pos
 
 					//set new Controlls target pos
 					controls.target.copy(selectedNode.position);

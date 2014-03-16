@@ -78,9 +78,13 @@ ES_EX.PackedTreeNode = function( node ) {
 		return false;
 	};
 
-	node.tween = function( from, to, time ) {
+	node.tween = function( to, time ) {
 
 		var self = this;
+
+		var from = {};
+		from.x = this.position.x;
+		from.y = this.position.y;
 
 		var tween = new TWEEN.Tween( from )
 			.to( to, time )
@@ -96,33 +100,39 @@ ES_EX.PackedTreeNode = function( node ) {
 
 		if( this.parent ) {
 
+			var origin = new THREE.Vector3().copy( this.position );
+			scaler *= this.r;
+			
 			for( var i = 0; i < this.parent.children.length; i++ ) {
 
 				var child = this.parent.children[i];
 				
 				if(child !== this) {
 
-					var pos = {};
-					pos.x = child.position.x;
-					pos.y = child.position.y;
+					var look = new THREE.Vector3().copy(child.position);
+					look.sub(origin);
+					look.normalize();
 
 					var newPos = {};
-					newPos.x = pos.x * scaler;
-					newPos.y = pos.y * scaler;
+					newPos.x = child.position.x + (look.x * scaler);
+					newPos.y = child.position.y + (look.y * scaler); 
 
-					child.tween( pos, newPos, time );
+					console.log(child.position);
+					console.log(newPos);
+
+					child.tween( newPos, time );
 
 					child.traverse( function(ch) {
 
-						var pos = {};
-						pos.x = ch.position.x;
-						pos.y = ch.position.y;
+						var look = new THREE.Vector3().copy(child.position);
+						look.sub(origin);
+						look.normalize();
 
 						var newPos = {};
-						newPos.x = pos.x * scaler;
-						newPos.y = pos.y * scaler;
+						newPos.x = ch.position.x + (look.x * scaler);
+						newPos.y = ch.position.y + (look.y * scaler);
 
-						ch.tween( pos, newPos, time );
+						ch.tween( newPos, time );
 					});
 				}
 			}
@@ -133,33 +143,36 @@ ES_EX.PackedTreeNode = function( node ) {
 
 		if( this.parent ) {
 
+			var origin = new THREE.Vector3().copy(this.position);
+			scaler *= this.r;
+
 			for( var i = 0; i < this.parent.children.length; i++ ) {
 
 				var child = this.parent.children[i];
 				
 				if( child !== this ) {
 
-					var pos = {};
-					pos.x = child.position.x;
-					pos.y = child.position.y;
+					var look = new THREE.Vector3().copy(child.position);
+					look.sub(origin);
+					look.normalize();
 
 					var newPos = {};
-					newPos.x = pos.x / scaler;
-					newPos.y = pos.y / scaler;
+					newPos.x = child.position.x + (-look.x * scaler);
+					newPos.y = child.position.y + (-look.y * scaler);
 
-					child.tween( pos, newPos, time );
+					child.tween( newPos, time );
 
 					child.traverse( function(ch) {
 
-						var pos = {};
-						pos.x = ch.position.x;
-						pos.y = ch.position.y;
+						var look = new THREE.Vector3().copy(child.position);
+						look.sub(origin);
+						look.normalize();
 
 						var newPos = {};
-						newPos.x = pos.x / scaler;
-						newPos.y = pos.y / scaler;
+						newPos.x = ch.position.x + (-look.x * scaler);
+						newPos.y = ch.position.y + (-look.y * scaler);
 
-						ch.tween( pos, newPos, time )
+						ch.tween( newPos, time )
 					});
 				}
 			}
