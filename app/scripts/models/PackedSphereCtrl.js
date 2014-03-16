@@ -21,12 +21,8 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 		var root = this.tree.getRoot();
 
-		var initalCamPos = new THREE.Vector3( 0, 0, root.r * 2.8 );
+		var initalCamPos = new THREE.Vector3( 0, 0, root.r * 4 );
 		camera.position = new THREE.Vector3().copy(initalCamPos);
-
-		selectedNode = root;
-		selectedNode.select();
-		selectedNode.showLabel();
 
 		history.push(initalCamPos);
 	};
@@ -47,12 +43,9 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 			
 			var intersectedObj = intersects[0].object;
 
-			//Check if a new node has been selected
-			//if new obj
 			if( selectedNode == null || intersectedObj.id != selectedNode.doid  ) {
 
-				//Clear selected property of current Selected Node
-				if(selectedNode) {
+				if( selectedNode ) {
 					selectedNode.deSelect();
 					selectedNode.hideLabel();
 				}
@@ -62,20 +55,19 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 				callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
 
-				//calc new position/look/orbti point of camera
-
 				controls.target.copy( selectedNode.position );
+				//constrict zoom --todo
 
-				var pos = new THREE.Vector3().copy( camera.position );
-				var newPos = new THREE.Vector3().copy(selectedNode.position);
-				newPos.z += selectedNode.r * 2.8;
+				var camPos = new THREE.Vector3().copy( camera.position );
+				var newCamPos = new THREE.Vector3().copy(selectedNode.position);
+				newCamPos.z += selectedNode.r * 2.6;
 
-				var tween = new TWEEN.Tween( pos )
-					.to( newPos, 200 )
+				var tween = new TWEEN.Tween( camPos )
+					.to( newCamPos, 200 )
 					.onUpdate( function() {
-						camera.position.x = pos.x;
-						camera.position.y = pos.y;
-						camera.position.z = pos.z;
+						camera.position.x = camPos.x;
+						camera.position.y = camPos.y;
+						camera.position.z = camPos.z;
 					})
 					.start();
 			} else
@@ -89,10 +81,9 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					selectedNode.showChildrenLabels();
 					selectedNode.expanded = true;
 
-					selectedNode.traverse( function( child ) {
 
-						child.position.z -= 18000;
-					});
+					selectedNode.repositionSiblingsTo(100);
+					//get siblings and calc new pos
 
 					//set new Controlls target pos
 					controls.target.copy(selectedNode.position);
@@ -100,22 +91,33 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					//setTweenForCamera
 					var pos = new THREE.Vector3().copy( camera.position );
 					var newPos = new THREE.Vector3().copy(selectedNode.position);
-					newPos.z += selectedNode.r * 0.75;
-					//newPos.z = (selectedNode.position.z - 18000) + (selectedNode.r * 3);
+					newPos.z += selectedNode.r * 2.55;
 
 					history.push( newPos );
 					historyExpand.push( selectedNode );
 
-					var tween = new TWEEN.Tween( pos )
+					var tweenScale = new TWEEN.Tween( { s:selectedNode.r } )
+						.to( { s:selectedNode.r + 10000 }, 200)
+						.onUpdate( function() {
+
+							selectedNode.drawObject.scale.x = this.s;
+							selectedNode.drawObject.scale.y = this.s;
+							selectedNode.drawObject.scale.z = this.s;
+						})
+						.onComplete( function() {
+							selectedNode = null;
+						});
+
+					var tweenCam = new TWEEN.Tween( pos )
 						.to( newPos, 200 )
 						.onUpdate( function() {
 							camera.position.x = pos.x;
 							camera.position.y = pos.y;
 							camera.position.z = pos.z;
-						})
-						.start();
+						});
 
-					selectedNode = null;
+					tweenScale.start();
+					tweenCam.start();
 				}
 			}
 
@@ -151,7 +153,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				.start();
 
 
-			if( history.length > 1) {
+			if( history.length > 0) {
 				selectedNode.deSelect();
 				selectedNode = null;	
 			}
@@ -159,6 +161,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 		//rollback Expand
 		else if(selectedNode === null) {
+			
 			if(historyExpand.length > 0) {
 
 				callback( { 
@@ -169,6 +172,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 				var parentObj = historyExpand.pop();
 				history.pop();
+				parentObj.repositionSiblingsBack(100);
 
 				var currentPosition = new THREE.Vector3().copy(camera.position);
 				var targetPosition = new THREE.Vector3().copy(history[history.length-1]);
@@ -189,7 +193,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 						parentObj.traverse( function( child ) {
 
-							child.position.z += 18000;
+							//child.position.z += 18000;
 						});
 
 						controls.target.set( targetPosition.x, targetPosition.y, parentObj.position.z );
@@ -199,6 +203,16 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				parentObj.expanded = false;
 				parentObj.hideChildrenLabels();
 				parentObj.showLabel();
+
+				var testtest = new TWEEN.Tween( {s:parentObj.r + 10000} )
+					.to( {s:parentObj.r}, 200)
+					.onUpdate( function() {
+
+						parentObj.drawObject.scale.x = this.s;
+						parentObj.drawObject.scale.y = this.s;
+						parentObj.drawObject.scale.z = this.s;
+					})
+					.start();
 			}
 		}
 
