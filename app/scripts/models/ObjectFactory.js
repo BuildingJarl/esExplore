@@ -117,7 +117,6 @@ ES_EX.ObjectFactory = function( ) {
     	element.textContent = text;
     	element.className = 'SphereLabel';
     	element.style.display = 'none';
-    	element.style.fontSize = '80pt';
 
     	var obj = new THREE.CSS3DObject( element );
  		obj.position.z += r;

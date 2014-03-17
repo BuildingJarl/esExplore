@@ -36,9 +36,9 @@ div.sourceViewerPanel
 			div.headerItem.four Children
 		div.bodyContainer
 			div.bodyRow
-				div.bodyItem.four {{selectedScope.getName()}}
-				div.bodyItem.four {{selectedScope.getStartLoc()}}
-				div.bodyItem.four {{selectedScope.getEndLoc()}}
+				div.bodyItem.four {{selectedScope.name}}
+				div.bodyItem.four {{selectedScope.startLoc}}
+				div.bodyItem.four {{selectedScope.endLoc}}
 				div.bodyItem.four {{selectedScope.children.length}}
 
 //- Current selected scopes children Panel
@@ -56,10 +56,10 @@ div.sourceViewerPanel
 			div.headerItem.four Children
 		div.bodyContainer
 			div.bodyRow(ng-repeat="child in selectedScope.children")
-				div.bodyItem.four {{child.getName()}}
-				div.bodyItem.four {{child.getStartLoc()}}
-				div.bodyItem.four {{child.getEndLoc()}}
-				div.bodyItem.four {{child.children.length}}
+				div.bodyItem.four {{ child.name }}
+				div.bodyItem.four {{ child.startLoc }}
+				div.bodyItem.four {{ child.endLoc }}
+				div.bodyItem.four {{ child.children.length }}
 
 //- Source panel
 div.sourceViewerPanel.sourceCodeViewAb

@@ -61,12 +61,7 @@ ES_EX.File = function( f ) {
 	this.getScopeforView = function() {
 
 		var scope = this.scope;
-		
-		scope.getName = function() {
-			
-			return "File Global Scope";
-		};
-
+		scope.name = 'File Global Scope';
 		return scope;
 	};
 

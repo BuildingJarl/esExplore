@@ -52,6 +52,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 			
 			selectedNode = tree.getNodeById(intersectedObj.id);
 			selectedNode.select();
+			selectedNode.showLabel();
 
 			callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
 
@@ -152,14 +153,16 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 			var tween = new TWEEN.Tween( currentPosition )
 				.to( targetPosition, scaleTime )
 				.onUpdate( function() {
+					
 					camera.position.x = currentPosition.x;
 					camera.position.y = currentPosition.y;
 					camera.position.z = currentPosition.z;
 					controls.target.set( currentPosition.x, currentPosition.y, selectedNode.position.z );
-
 				})
 				.onComplete( function() {
+					
 					if( history.length > 0) {
+						
 						selectedNode.deSelect();
 						selectedNode = null;	
 					}
@@ -190,6 +193,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				var tween = new TWEEN.Tween( currentPosition )
 					.to( targetPosition, scaleTime )
 					.onUpdate( function() {
+						
 						camera.position.x = currentPosition.x;
 						camera.position.y = currentPosition.y;
 						camera.position.z = currentPosition.z;
@@ -198,6 +202,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					.onComplete(function() {
 
 						if(history.length == 1) {
+							
 							selectedNode = parentObj;	
 							selectedNode.select();
 						}
@@ -210,7 +215,6 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				parentObj.showLabel();
 			}
 		}
-
 	};
 	/*
 	this.onHover = function( intersects ) {

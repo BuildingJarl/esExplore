@@ -2,10 +2,18 @@
 
 ES_EX.Scope = function( scope, fid ) { 
 
+	var self = this;
 	this.id = ES_EX.Scope.sid++;
 	this.data = scope;
 	this.children = [];
 	this.fid = fid;
+
+	this.name = getName();
+	this.startLoc = getStartLoc();
+	this.endLoc = getEndLoc();
+
+
+
 
 	this.traverse = function( func ) {
 	
@@ -31,7 +39,7 @@ ES_EX.Scope = function( scope, fid ) {
 	this.toJSON = function() {
 
 		return {
-			name: this.getName(),
+			name: this.name,
 			type: "CS",
 			vars: 0,
 			fid: this.fid,
@@ -40,21 +48,21 @@ ES_EX.Scope = function( scope, fid ) {
 		};
 	};
 
-	this.getName = function() {
+	function getName() {
 
 
-		console.log(this.data.type);
+		console.log(self.data.type);
 		var name = '';
 
-		switch(this.data.block.type){
+		switch(self.data.block.type){
 
 			case 'FunctionExpression': {
 
-				name += this.data.type + " (";
+				name += self.data.type + " (";
 
-				for( var i = 0; i < this.data.block.params.length; i++ ) {
-					name += " " + this.data.block.params[i].name;
-					if(i != this.data.block.params.length-1){
+				for( var i = 0; i < self.data.block.params.length; i++ ) {
+					name += " " + self.data.block.params[i].name;
+					if(i != self.data.block.params.length-1){
 						name += ",";
 					}
 				}
@@ -65,11 +73,11 @@ ES_EX.Scope = function( scope, fid ) {
 			}
 			case 'FunctionDeclaration': {
 
-				name += this.data.type + " " + this.data.block.id.name +  " (";
+				name += self.data.type + " " + self.data.block.id.name +  " (";
 
-				for( var i = 0; i < this.data.block.params.length; i++ ) {
-					name += " " + this.data.block.params[i].name;
-					if(i != this.data.block.params.length-1){
+				for( var i = 0; i < self.data.block.params.length; i++ ) {
+					name += " " + self.data.block.params[i].name;
+					if(i != self.data.block.params.length-1){
 						name += ",";
 					}
 				}
@@ -83,13 +91,13 @@ ES_EX.Scope = function( scope, fid ) {
 		return name;
 	};
 
-	this.getStartLoc = function() {
+	function getStartLoc() {
 
-		return this.data.block.loc.start.line; 
+		return self.data.block.loc.start.line; 
 	};
 
-	this.getEndLoc = function() {
+	function getEndLoc() {
 
-		return this.data.block.loc.end.line; 
+		return self.data.block.loc.end.line; 
 	};
 };

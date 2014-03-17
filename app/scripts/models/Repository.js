@@ -81,21 +81,10 @@ ES_EX.Repository = function() {
    				scope.children.push( this.globalScopes[i].children[j] );
    			}
    		}
-
-   		scope.getName = function() {
-   			
-   			return 'Global Scope';
-   		};
-
-   		scope.getStartLoc = function() {
-
-   			return '*';
-   		};
-
-   		scope.getEndLoc = function() {
-
-   			return '*';
-   		};
+   		
+   		scope.name = 'Global Scope';
+   		scope.startLoc = '*';
+   		scope.endLoc = '*';
 
    		return scope;
 	};
