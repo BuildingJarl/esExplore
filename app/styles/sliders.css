@@ -3,7 +3,7 @@
 }
 
 #createPageSlide {
-
+	cursor: default;
 }
 
 #createPageSlide .pageSlideHeader {
@@ -80,8 +80,8 @@
 
 #createPageSlide .pageSlideBody .tableContainer .row {
 
-	height: 20px;
-	line-height: 20px;
+	height: 25px;
+	line-height: 25px;
 	margin-left: 5px;
 
 }
