@@ -7,7 +7,7 @@ ES_EX.ObjectFactory = function( ) {
 		{ 
 			"c":   { type: "f", value: 1 },
 			"p":   { type: "f", value: 2 },
-			glowColor: { type: "c", value: new THREE.Color( 0xff00ff ) },
+			glowColor: { type: "c", value: new THREE.Color( 0x7804A6 ) },
 			viewVector: { type: "v3", value: {x:0, y:0, z:0} }
 		},
 		vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
@@ -23,7 +23,7 @@ ES_EX.ObjectFactory = function( ) {
 		{ 
 			"c":   { type: "f", value: 1 },
 			"p":   { type: "f", value: 2 },
-			glowColor: { type: "c", value: new THREE.Color(  0xFD0987 ) },
+			glowColor: { type: "c", value: new THREE.Color(  0x1775FF ) },
 			viewVector: { type: "v3", value: {x:0, y:0, z:0} }
 		},
 		vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
@@ -95,8 +95,44 @@ ES_EX.ObjectFactory = function( ) {
     this.createScopeSphere = function( radius, depth, pos ) {
 
     	var obj = new THREE.Mesh( sphereGeo, scopeMaterial.clone() );
+
     	var col = new THREE.Color( 0x00ff00 );
     	obj.material.uniforms.glowColor.value = col; 
+
+    	switch(depth) {
+
+    		case 2: {
+    			var col = new THREE.Color( 0x00ff00 );
+    			obj.material.uniforms.glowColor.value = col; 
+    			break;
+    		};
+    		case 3: {
+    			var col = new THREE.Color( 0xF5FF00 );
+    			obj.material.uniforms.glowColor.value = col; 
+    			break;
+    		};
+
+    		case 4: {
+    			var col = new THREE.Color( 0xFF8E00 );
+    			obj.material.uniforms.glowColor.value = col; 
+    			break;
+    		};
+
+    		case 5: {
+    			var col = new THREE.Color( 0xFF1E00 );
+    			obj.material.uniforms.glowColor.value = col; 
+    			break;
+    		};
+
+
+    		default: {
+    			var col = new THREE.Color( 0xfffff );
+    			obj.material.uniforms.glowColor.value = col;
+    			break; 
+    		};
+    	}
+
+
     	var scale =  radius ;
     	obj.scale.set(scale,scale,scale);
 
