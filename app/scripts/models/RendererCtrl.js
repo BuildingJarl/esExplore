@@ -22,16 +22,17 @@ ES_EX.RendererCtrl = function( ) {
 		
 		controls = new THREE.OrbitControls( camera, container );
       	controls.noPan = true; 
-      	controls.noRotate = true;
+      	controls.noRotate = false;
 
+      	cssRenderer.init( container, camera );
 		glRenderer.init( container, camera );
-		cssRenderer.init( container, camera );
-
+		
 		if( debug ) {
 
 	    	stats = new Stats();
 	    	stats.domElement.style.top = "0px";
 	    	stats.domElement.style.position = "absolute";
+	    	stats.domElement.style.zIndex = "1";
 	    	container.appendChild( stats.domElement );
       	}
 	};

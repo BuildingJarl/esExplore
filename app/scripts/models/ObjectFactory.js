@@ -1,5 +1,10 @@
 'use strict'
 
+/*
+var modifier = new THREE.SubdivisionModifier( 2 );
+	modifier.modify( smoothCubeGeom );
+*/
+
 ES_EX.ObjectFactory = function( ) {
 
 	var globalMaterial = new THREE.ShaderMaterial({

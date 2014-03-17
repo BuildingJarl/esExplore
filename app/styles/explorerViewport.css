@@ -21,7 +21,7 @@
 	bottom: 0;
 	width: 5px;
 	z-index: 1;
-	background: red;
+	background: #7804A6;
 	cursor: ew-resize;
 }
 
@@ -35,7 +35,7 @@
 	bottom: 0;
 	width: 5px;
 	z-index: 2;
-	background: green;
+	background: #00FF00;
 	cursor: ew-resize;
 	display: none;
 }

@@ -2,27 +2,22 @@
 div.pageSlideHeader
 	
 	div.closeIcon(ng-click="toggleSlider('create')")
-		i.fa.fa-times.fa-2x
+		i.fa.fa-times
 	div.title
 		|Create a visualisation
 
 div.pageSlideBody
 
-	div
+	div.buttonBar
+		uploader
+			button(class="esExploreButton") Add File(s)
+			input( type="file" multiple="" style="display:none;")
 
-	div(class="pageSlideBody")
+		uploader
+			button(class="esExploreButton") Add Folders(s)
+			input( type="file" webkitdirectory style="display:none;")
 
-		div( class="buttonArrange" )
-
-			uploader
-				button(class="topcoat-button--large--cta") Add File(s)
-				input( type="file" multiple="" style="display:none;")
-
-			uploader
-				button(class="topcoat-button--large--cta") Add Folders(s)
-				input( type="file" webkitdirectory style="display:none;")
-
-		div( class="tableContainer" )
+	div.tableContainer
 			table
 				tr(ng-repeat="file in repo.files" ng-class="valid:file.isValid, notValid: file.isValid")
 					td
@@ -33,3 +28,6 @@ div.pageSlideBody
 			button(class="topcoat-button--large--cta") Reset
 
 			button(class="topcoat-button--large--cta" ng-click="createVisualisation()") Create
+
+
+		

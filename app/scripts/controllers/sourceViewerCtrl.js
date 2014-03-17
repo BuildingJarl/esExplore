@@ -12,7 +12,6 @@ angular.module('esExploreApp')
 		$scope.source = {};
 		$scope.source.global = false;
 
-		var cccc = false;
 		/* id: {show:true/false, source: escodegen , start: int, end: int */
 
 		//get valid files from RepoService
@@ -50,10 +49,9 @@ angular.module('esExploreApp')
 				}
 			});
 
-			if( !cccc ) {
-				Prism.highlightAll();
-				cccc = true;
-			}
+
+			//Prism.highlightAll();
+
 		});
 
 		function resetShowSource() {
