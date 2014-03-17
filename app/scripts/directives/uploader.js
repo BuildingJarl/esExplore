@@ -2,10 +2,10 @@ angular.module('esExploreApp')
 	.directive('uploader', function ( fileService, repositoryService ) {
     
     return {
-      restrict: 'E',
+      restrict: 'EA',
       link: function( scope, element, attrs ) {
     
-        element.find("button").bind("click", function() {
+        element.bind("click", function() {
 	      
 	      element.find("input")[0].click();
 	      

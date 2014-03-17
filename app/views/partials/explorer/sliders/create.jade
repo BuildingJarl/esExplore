@@ -1,33 +1,39 @@
-
-div.pageSlideHeader
-	
-	div.closeIcon(ng-click="toggleSlider('create')")
-		i.fa.fa-times
-	div.title
-		|Create a visualisation
-
-div.pageSlideBody
-
-	div.buttonBar
-		uploader
-			button(class="esExploreButton") Add File(s)
-			input( type="file" multiple="" style="display:none;")
-
-		uploader
-			button(class="esExploreButton") Add Folders(s)
-			input( type="file" webkitdirectory style="display:none;")
-
-	div.tableContainer
-			table
-				tr(ng-repeat="file in repo.files" ng-class="valid:file.isValid, notValid: file.isValid")
-					td
-						{{ file.name }}
-
-		div( class="buttonArrange" )
-
-			button(class="topcoat-button--large--cta") Reset
-
-			button(class="topcoat-button--large--cta" ng-click="createVisualisation()") Create
-
-
+div.createPageSlide
+	div.pageSlideHeader
 		
+		div.closeIcon(ng-click="toggleSlider('create')")
+			i.fa.fa-times
+		div.title
+			|Create a visualisation
+
+	div.pageSlideBody
+
+		div.buttonBar(uploader)
+			span.borderBottom
+				| Add File(s)
+				input( type="file" multiple="" style="display:none;")
+
+		div.buttonBar(uploader)
+			span
+				| Add Folders(s)
+				input( type="file" webkitdirectory style="display:none;")
+
+		div.tableContainer
+				div.row(ng-repeat="file in repo.files")
+					span 
+						{{ file.name }}
+					span.right
+						i.fa.fa-check.valid(ng-show="file.isValid")
+						i.fa.fa-times.notValid(ng-hide="file.isValid")
+
+
+		div.buttonBar
+			span.borderBottom
+				|Reset
+
+		div.buttonBar(ng-click="createVisualisation()")
+			span
+				|Create
+
+
+			
