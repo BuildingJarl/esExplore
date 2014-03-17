@@ -22,6 +22,7 @@ ES_EX.RendererCtrl = function( ) {
 		
 		controls = new THREE.OrbitControls( camera, container );
       	controls.noPan = true; 
+      	controls.noRotate = true;
 
 		glRenderer.init( container, camera );
 		cssRenderer.init( container, camera );
@@ -95,8 +96,11 @@ ES_EX.RendererCtrl = function( ) {
 
 		var intersects = glRenderer.intersects( event.clientX, event.clientY-40, container.clientWidth, container.clientHeight );
 
-		if(treeCtrl) {
-			treeCtrl.onLeftClick( intersects );
+		if(intersects.length > 0) {
+			
+			if(treeCtrl) {
+				treeCtrl.onLeftClick( intersects );
+			}
 		}
 	};
 

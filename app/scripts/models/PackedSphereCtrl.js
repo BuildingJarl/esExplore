@@ -9,10 +9,12 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 	var selectedNode = null;
 	var selectedTheta = 0.0;
-	var scaleTime =  1000;
+	var scaleTime =  500;
 
 	var history = [];
 	var historyExpand = [];
+
+
 
 	this.init = function( ccamera, ccontrols ) {
 
@@ -38,81 +40,94 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	};
 
 	this.onLeftClick = function( intersects ) {
-
-		if(intersects.length > 0) {
 			
-			var intersectedObj = intersects[0].object;
+		var intersectedObj = intersects[0].object;
 
-			if( selectedNode == null || intersectedObj.id != selectedNode.doid  ) {
+		if( selectedNode == null || intersectedObj.id != selectedNode.doid  ) {
 
-				if( selectedNode ) {
-					selectedNode.deSelect();
-					selectedNode.hideLabel();
-				}
+			if( selectedNode ) {
+				selectedNode.deSelect();
+				selectedNode.hideLabel();
+			}
+			
+			selectedNode = tree.getNodeById(intersectedObj.id);
+			selectedNode.select();
+
+			callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
+
+			var from = new THREE.Vector3().copy( controls.target );
+			var to = new THREE.Vector3().copy( selectedNode.position );
+			
+			var tweenOne = new TWEEN.Tween( from )
+				.to( to, scaleTime )
+				.onUpdate( function() {
+					controls.target.x = from.x;
+					controls.target.y = from.y;
+					controls.target.z = from.z;
+				})
+				.start();
+
+			var fromCam = new THREE.Vector3().copy( camera.position );
+			var toCam = new THREE.Vector3().copy( selectedNode.position );
+			toCam.z += selectedNode.r * 2.7;
+
+			var tweenTwo = new TWEEN.Tween( fromCam )
+				.to( toCam, scaleTime )
+				.onUpdate( function() {
+
+					camera.position.x = fromCam.x;
+					camera.position.y = fromCam.y;
+					camera.position.z = fromCam.z;
+				})
+				.start();
+
+		} else
+		//if same obj has been selected again then its time to go into to sphere 
+		if( intersectedObj.id === selectedNode.doid ) {
+
+			if( !selectedNode.expanded && selectedNode.canBeExpanded ) {
+
+				var from = new THREE.Vector3().copy( controls.target );
+				var to = new THREE.Vector3().copy( selectedNode.position );
 				
-				selectedNode = tree.getNodeById(intersectedObj.id);
-				selectedNode.select();
-
-				callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
-
-				var camPos = new THREE.Vector3().copy( camera.position );
-				var newCamPos = new THREE.Vector3().copy(selectedNode.position);
-				newCamPos.z += selectedNode.r * 2.6;
-
-				var tween = new TWEEN.Tween( camPos )
-					.to( newCamPos, scaleTime )
+				var tweenOne = new TWEEN.Tween( from )
+					.to( to, scaleTime )
 					.onUpdate( function() {
-						camera.position.x = camPos.x;
-						camera.position.y = camPos.y;
-						camera.position.z = camPos.z;
-
-						controls.target.set( camPos.x, camPos.y, selectedNode.position.z );
-					})
-					.onComplete( function() {
-						//restictZoom
+						controls.target.x = from.x;
+						controls.target.y = from.y;
+						controls.target.z = from.z;
 					})
 					.start();
-			} else
-			//if same obj has been selected again then its time to go into to sphere 
-			if( intersectedObj.id === selectedNode.doid ) {
 
-				if( !selectedNode.expanded && selectedNode.canBeExpanded ) {
+				var fromCam = new THREE.Vector3().copy( camera.position );
+				var toCam = new THREE.Vector3().copy( selectedNode.position );
+				toCam.z += selectedNode.r * 2.7;
 
-					selectedNode.deSelect();
-					selectedNode.hideLabel();
-					selectedNode.showChildrenLabels();
-					selectedNode.expanded = true;
+				var tweenTwo = new TWEEN.Tween( fromCam )
+					.to( toCam, scaleTime )
+					.onUpdate( function() {
 
+						camera.position.x = fromCam.x;
+						camera.position.y = fromCam.y;
+						camera.position.z = fromCam.z;
+					})
+					.start();
 
-					selectedNode.repositionSiblingsTo(10,scaleTime);
+				selectedNode.deSelect();
+				selectedNode.hideLabel();
+				selectedNode.showChildrenLabels();
+				selectedNode.expanded = true;
 
-					//set new Controlls target pos
-					controls.target.copy(selectedNode.position);
+				selectedNode.repositionSiblingsTo(10,scaleTime);
 
-					//setTweenForCamera
-					var pos = new THREE.Vector3().copy( camera.position );
-					var newPos = new THREE.Vector3().copy(selectedNode.position);
-					newPos.z += selectedNode.r * 2.55;
+				history.push( toCam );
+				historyExpand.push( selectedNode );
 
-					history.push( newPos );
-					historyExpand.push( selectedNode );
+				selectedNode.rescaleTo(10, scaleTime, function() {
 
-					selectedNode.rescaleTo(10, scaleTime, function() {
-
-						selectedNode = null;
-					});
-
-					var tweenCam = new TWEEN.Tween( pos )
-						.to( newPos, scaleTime )
-						.onUpdate( function() {
-							camera.position.x = pos.x;
-							camera.position.y = pos.y;
-							camera.position.z = pos.z;
-						})
-						.start();
-				}
+					selectedNode = null;
+				});
 			}
-
 		}
 	};
 
