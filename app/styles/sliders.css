@@ -1,6 +1,42 @@
 #ng-pageslide {
-	background: #171A0B;
+	background: #272822;
 }
+
+#ng-pageslide .pageSlideHeader {
+
+	height: 50px;
+	width:100%;
+}
+
+#ng-pageslide .pageSlideHeader .closeIcon {
+	position: absolute;
+	top:2px;
+	right:2px;
+	cursor: pointer;
+}
+
+#ng-pageslide .pageSlideHeader .closeIcon:hover {
+	color: white;
+}
+
+#ng-pageslide .pageSlideHeader .title {
+	font-size: 1.3em;
+	width:100%;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#ng-pageslide .pageSlideBody {
+
+	width: 100%;
+}
+
+#ng-pageslide .pageSlideBody .addButtonsContainer {
+
+	
+}
+
+/*
 
 .pageSlideContentContainer {
 
@@ -45,3 +81,4 @@
 	margin-right: auto;
 	margin-left: auto;
 }
+*/

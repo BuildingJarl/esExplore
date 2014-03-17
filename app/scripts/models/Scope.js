@@ -12,9 +12,6 @@ ES_EX.Scope = function( scope, fid ) {
 	this.startLoc = getStartLoc();
 	this.endLoc = getEndLoc();
 
-
-
-
 	this.traverse = function( func ) {
 	
 		for( var i = 0; i < this.children.length; i ++ ) {

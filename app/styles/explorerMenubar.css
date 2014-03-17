@@ -8,20 +8,37 @@
 	background-color: #171A0B;
 }
 
-.menu {
+#explorerMenubarContainer .menu {
+	position: relative;
 	height: 40px;
+	width: 160px;
+	float:left;
+	margin-left: 10px;
 }
 
-.menuItem {
+#explorerMenubarContainer .menu .menuItem {
 	display: inline-block;
 	width: 40px;
 	height:40px;
 	text-align: center;
-	margin-top: 2px;
-	margin-bottom: 2px;
+	line-height: 40px;
+	font-size: 14pt;
 }
 
-.menuItem:hover{
+#explorerMenubarContainer .logo {
+	background: green;
+	width: 150px;
+	height: 40px;
+	float:left;
+}
+
+#explorerMenubarContainer .menu .logoMenuItem {
+	width: 40px;
+	height:40px;
+	background: blue;
+}
+
+#explorerMenubarContainer .menu .menuItem:hover{
 	color: #FFFFFF;
 	cursor: pointer;
 }

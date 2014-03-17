@@ -1,3 +1,11 @@
+#sourceViewer{
+	position: absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	background: #272822;
+}
+
 .sourceViewerPanel {
 
 	width: 98%;
@@ -10,6 +18,10 @@
 .sourceViewerPanel .closeOpen { 
 	float:right;
 	cursor: pointer;
+}
+
+.sourceViewerPanel .closeOpen:hover {
+	color: white;
 }
 
 .sourceViewerPanel .title {

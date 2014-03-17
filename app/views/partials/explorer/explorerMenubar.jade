@@ -1,14 +1,17 @@
 div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCtrl")
 	
+	div.logo
+		| EsExplore
+
 	div( class="menu" )
 		div( class="menuItem" ng-click="toggleSlider( 'create' )")
-			i(class="fa fa-plus fa-2x")
+			i(class="fa fa-plus-circle")
 		div( class="menuItem" ng-click="toggleSlider( 'settings' )")
-			i(class="fa fa-cog fa-2x")
+			i(class="fa fa-cog")
 		div( class="menuItem" ng-click="toggleSlider( 'help' )")
-			i(class="fa fa-question fa-2x")
+			i(class="fa fa-question")
 		div( class="menuItem")
-			i(class="fa fa-info fa-2x")
+			i(class="fa fa-info")
 
 	div( pageslide="left" ps-size="400px" ps-open="showCreate" ps-target="#createPageSlide" ps-custom-top="41px" )
 	div( pageslide="right" ps-open="showSettings" ps-target="#settingsPageSlide" ps-custom-top="41px" )

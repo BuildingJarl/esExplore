@@ -16,6 +16,10 @@ ES_EX.File = function( f ) {
 	this.addAst = function( ast ) {
 
 		this.ast = ast;
+
+		if(this.isValid) {
+			this.source = escodegen.generate(this.ast);
+		}
 	};
 
 	this.addScope = function( scope ) {
@@ -63,15 +67,6 @@ ES_EX.File = function( f ) {
 		var scope = this.scope;
 		scope.name = 'File Global Scope';
 		return scope;
-	};
-
-	this.getSource = function() {
-
-		if(!this.source) {
-			this.source = escodegen.generate(this.ast);
-		}
-
-		return this.source;
 	};
 };
 

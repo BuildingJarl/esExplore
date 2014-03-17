@@ -1,8 +1,14 @@
-div( class="pageSlideContentContainer inheritFromParent Panel")
-	div(class="pageSlideHeader")
-		span(class="pageSlideHeaderTitle")
-			| Create a visualisation
-		i(class="fa fa-times fa-2x"  style=" float:right;" ng-click="toggleSlider('create')")
+
+div.pageSlideHeader
+	
+	div.closeIcon(ng-click="toggleSlider('create')")
+		i.fa.fa-times.fa-2x
+	div.title
+		|Create a visualisation
+
+div.pageSlideBody
+
+	div
 
 	div(class="pageSlideBody")
 
@@ -18,7 +24,7 @@ div( class="pageSlideContentContainer inheritFromParent Panel")
 
 		div( class="tableContainer" )
 			table
-				tr(ng-repeat="file in repo.files")
+				tr(ng-repeat="file in repo.files" ng-class="valid:file.isValid, notValid: file.isValid")
 					td
 						{{ file.name }}
 

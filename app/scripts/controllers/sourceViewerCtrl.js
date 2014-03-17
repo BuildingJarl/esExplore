@@ -11,12 +11,14 @@ angular.module('esExploreApp')
 
 		$scope.source = {};
 		$scope.source.global = false;
+
+		var cccc = false;
 		/* id: {show:true/false, source: escodegen , start: int, end: int */
 
 		//get valid files from RepoService
 		$scope.$on('initSourceViewer', function( event, data ) {
 
-			$scope.files = repositoryService.getValidFilesForView();
+			$scope.files = repositoryService.getValidFilesForView();		
 		});
 
 		//this gets called everytime the user selects a sphere!
@@ -47,7 +49,11 @@ angular.module('esExploreApp')
 
 				}
 			});
-			//Prism.highlightAll();
+
+			if( !cccc ) {
+				Prism.highlightAll();
+				cccc = true;
+			}
 		});
 
 		function resetShowSource() {
