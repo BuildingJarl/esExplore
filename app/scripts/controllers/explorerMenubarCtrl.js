@@ -6,6 +6,7 @@ angular.module('esExploreApp')
 		$scope.showCreate = false;
 		$scope.showSettings = false
 		$scope.showHelp = false;
+		$scope.showInfo = false;
 
 		$scope.files = repositoryService.repo.files;
 
@@ -15,42 +16,43 @@ angular.module('esExploreApp')
 
 				case 'create': {
 
-					if($scope.showCreate ) {
-						$scope.showCreate = false;
-					} else {
-						$scope.showCreate = true;
-					}
+					$scope.showCreate = !$scope.showCreate ;
 
 					$scope.showSettings = false
 					$scope.showHelp = false;
+					$scope.showInfo = false;
 					break;
 				};
 
 				case 'settings': {
 
-					if($scope.showSettings ) {
-						$scope.showSettings = false;
-					} else {
-						$scope.showSettings = true;
-					}
+					$scope.showSettings = !$scope.showSettings;
 
 					$scope.showCreate = false
 					$scope.showHelp = false;
+					$scope.showInfo = false;
 					break;
 				};
 
 				case 'help': {
 
-					if($scope.showHelp ) {
-						$scope.showHelp = false;
-					} else {
-						$scope.showHelp = true;
-					}
+					$scope.showHelp = !$scope.showHelp;
 
 					$scope.showCreate = false
 					$scope.showSettings = false;
+					$scope.showInfo = false;
 					break;
 				};
+
+				case 'info': {
+
+					$scope.showInfo = !$scope.showInfo;
+
+					$scope.showCreate = false;
+					$scope.showSettings = false;
+					$scope.showHelp = false;
+					break;
+				}
 			}
 		};
 

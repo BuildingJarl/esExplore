@@ -10,12 +10,13 @@ div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCt
 			i(class="fa fa-cog")
 		div( class="menuItem" ng-click="toggleSlider( 'help' )")
 			i(class="fa fa-question")
-		div( class="menuItem")
+		div( class="menuItem" ng-click="toggleSlider( 'info' )")
 			i(class="fa fa-info")
 
 	div( pageslide="left" ps-size="365px" ps-open="showCreate" ps-target="#createPageSlide" ps-custom-top="41px" )
-	div( pageslide="right" ps-open="showSettings" ps-target="#settingsPageSlide" ps-custom-top="41px" )
-	div( pageslide="right" ps-open="showHelp" ps-target="#helpPageSlide" ps-custom-top="41px" )
+	div( pageslide="left" ps-size="365px" ps-open="showSettings" ps-target="#settingsPageSlide" ps-custom-top="41px" )
+	div( pageslide="left" ps-size="365px" ps-open="showHelp" ps-target="#helpPageSlide" ps-custom-top="41px" )
+	div( pageslide="left" ps-size="365px" ps-open="showInfo" ps-target="#infoPageSlide" ps-custom-top="41px" )
 
 	div(id="createPageSlide")
 		include sliders/create
@@ -25,3 +26,6 @@ div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCt
 
 	div(id="helpPageSlide")
 		include sliders/help
+
+	div(id="infoPageSlide")
+		include sliders/info

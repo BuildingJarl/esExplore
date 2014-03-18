@@ -6,7 +6,7 @@
 	cursor: default;
 }
 
-#createPageSlide .pageSlideHeader {
+#ng-pageslide .pageSlideHeader {
 
 	height: 25px;
 	width:100%;
@@ -14,7 +14,7 @@
 	margin-bottom: 10px;
 }
 
-#createPageSlide .pageSlideHeader .closeIcon {
+#ng-pageslide .pageSlideHeader .closeIcon {
 	position: absolute;
 	top:8px;
 	right:10px;
@@ -22,11 +22,11 @@
 	font-size: 14pt;
 }
 
-#createPageSlide .pageSlideHeader .closeIcon:hover {
+#ng-pageslide .pageSlideHeader .closeIcon:hover {
 	color: white;
 }
 
-#createPageSlide .pageSlideHeader .title {
+#ng-pageslide .pageSlideHeader .title {
 	font-size: 1.1em;
 	width:100%;
 	text-align: left;
