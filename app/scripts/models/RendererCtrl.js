@@ -45,8 +45,8 @@ ES_EX.RendererCtrl = function( ) {
 		glRenderer.clearScene();
 		glRenderer.addObjectsToScene( treeCtrl.tree.getGLSceneObjects() );
 
-		cssRenderer.clearScene(); //need to delete labes from body
-		cssRenderer.addObjectsToScene( treeCtrl.tree.getLabels() );
+		//cssRenderer.clearScene(); //need to delete labes from body
+		//cssRenderer.addObjectsToScene( treeCtrl.tree.getLabels() );
 	};
 
 	this.start = function() {

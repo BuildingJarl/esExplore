@@ -13,6 +13,8 @@ ES_EX.CSSRenderer = function( ) {
 
 		scene = new THREE.Scene();
 	    camera = ccamera;
+	    //test
+	    scene.add(camera);
 	    renderer = new THREE.CSS3DRenderer();
 
       	renderer.domElement.style.position = "absolute";
@@ -36,6 +38,8 @@ ES_EX.CSSRenderer = function( ) {
 	};
 
 	this.clearScene = function() {
+		
+		
 		//You need to go back to front, not front to back
 		//http://stackoverflow.com/questions/11678497/cant-remove-objects-using-three-js
 		for(var i = scene.children.length - 1; i >= 0 ; i --) {
