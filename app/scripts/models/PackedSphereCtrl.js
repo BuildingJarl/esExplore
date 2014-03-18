@@ -14,7 +14,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	var history = [];
 	var historyExpand = [];
 
-
+	var hoveredNode = null;
 
 	this.init = function( ccamera, ccontrols ) {
 
@@ -47,12 +47,10 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 			if( selectedNode ) {
 				selectedNode.deSelect();
-				selectedNode.hideLabel();
 			}
 			
 			selectedNode = tree.getNodeById(intersectedObj.id);
 			selectedNode.select();
-			selectedNode.showLabel();
 
 			callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
 
@@ -115,8 +113,6 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					.start();
 
 				selectedNode.deSelect();
-				selectedNode.hideLabel();
-				selectedNode.showChildrenLabels();
 				selectedNode.expanded = true;
 
 				selectedNode.repositionSiblingsTo(10,scaleTime);
@@ -211,20 +207,22 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					.start();
 
 				parentObj.expanded = false;
-				parentObj.hideChildrenLabels();
-				parentObj.showLabel();
 			}
 		}
 	};
-	/*
-	this.onHover = function( intersects ) {
+	
+	this.onHover = function( intersects, x, y ) {
 		
-		if(intersects.length > 0) {
-			
-			var obj = intersects[0].object;
-
-
+		if(hoveredNode !== tree.getNodeById(intersects[0].object.id)) {
+			//hoveredNode.hideLabel();
+			hoveredNode = tree.getNodeById(intersects[0].object.id);
 		}
+		console.log('hover' + x + " " + y);
 	};
-	*/
+
+	this.onHoverOff = function( x , y ) {
+
+		console.log('hoverOff' + x + " " + y);
+	};
+	
 };

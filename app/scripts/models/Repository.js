@@ -46,7 +46,7 @@ ES_EX.Repository = function() {
 
 		return {
 
-			name: "Global Scope",
+			label: "Global Scope",
 			type: "GS",
 			vars: 0,
 			children: validFiles

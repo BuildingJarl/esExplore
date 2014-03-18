@@ -8,10 +8,10 @@ angular.module('esExploreApp')
 		$scope.showHelp = false;
 		$scope.showInfo = false;
 
-		$scope.createTooltip = 'create';
-		$scope.settingsTooltip = 'settings';
-		$scope.infoTooltip = 'info';
-		$scope.helpTooltip = 'help';
+		$scope.createTooltip = 'add files';
+		$scope.settingsTooltip = 'view settings';
+		$scope.infoTooltip = 'view info';
+		$scope.helpTooltip = 'view help';
 
 		$scope.files = repositoryService.repo.files;
 

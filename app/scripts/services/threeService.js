@@ -33,6 +33,11 @@ angular.module('esExploreApp')
          rendererCtrl.onRightClick(event);
       };
 
+      this.onHover = function( event ) {
+
+         rendererCtrl.onHover(event);
+      };
+
    	this.addData = function( data ) {
 
    		rendererCtrl.addTreeCtrl( data );

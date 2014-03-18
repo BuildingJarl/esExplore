@@ -24,20 +24,22 @@ angular.module('esExploreApp')
 			element.bind('mouseover', function(event) {
 				event.preventDefault()
 
-				var x = event.clientX + 12;
-				var y = event.clientY + 12;
-
-
 				prom = $timeout( function(){
 					tooltip.css({
-						display: 'block',
-						left: x + 'px',
-						top: y + 'px'
+						display: 'block'
 					});
 				},500);
+			});
 
+			element.bind('mousemove', function(event) {
 
+				var x = event.clientX + 13;
+				var y = event.clientY + 5;
 
+				tooltip.css({
+					left: x + 'px',
+					top: y + 'px'
+				});
 			});
 
 			element.bind('mouseout', function() {

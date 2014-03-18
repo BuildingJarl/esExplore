@@ -40,7 +40,8 @@ ES_EX.PackedTreeNode = function( node ) {
 
 	node.showLabel = function() {
 
-		this.label.getObjectByName('label').element.style.display = 'block';
+		//this.label.getObjectByName('label').element.style.display = 'block';
+		this.label.element.style.display = 'block';
 	};
 
 	node.showChildrenLabels = function() {
@@ -54,7 +55,8 @@ ES_EX.PackedTreeNode = function( node ) {
 
 	node.hideLabel = function() {
 
-		this.label.getObjectByName('label').element.style.display = 'none';
+		//this.label.getObjectByName('label').element.style.display = 'none';
+		this.label.element.style.display = 'none';
 	};
 
 	node.hideChildrenLabels = function() {

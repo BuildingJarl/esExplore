@@ -36,7 +36,7 @@ ES_EX.Scope = function( scope, fid ) {
 	this.toJSON = function() {
 
 		return {
-			name: this.name,
+			label: this.getLabel(),
 			type: "CS",
 			vars: 0,
 			fid: this.fid,
@@ -96,5 +96,10 @@ ES_EX.Scope = function( scope, fid ) {
 	function getEndLoc() {
 
 		return self.data.block.loc.end.line; 
+	};
+
+	this.getLabel = function(){
+
+		return 'label';
 	};
 };

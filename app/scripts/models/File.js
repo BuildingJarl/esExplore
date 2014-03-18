@@ -31,7 +31,7 @@ ES_EX.File = function( f ) {
 
 		return {
 
-			name: this.name + " Global Scope",
+			label: this.name + " Global Scope",
 			type: "FGS",
 			vars: 0,
 			fid: this.id,

@@ -37,12 +37,11 @@ angular.module('esExploreApp')
     			}
  			});
 
- 			/*
+ 			
  			element.bind( "mousemove", function (event) {
 
- 				exploreGLAPI.onHover(event);
- 			});
-			*/		
+ 				threeService.onHover(event);
+ 			});	
 		}
 	};
 });

@@ -45,7 +45,7 @@ ES_EX.RendererCtrl = function( ) {
 		glRenderer.clearScene();
 		glRenderer.addObjectsToScene( treeCtrl.tree.getGLSceneObjects() );
 
-		cssRenderer.clearScene();
+		cssRenderer.clearScene(); //need to delete labes from body
 		cssRenderer.addObjectsToScene( treeCtrl.tree.getLabels() );
 	};
 
@@ -108,6 +108,24 @@ ES_EX.RendererCtrl = function( ) {
 	this.onRightClick = function( event ){
 
 		treeCtrl.onRightClick();
+	};
+
+	this.onHover = function( event ) {
+
+		event.preventDefault();
+
+		var intersects = glRenderer.intersects( event.clientX, event.clientY-40, container.clientWidth, container.clientHeight );
+
+		if(intersects.length > 0) {
+			
+			if(treeCtrl) {
+				treeCtrl.onHover( intersects, event.clientX, event.clientY-40 );
+			}
+		} else {
+			if(treeCtrl) {
+				treeCtrl.onHoverOff( event.clientX, event.clientY-40 );
+			}
+		}
 	};
 
 	function update() {
