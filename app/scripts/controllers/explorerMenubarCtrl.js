@@ -8,6 +8,11 @@ angular.module('esExploreApp')
 		$scope.showHelp = false;
 		$scope.showInfo = false;
 
+		$scope.createTooltip = 'create';
+		$scope.settingsTooltip = 'settings';
+		$scope.infoTooltip = 'info';
+		$scope.helpTooltip = 'help';
+
 		$scope.files = repositoryService.repo.files;
 
 		$scope.toggleSlider = function( what ) {

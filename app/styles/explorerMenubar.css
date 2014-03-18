@@ -42,3 +42,16 @@
 	color: #FFFFFF;
 	cursor: pointer;
 }
+
+.tooltip {
+	all: default;
+	background: #57594e;
+	font-size: 12pt;
+	
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #333434;
+
+	padding:2px;
+}

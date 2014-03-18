@@ -4,13 +4,13 @@ div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCt
 		| EsExplore
 
 	div( class="menu" )
-		div( class="menuItem" ng-click="toggleSlider( 'create' )")
+		div( class="menuItem" tooltip content="{{createTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'create' )")
 			i(class="fa fa-plus-circle")
-		div( class="menuItem" ng-click="toggleSlider( 'settings' )")
+		div( class="menuItem" tooltip content="{{settingsTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'settings' )")
 			i(class="fa fa-cog")
-		div( class="menuItem" ng-click="toggleSlider( 'help' )")
+		div( class="menuItem" tooltip content="{{helpTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'help' )")
 			i(class="fa fa-question")
-		div( class="menuItem" ng-click="toggleSlider( 'info' )")
+		div( class="menuItem" tooltip content="{{infoTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'info' )")
 			i(class="fa fa-info")
 
 	div( pageslide="left" ps-size="365px" ps-open="showCreate" ps-target="#createPageSlide" ps-custom-top="41px" )
