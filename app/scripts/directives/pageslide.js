@@ -25,7 +25,7 @@ angular.module('esExploreApp')
                 /* parameters */
                 var param = {};
                 param.side = attrs.pageslide || 'right';
-                param.speed = attrs.psSpeed || '0.5';
+                param.speed = attrs.psSpeed || '0.1';
                 param.size = attrs.psSize || '300px';
 
                 /* DOM manipulation */
@@ -77,7 +77,9 @@ angular.module('esExploreApp')
                 /* Closed */
                 function psClose(slider,param){
                     if (slider.style.width !== 0 && slider.style.width !== 0){
+                    
                         content.style.display = 'none';
+
                         switch (param.side){
                             case 'right':
                                 slider.style.width = '0px'; 

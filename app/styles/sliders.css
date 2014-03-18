@@ -57,6 +57,10 @@
 #createPageSlide .pageSlideBody .buttonBar span:hover {
 	background: #A8A8A8;
 	color: #272822;
+}
+
+#createPageSlide .pageSlideBody .buttonBar span:active {
+	background: #FFFFFF;
 } 
 
 #createPageSlide .pageSlideBody .buttonBar .borderBottom {

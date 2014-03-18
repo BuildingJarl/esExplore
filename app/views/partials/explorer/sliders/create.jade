@@ -19,7 +19,7 @@ div.createPageSlide.Panel
 				input( type="file" webkitdirectory style="display:none;")
 
 		div.tableContainer
-				div.row(ng-repeat="file in repo.files")
+				div.row(ng-repeat="file in files")
 					span 
 						{{ file.name }}
 					span.right
@@ -27,9 +27,9 @@ div.createPageSlide.Panel
 						i.fa.fa-times.notValid(ng-hide="file.isValid")
 
 
-		div.buttonBar
+		div.buttonBar(ng-click="resetRepo()")
 			span.borderBottom
-				|Reset
+				|Clear
 
 		div.buttonBar(ng-click="createVisualisation()")
 			span

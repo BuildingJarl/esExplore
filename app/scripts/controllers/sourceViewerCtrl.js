@@ -1,10 +1,10 @@
 angular.module('esExploreApp')
 	.controller('sourceViewerCtrl', function( $scope, repositoryService ) {
 
-		$scope.showFiles = true;
-		$scope.showCurrent = true;
-		$scope.showChildren = true;
-		$scope.showSource = true;
+		$scope.showFiles = false;
+		$scope.showCurrent = false;
+		$scope.showChildren = false;
+		$scope.showSource = false;
 
 		$scope.files = [];
 		$scope.selectedScope = {};
@@ -18,6 +18,10 @@ angular.module('esExploreApp')
 		$scope.$on('initSourceViewer', function( event, data ) {
 
 			$scope.files = repositoryService.getValidFilesForView();		
+			$scope.showFiles = true;
+			$scope.showCurrent = true;
+			$scope.showChildren = true;
+			$scope.showSource = true;
 		});
 
 		//this gets called everytime the user selects a sphere!

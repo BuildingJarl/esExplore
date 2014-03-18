@@ -7,7 +7,7 @@ angular.module('esExploreApp')
 		$scope.showSettings = false
 		$scope.showHelp = false;
 
-		$scope.repo = repositoryService.repo;
+		$scope.files = repositoryService.repo.files;
 
 		$scope.toggleSlider = function( what ) {
 
@@ -56,7 +56,13 @@ angular.module('esExploreApp')
 
 		$scope.createVisualisation = function() {
 
-			$scope.$emit('createVisualisation', JSON.stringify($scope.repo) );
+			$scope.$emit('createVisualisation', JSON.stringify(repositoryService.repo) );
 			$scope.toggleSlider('create');
+		};
+
+		$scope.resetRepo = function() {
+
+			repositoryService.reset();
+			$scope.files = repositoryService.repo.files;
 		};
 });

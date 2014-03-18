@@ -24,7 +24,12 @@ angular.module('esExploreApp')
 	};
 
 	this.getChildScope = function(sid) {
+		
 		return this.repo.scopeSet[sid];
 	};
+
+	this.reset = function() {
+		this.repo = new ES_EX.Repository();
+	}
 
 });
