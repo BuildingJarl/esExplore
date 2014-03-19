@@ -7,6 +7,8 @@ var modifier = new THREE.SubdivisionModifier( 2 );
 
 ES_EX.ObjectFactory = function( ) {
 
+    var modifier = new THREE.SubdivisionModifier( 1.5 )
+
 	var globalMaterial = new THREE.ShaderMaterial({
 	    uniforms: 
 		{ 
@@ -58,6 +60,7 @@ ES_EX.ObjectFactory = function( ) {
 	});
 
 	var sphereGeo = new THREE.SphereGeometry( 1, 32, 16 );
+    modifier.modify( sphereGeo );
 
 	var selectedSpriteMaterial = new THREE.SpriteMaterial({ 
 		

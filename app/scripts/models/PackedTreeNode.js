@@ -9,6 +9,41 @@ ES_EX.PackedTreeNode = function( node ) {
 	node.expanded = false;
 	node.selected = false;
 
+	node.minDistToCamera = function( fov ) {
+		
+		var height = (this.r * 2) + 100;
+		var vFov = fov * (Math.PI / 180)
+		var dist =  height / (2 * Math.tan( vFov / 2 ));
+		return dist;
+	};
+
+	node.minChildrenDistToCamera = function( fov ) {
+		
+		var topY = - 999999999999;
+		var bottomY =  9999999999;
+
+		for(var i = 0; i < this.children.length; i ++) {
+
+			var child = this.children[i];
+
+			var ty = child.position.y + child.r;
+			var by = child.position.y - child.r;
+
+			if( ty > topY ) {
+			 	topY = ty;
+			}
+
+			if( by < bottomY ) {
+				bottomY = by;
+			}
+		}
+
+		var height = Math.abs(topY - bottomY);
+		var vFov = fov * (Math.PI / 180)
+		var dist =  height / (2 * Math.tan( vFov / 2 ));
+		return dist;
+	};
+
 	node.select = function() {
 		
 		this.selected = true;
@@ -174,7 +209,7 @@ ES_EX.PackedTreeNode = function( node ) {
 		}
 	};
 
-	node.rescaleTo = function( scaler, time, callback ) {
+	node.rescaleTo = function( scaler, time ) {
 
 		var self = this;
 		var from = this.r;
@@ -187,9 +222,6 @@ ES_EX.PackedTreeNode = function( node ) {
 				self.drawObject.scale.x = this.s;
 				self.drawObject.scale.y = this.s;
 				self.drawObject.scale.z = this.s;
-			})
-			.onComplete( function() {
-				callback();
 			})
 			.start();
 	};

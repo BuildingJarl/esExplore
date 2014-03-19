@@ -7,9 +7,9 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 		var packlayout = d3.layout.pack()
 			.size( [dim, dim] )
-			.padding( 80 )
-			.sort( d3.descending )
-			.value( function( d ) { return 150 } );
+			.padding( 50 )
+			.sort( d3.ascending )
+			.value( function( d ) { return 50 } );
 
 		addPlaceholders(tree);
 
@@ -122,7 +122,7 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 			var node = nodes[i];
 
-			node.position = new THREE.Vector3( node.x,node.y,0 );
+			node.position = new THREE.Vector3( node.x,node.y, 0 );
 
 			node.label = objectFactory.createLabel( node.r, node.label, node.position );
 
