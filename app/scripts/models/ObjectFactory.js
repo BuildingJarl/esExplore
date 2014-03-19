@@ -153,27 +153,15 @@ ES_EX.ObjectFactory = function( ) {
     	return obj;
     };
 
-    this.createLabel = function( r,text, pos ) {
-
-    	var container = new THREE.Object3D();
+    this.createLabel = function( text ) {
 
     	var element = document.createElement('span');
     	element.textContent = text;
     	element.className = 'SphereLabel';
-    	element.style.display = 'none';
-
-    	//var obj = new THREE.CSS3DObject( element );
- 		//obj.position.z += r;
- 		//obj.name = 'label';
-
-    	//container.add(obj);
-    	//container.position = pos;
 
         var obj = new THREE.CSS3DObject( element );
-        obj.position = pos;
         obj.name = 'label';
 
-    	//return container;
         return obj;
     };
 };

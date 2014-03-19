@@ -20,5 +20,7 @@ body {
 }
 
 .SphereLabel {
-  
+
+    color:red;
+    font-size: 16pt;
 }

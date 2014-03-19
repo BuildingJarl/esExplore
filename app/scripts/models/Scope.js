@@ -36,7 +36,7 @@ ES_EX.Scope = function( scope, fid ) {
 	this.toJSON = function() {
 
 		return {
-			label: this.getLabel(),
+			labelText: this.getLabel(),
 			type: "CS",
 			vars: 0,
 			fid: this.fid,

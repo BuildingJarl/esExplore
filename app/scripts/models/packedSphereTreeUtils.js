@@ -8,7 +8,7 @@ ES_EX.PackedSphereTreeUtils = function() {
 		var packlayout = d3.layout.pack()
 			.size( [dim, dim] )
 			.padding( 50 )
-			.sort( d3.ascending )
+			.sort( d3.decending )
 			.value( function( d ) { return 50 } );
 
 		addPlaceholders(tree);
@@ -34,7 +34,7 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 			ES_EX.PackedTreeNode(nodes[i] );
 		}
-	}
+	};
 
 	function addPlaceholders( node ) {
 
@@ -78,12 +78,11 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 			if(nodes[i].children) {
 				if( nodes[i].children.length > 1) {
-					nodes[i].r += 15;
+					nodes[i].r += 30;
 				}	
-			}
-			
+			}	
 		}
-	}
+	};
 
 	function centerNodes( nodes ) {
 
@@ -139,8 +138,7 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 			node.position = new THREE.Vector3( node.x,node.y, 0 );
 
-			node.label = objectFactory.createLabel( node.r, node.label, node.position );
-
+			node.label = objectFactory.createLabel( node.labelText );
 
 			switch( node.type ) {
 

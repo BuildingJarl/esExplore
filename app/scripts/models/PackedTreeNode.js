@@ -11,7 +11,7 @@ ES_EX.PackedTreeNode = function( node ) {
 
 	node.minDistToCamera = function( fov ) {
 		
-		var height = (this.r * 2) + 100;
+		var height = (this.r * 2);
 		var vFov = fov * (Math.PI / 180)
 		var dist =  height / (2 * Math.tan( vFov / 2 ));
 		return dist;

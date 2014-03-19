@@ -9,7 +9,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 	var selectedNode = null;
 	var selectedTheta = 0.0;
-	var scaleTime =  500;
+	var scaleTime =  300;
 
 	var history = [];
 	var historyExpand = [];
@@ -47,7 +47,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		
 		if(busy) return
 
-		var intersectedObj = intersects[0].object;
+		var intersectedObj = intersects.i[0].object;
 
 		//select obj
 		if( selectedNode === null || intersectedObj.id !== selectedNode.doid  ) {
@@ -241,18 +241,34 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		}
 	};
 	
-	this.onHover = function( intersects, x, y ) {
-		
-		if(hoveredNode !== tree.getNodeById(intersects[0].object.id)) {
-			//hoveredNode.hideLabel();
-			hoveredNode = tree.getNodeById(intersects[0].object.id);
+	this.onHover = function( intersects ) {
+
+		var obj = tree.getNodeById(intersects.i[0].object.id);
+
+		if( obj !== hoveredNode ) {
+
+			hoveredNode = obj;
+
+			obj.label.position.z = -700;
+			camera.add(obj.label)
+			console.log('added');
 		}
-		//console.log('hover' + x + " " + y);
+
+		console.log( intersects.x + " " + intersects.y);
+		obj.label.position.x = intersects.x;
+		obj.label.position.y = intersects.y;
+
 	};
 
 	this.onHoverOff = function( x , y ) {
 
-		//console.log('hoverOff' + x + " " + y);
+		
+
+		if(hoveredNode) {
+			camera.remove(hoveredNode.label)
+			console.log( 'removied' );
+			hoveredNode = null;
+		}
 	};
 	
 };
