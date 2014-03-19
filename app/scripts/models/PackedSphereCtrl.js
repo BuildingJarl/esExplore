@@ -18,6 +18,18 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 	var busy = false;
 
+	var label = createLabel();
+
+	function createLabel() {
+
+		var element = document.createElement('span');
+    	//element.textContent = text;
+    	element.className = 'SphereLabel';
+    	element.style.display = 'none';
+    	document.getElementById('scopeViewer').appendChild(element);
+    	return element;
+	}
+
 	this.init = function( ccamera, ccontrols ) {
 
 		camera = ccamera,
@@ -241,16 +253,23 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		}
 	};
 	
-	this.onHover = function( intersects ) {
+	this.onHover = function( intersects, x, y ) {
 
 		var obj = tree.getNodeById(intersects[0].object.id);
 
 		if( obj !== hoveredNode ) {
 
 			hoveredNode = obj;
+			label.textContent = hoveredNode.labelText;
+			label.style.top = x + 'px';
+			label.style.left = y + 'px';
+			label.style.display = 'block';
 
 			console.log('added');
 		}
+
+		label.style.top = y + 'px';
+		label.style.left = x + 15 + 'px';
 
 	};
 
@@ -258,6 +277,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 		if(hoveredNode) {
 			console.log( 'removied' );
+			label.style.display = 'none';
 			hoveredNode = null;
 		}
 	};

@@ -138,8 +138,6 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 			node.position = new THREE.Vector3( node.x,node.y, 0 );
 
-			node.label = objectFactory.createLabel( node.labelText );
-
 			switch( node.type ) {
 
 				case 'GS': {

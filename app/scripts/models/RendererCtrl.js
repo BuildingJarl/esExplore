@@ -3,7 +3,6 @@
 ES_EX.RendererCtrl = function( ) {
 
 	var glRenderer = new ES_EX.GLRenderer();
-	var cssRenderer = new ES_EX.CSSRenderer();
 	var container;
 	var stats
 	var camera;
@@ -24,7 +23,6 @@ ES_EX.RendererCtrl = function( ) {
       	controls.noPan = true; 
       	controls.noRotate = false;
 
-      	cssRenderer.init( container, camera );
 		glRenderer.init( container, camera );
 		
 		if( debug ) {
@@ -44,9 +42,6 @@ ES_EX.RendererCtrl = function( ) {
 
 		glRenderer.clearScene();
 		glRenderer.addObjectsToScene( treeCtrl.tree.getGLSceneObjects() );
-
-		//cssRenderer.clearScene(); //need to delete labes from body
-		//cssRenderer.addObjectsToScene( treeCtrl.tree.getLabels() );
 	};
 
 	this.start = function() {
@@ -64,7 +59,6 @@ ES_EX.RendererCtrl = function( ) {
 	        	stats.update();
 	    	}
 	     	glRenderer.render();
-	     	cssRenderer.render();
 			controls.update();
 			update();
 		};
@@ -86,9 +80,8 @@ ES_EX.RendererCtrl = function( ) {
       	camera.updateProjectionMatrix();
 
 		glRenderer.onResize( newWidth, newHeight );
-		cssRenderer.onResize( newWidth, newHeight );
 
-		console.log( "Renderers resized to: " + newWidth + " X " + newHeight );
+		console.log( "Renderer resized to: " + newWidth + " X " + newHeight );
 	};
 
 	this.onLeftClick = function( event ){
@@ -117,15 +110,13 @@ ES_EX.RendererCtrl = function( ) {
 		var intersects = glRenderer.intersects( event.clientX, event.clientY-40, container.clientWidth, container.clientHeight );
 
 		if(intersects.length > 0) {
-
-			var x = (event.clientX / container.clientWidth ) *2 -1;
 			
 			if(treeCtrl) {
-				treeCtrl.onHover( intersects, x, event.clientY-40 );
+				treeCtrl.onHover( intersects, event.clientX, event.clientY-40 );
 			}
 		} else {
 			if(treeCtrl) {
-				treeCtrl.onHoverOff( event.clientX, event.clientY-40 );
+				treeCtrl.onHoverOff();
 			}
 		}
 	};

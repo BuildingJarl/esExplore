@@ -5,7 +5,6 @@ angular.module('esExploreApp')
 		restrict: "EA",
 		link: function( scope, element, iAttrs ) {
 
-            console.log("sad");
 			threeService.init( element[0], true );
 
 			var firstPos = { x:-999, y:-999 };

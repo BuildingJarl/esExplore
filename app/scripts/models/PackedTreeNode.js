@@ -73,36 +73,6 @@ ES_EX.PackedTreeNode = function( node ) {
 		}
 	};
 
-	node.showLabel = function() {
-
-		//this.label.getObjectByName('label').element.style.display = 'block';
-		this.label.element.style.display = 'block';
-	};
-
-	node.showChildrenLabels = function() {
-
-		for( var i = 0; i < this.children.length; i ++ ) {
-
-			var child = this.children[i];
-			child.label.getObjectByName('label').element.style.display = 'block';
-		}
-	};
-
-	node.hideLabel = function() {
-
-		//this.label.getObjectByName('label').element.style.display = 'none';
-		this.label.element.style.display = 'none';
-	};
-
-	node.hideChildrenLabels = function() {
-
-		for( var i = 0; i < this.children.length; i ++ ) {
-
-			var child = this.children[i];
-			child.label.getObjectByName('label').element.style.display = 'none';
-		}
-	};
-
 	function cbex() {
 
 		if(node.children) {
