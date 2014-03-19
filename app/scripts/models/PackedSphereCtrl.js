@@ -16,6 +16,8 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 	var hoveredNode = null;
 
+	var busy = false;
+
 	this.init = function( ccamera, ccontrols ) {
 
 		camera = ccamera,
@@ -42,11 +44,15 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	};
 
 	this.onLeftClick = function( intersects ) {
-			
+		
+		if(busy) return
+
 		var intersectedObj = intersects[0].object;
 
 		//select obj
 		if( selectedNode === null || intersectedObj.id !== selectedNode.doid  ) {
+
+			busy = true;
 
 			if( selectedNode ) {
 				selectedNode.deSelect();
@@ -90,6 +96,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				.onComplete( function() {
 
 					controls.maxDistance = Infinity;
+					busy = false;
 				} )
 				.start();
 		} 
@@ -98,6 +105,8 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		else if( intersectedObj.id === selectedNode.doid ) {
 
 			if( !selectedNode.expanded && selectedNode.canBeExpanded ) {
+
+				busy = true;
 
 				var oldDist = camera.position.distanceTo(selectedNode.position);
 				var newDist = selectedNode.minDistToCamera(camera.fov);
@@ -117,6 +126,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 						controls.minDistance = selectedNode.minChildrenDistToCamera(camera.fov);
 						controls.maxDistance = Infinity;//set to histry?
 						selectedNode = null;
+						busy = false;
 					} )
 					.start();
 
@@ -133,9 +143,13 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	};
 
 	this.onRightClick = function() {
+
+		if(busy) return
 		
 		//go back to overview position
 		if(selectedNode != null) {
+
+			busy = true;
 
 			if(historyExpand[historyExpand.length-1]) {
 				callback( { 
@@ -170,10 +184,11 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				})
 				.onComplete( function() {
 
-					controls.minDistance = selectedNode.r * 2.4;
+					controls.minDistance = selectedNode.minDistToCamera(camera.fov);
 					controls.maxDistance = Infinity;
 					selectedNode.deSelect();
 					selectedNode = null;
+					busy = false;
 				} )
 				.start();
 
@@ -183,6 +198,8 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		//rollback Expand
 		else if(selectedNode === null) {
 			
+			busy = true;
+
 			if(historyExpand.length > 0) {
 
 				callback( { 
@@ -213,10 +230,13 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 						//controls.minDistance = selectedNode.r * 2.4;
 						controls.maxDistance = Infinity;
+						busy = false;
 					} )
 					.start();
 
 				parentObj.expanded = false;
+			} else {
+				busy = false;
 			}
 		}
 	};

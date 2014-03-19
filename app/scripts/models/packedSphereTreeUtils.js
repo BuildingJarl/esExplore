@@ -21,6 +21,8 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 		makePositionsRelativeToZero( nodes );
 
+		addToRadius(nodes)
+
 		expandNodes( nodes );
 
 		return nodes;
@@ -69,6 +71,19 @@ ES_EX.PackedSphereTreeUtils = function() {
 			}
 		}
 	};
+
+	function addToRadius(nodes) {
+
+		for( var i = 0; i < nodes.length; i ++ ) { 
+
+			if(nodes[i].children) {
+				if( nodes[i].children.length > 1) {
+					nodes[i].r += 15;
+				}	
+			}
+			
+		}
+	}
 
 	function centerNodes( nodes ) {
 
