@@ -241,7 +241,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		}
 	};
 	
-	this.onHover = function( intersects, x, y ) {
+	this.onHover = function( intersects ) {
 
 		var obj = tree.getNodeById(intersects[0].object.id);
 
@@ -249,21 +249,14 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 			hoveredNode = obj;
 
-			obj.label.position.z = -700;
-			camera.add(obj.label)
 			console.log('added');
 		}
-
-		console.log( x + " " + y);
 
 	};
 
 	this.onHoverOff = function( x , y ) {
 
-		
-
 		if(hoveredNode) {
-			camera.remove(hoveredNode.label)
 			console.log( 'removied' );
 			hoveredNode = null;
 		}

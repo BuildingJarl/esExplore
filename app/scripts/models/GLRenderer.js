@@ -45,7 +45,6 @@ ES_EX.GLRenderer = function( ) {
 
 		var vector = new THREE.Vector3(x,y,z);
 		projector.unprojectVector( vector, camera );
-
 		var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 		var intersects = raycaster.intersectObjects( scene.children );
 

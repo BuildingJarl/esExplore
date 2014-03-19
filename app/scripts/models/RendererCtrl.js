@@ -117,9 +117,11 @@ ES_EX.RendererCtrl = function( ) {
 		var intersects = glRenderer.intersects( event.clientX, event.clientY-40, container.clientWidth, container.clientHeight );
 
 		if(intersects.length > 0) {
+
+			var x = (event.clientX / container.clientWidth ) *2 -1;
 			
 			if(treeCtrl) {
-				treeCtrl.onHover( intersects, event.clientX, event.clientY-40 );
+				treeCtrl.onHover( intersects, x, event.clientY-40 );
 			}
 		} else {
 			if(treeCtrl) {
