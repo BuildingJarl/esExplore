@@ -47,7 +47,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		
 		if(busy) return
 
-		var intersectedObj = intersects.i[0].object;
+		var intersectedObj = intersects[0].object;
 
 		//select obj
 		if( selectedNode === null || intersectedObj.id !== selectedNode.doid  ) {
@@ -241,9 +241,9 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		}
 	};
 	
-	this.onHover = function( intersects ) {
+	this.onHover = function( intersects, x, y ) {
 
-		var obj = tree.getNodeById(intersects.i[0].object.id);
+		var obj = tree.getNodeById(intersects[0].object.id);
 
 		if( obj !== hoveredNode ) {
 
@@ -254,9 +254,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 			console.log('added');
 		}
 
-		console.log( intersects.x + " " + intersects.y);
-		obj.label.position.x = intersects.x;
-		obj.label.position.y = intersects.y;
+		console.log( x + " " + y);
 
 	};
 

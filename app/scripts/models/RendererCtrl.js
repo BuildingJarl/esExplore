@@ -97,7 +97,7 @@ ES_EX.RendererCtrl = function( ) {
 
 		var intersects = glRenderer.intersects( event.clientX, event.clientY-40, container.clientWidth, container.clientHeight );
 
-		if(intersects.i.length > 0) {
+		if(intersects.length > 0) {
 			
 			if(treeCtrl) {
 				treeCtrl.onLeftClick( intersects );
@@ -116,7 +116,7 @@ ES_EX.RendererCtrl = function( ) {
 
 		var intersects = glRenderer.intersects( event.clientX, event.clientY-40, container.clientWidth, container.clientHeight );
 
-		if(intersects.i.length > 0) {
+		if(intersects.length > 0) {
 			
 			if(treeCtrl) {
 				treeCtrl.onHover( intersects, event.clientX, event.clientY-40 );

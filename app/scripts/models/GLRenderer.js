@@ -49,7 +49,7 @@ ES_EX.GLRenderer = function( ) {
 		var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 		var intersects = raycaster.intersectObjects( scene.children );
 
-		return { i:intersects, x:x, y:y };
+		return intersects;
 	};
 
 	this.render = function() {
