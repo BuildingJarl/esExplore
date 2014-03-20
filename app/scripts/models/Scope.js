@@ -47,8 +47,6 @@ ES_EX.Scope = function( scope, fid ) {
 
 	function getName() {
 
-
-		console.log(self.data.type);
 		var name = '';
 
 		switch(self.data.block.type){
@@ -100,6 +98,34 @@ ES_EX.Scope = function( scope, fid ) {
 
 	this.getLabel = function(){
 
-		return 'label';
+		var extractor = new ES_EX.EsprimaExtractor();
+		var block = this.data.block;
+
+		switch( block.type ) {
+
+			case 'FunctionDeclaration': {
+
+				var name = this.data.block.id.name;
+				var params = extractor.extractParameters( block );
+
+				return name + params;
+				break;
+			};
+
+			case 'FunctionExpression': { 
+
+				var name = extractor.getFunctionExpressionName( this.data );
+				var params = extractor.extractParameters( block );
+				
+				return name + params;
+				break;
+			}
+
+			default: {
+
+				return 'unknown';
+				break;
+			}
+		}
 	};
 };

@@ -60,7 +60,7 @@ ES_EX.ObjectFactory = function( ) {
 	});
 
 	var sphereGeo = new THREE.SphereGeometry( 1, 32, 16 );
-    modifier.modify( sphereGeo );
+    //modifier.modify( sphereGeo );
 
 	var selectedSpriteMaterial = new THREE.SpriteMaterial({ 
 		
