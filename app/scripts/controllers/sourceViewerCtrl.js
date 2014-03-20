@@ -1,10 +1,13 @@
 angular.module('esExploreApp')
 	.controller('sourceViewerCtrl', function( $scope, repositoryService ) {
 
-		$scope.showFiles = false;
-		$scope.showCurrent = false;
-		$scope.showChildren = false;
-		$scope.showSource = false;
+		$scope.toggle = {
+			showFiles: true,
+			showCurrent: false,
+			showChildren: false,
+			showSource: false,
+			update: false
+		}
 
 		$scope.files = [];
 		$scope.selectedScope = {};
@@ -18,10 +21,11 @@ angular.module('esExploreApp')
 		$scope.$on('initSourceViewer', function( event, data ) {
 
 			$scope.files = repositoryService.getValidFilesForView();		
-			$scope.showFiles = true;
-			$scope.showCurrent = true;
-			$scope.showChildren = true;
-			$scope.showSource = true;
+			
+			$scope.toggle.showFiles = true;
+			$scope.toggle.showCurrent = true;
+			$scope.toggle.showChildren = true;
+			$scope.toggle.showSource = true;
 		});
 
 		//this gets called everytime the user selects a sphere!
@@ -53,6 +57,7 @@ angular.module('esExploreApp')
 				}
 			});
 
+			$scope.toggle.update = !$scope.toggle.update;
 
 			//Prism.highlightAll();
 

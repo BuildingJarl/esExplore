@@ -3,14 +3,14 @@
 
 //- Files panel
 div.sourceViewerPanel
-	span.closeOpen(ng-click="showFiles = !showFiles")
-		span.fa.fa-minus-square-o.fa-2x(ng-show="showFiles")
-		span.fa.fa-plus-square-o.fa-2x(ng-show="!showFiles")
+	span.closeOpen(ng-click="toggle.showFiles = !toggle.showFiles")
+		span.fa.fa-minus-square-o.fa-2x(ng-show="toggle.showFiles")
+		span.fa.fa-plus-square-o.fa-2x(ng-show="!toggle.showFiles")
 	div.title
 		span
 			| Files	
 
-	div.tableContainer(ng-show="showFiles")
+	div.tableContainer(ng-show="toggle.showFiles")
 		div.headerContainer
 			div.headerItem.three Name
 			div.headerItem.three Lines
@@ -23,12 +23,12 @@ div.sourceViewerPanel
 
 //- Current selected scope panel
 div.sourceViewerPanel
-	span.closeOpen(ng-click="showCurrent = !showCurrent")
-		span.fa.fa-minus-square-o.fa-2x(ng-show="showCurrent")
-		span.fa.fa-plus-square-o.fa-2x(ng-show="!showCurrent")
+	span.closeOpen(ng-click="toggle.showCurrent = !toggle.showCurrent")
+		span.fa.fa-minus-square-o.fa-2x(ng-show="toggle.showCurrent")
+		span.fa.fa-plus-square-o.fa-2x(ng-show="!toggle.showCurrent")
 	div.title
 		| Current
-	div.tableContainer(ng-show="showCurrent")
+	div.tableContainer(ng-show="toggle.showCurrent")
 		div.headerContainer
 			div.headerItem.four Name
 			div.headerItem.four Start
@@ -43,12 +43,12 @@ div.sourceViewerPanel
 
 //- Current selected scopes children Panel
 div.sourceViewerPanel
-	span.closeOpen(ng-click="showChildren = !showChildren")
-		span.fa.fa-minus-square-o.fa-2x(ng-show="showChildren")
-		span.fa.fa-plus-square-o.fa-2x(ng-show="!showChildren")
+	span.closeOpen(ng-click="toggle.showChildren = !toggle.showChildren")
+		span.fa.fa-minus-square-o.fa-2x(ng-show="toggle.showChildren")
+		span.fa.fa-plus-square-o.fa-2x(ng-show="!toggle.showChildren")
 	div.title
 		| Children
-	div.tableContainer(ng-show="showChildren")
+	div.tableContainer(ng-show="toggle.showChildren")
 		div.headerContainer
 			div.headerItem.four Name
 			div.headerItem.four Start
@@ -62,13 +62,13 @@ div.sourceViewerPanel
 				div.bodyItem.four {{ child.children.length }}
 
 //- Source panel
-div.sourceViewerPanel.sourceCodeViewAb
-	span.closeOpen(ng-click="showSource = !showSource")
-		span.fa.fa-minus-square-o.fa-2x(ng-show="showSource")
-		span.fa.fa-plus-square-o.fa-2x(ng-show="!showSource")
+div.sourceViewerPanel.sourceViewerPanelBottom
+	span.closeOpen(ng-click="toggle.showSource = !toggle.showSource")
+		span.fa.fa-minus-square-o.fa-2x(ng-show="toggle.showSource")
+		span.fa.fa-plus-square-o.fa-2x(ng-show="!toggle.showSource")
 	div.title()
 		| Source Code
-	div.sourceCode(ng-show="showSource")
+	div.sourceCode(ng-show="toggle.showSource")
 		
 		div(ng-show="source.global")
 			h3

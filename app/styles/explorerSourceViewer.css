@@ -80,6 +80,7 @@
 }
 .sourceViewerPanel .tableContainer .bodyContainer .bodyItem {
 	float: left;
+	white-space: nowrap;
 	overflow: hidden;
 }
 
@@ -93,12 +94,28 @@
 	text-align: center;
 }
 
-.sourceCodeViewAb {
-
-	bottom:0;
-	overflow: auto;
+.sourceViewerPanelBottom {
+	
+	overflow: hidden;
+	overflow:auto;
+	position: relative;
+	
 }
 
-.sourceViewerPanel .sourceCode {
+.sourceViewerPanelBottom .sourceCode {
+	overflow:auto;
+	width:100%;
+	position: absolute;
+	top:40px;
+	bottom:15px;
 
+	/*
+	position: absolute;
+	overflow:auto;
+	
+	bottom:10px;
+	left:0;
+	right:0;
+	top:40px;
+	*/
 }
