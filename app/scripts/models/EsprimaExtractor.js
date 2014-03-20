@@ -89,9 +89,6 @@ ES_EX.EsprimaExtractor = function() {
 		return name;
 	};
 
-
-
-
 	function endOnSameLine( loc1, loc2 ) {
 
 		if( loc1.end.line === loc2.end.line) {
@@ -101,5 +98,4 @@ ES_EX.EsprimaExtractor = function() {
 		}
 		return false
 	};
-
 };

@@ -8,7 +8,7 @@ ES_EX.Scope = function( scope, fid ) {
 	this.children = [];
 	this.fid = fid;
 
-	this.name = getName();
+
 	this.startLoc = getStartLoc();
 	this.endLoc = getEndLoc();
 
@@ -96,7 +96,7 @@ ES_EX.Scope = function( scope, fid ) {
 		return self.data.block.loc.end.line; 
 	};
 
-	this.getLabel = function(){
+	this.getLabel = function() {
 
 		var extractor = new ES_EX.EsprimaExtractor();
 		var block = this.data.block;
@@ -128,4 +128,6 @@ ES_EX.Scope = function( scope, fid ) {
 			}
 		}
 	};
+
+	this.name = this.getLabel();
 };
