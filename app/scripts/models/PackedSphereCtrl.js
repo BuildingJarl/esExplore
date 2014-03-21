@@ -67,28 +67,25 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 		if(busy) return
 
 		var intersectedObj = intersects[0].object;
+		var selectedNode = tree.getNodeById( intersectedObj.id );
 
-		//select obj
-		if( selectedNode === null || intersectedObj.id !== selectedNode.doid  ) {
+		if( !selectedNode.expanded && selectedNode.canBeExpanded ) {
 
 			busy = true;
 
-			if( selectedNode ) {
-				selectedNode.deSelect();
-				selectedNode = null;
-			}
-			
-			selectedNode = tree.getNodeById( intersectedObj.id );
-			selectedNode.select();
-			selectedNode.repositionSiblingsTo(5,scaleTime);
-
 			callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
+
+			var oldDist = camera.position.distanceTo(selectedNode.position);
+			var newDist = selectedNode.minDistToCamera(camera.fov);
+
+			controls.minDistance = oldDist;
+			controls.maxDistance = oldDist;
 
 			//tween to new orbit center (if no tween then jump)
 			var from = new THREE.Vector3().copy( controls.target );
 			var to = new THREE.Vector3().copy( selectedNode.position );
 
-			var tweenOne = new TWEEN.Tween( from )
+			var orbitCenterTween = new TWEEN.Tween( from )
 				.to( to, scaleTime )
 				.onUpdate( function() {
 					controls.target.x = from.x;
@@ -96,68 +93,31 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					controls.target.z = from.z;
 				})
 				.start();
-			
-			//tween to new distance
-			var oldDist = camera.position.distanceTo( selectedNode.position );
-			var newDist =  selectedNode.minDistToCamera(camera.fov);
 
-			controls.minDistance = oldDist;
-			controls.maxDistance = oldDist;
-
-			var tweenTwo = new TWEEN.Tween( { d:oldDist } )
+			var zoomTween = new TWEEN.Tween( { d:oldDist } )
 				.to( { d:newDist}, scaleTime  )
 				.onUpdate( function () {
 
 					controls.minDistance = this.d;
 					controls.maxDistance = this.d;
-					controls.update();
 				})
 				.onComplete( function() {
 
-					controls.maxDistance = Infinity;
+					controls.minDistance = selectedNode.minChildrenDistToCamera(camera.fov);
+					controls.maxDistance = Infinity;//set to histry?
+					selectedNode = null;
 					busy = false;
 				} )
 				.start();
-		} 
 
-		//if same obj has been selected again then its time to go into to sphere 
-		else if( intersectedObj.id === selectedNode.doid ) {
+			selectedNode.deSelect();
+			selectedNode.expanded = true;
+			selectedNode.rescaleTo(10, scaleTime);
+			selectedNode.repositionSiblingsTo(10,scaleTime);
 
-			if( !selectedNode.expanded && selectedNode.canBeExpanded ) {
-
-				busy = true;
-
-				var oldDist = camera.position.distanceTo(selectedNode.position);
-				var newDist = selectedNode.minDistToCamera(camera.fov);
-
-				controls.minDistance = oldDist;
-				controls.maxDistance = oldDist;
-
-				var tween = new TWEEN.Tween( { d:oldDist } )
-					.to( { d:newDist}, scaleTime  )
-					.onUpdate( function () {
-
-						controls.minDistance = this.d;
-						controls.maxDistance = this.d;
-					})
-					.onComplete( function() {
-
-						controls.minDistance = selectedNode.minChildrenDistToCamera(camera.fov);
-						controls.maxDistance = Infinity;//set to histry?
-						selectedNode = null;
-						busy = false;
-					} )
-					.start();
-
-				selectedNode.deSelect();
-				selectedNode.expanded = true;
-				selectedNode.rescaleTo(10, scaleTime);
-				selectedNode.repositionSiblingsTo(10,scaleTime);
-
-				//new overview position
-				history.push( newDist );
-				historyExpand.push( selectedNode );	
-			}
+			//new overview position
+			history.push( newDist );
+			historyExpand.push( selectedNode );	
 		}
 	};
 
@@ -165,36 +125,38 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 		if(busy) return
 		
-		//go back to overview position
-		if(selectedNode != null) {
+		busy = true;
 
-			busy = true;
+		if(historyExpand.length > 0) {
 
-			if(historyExpand[historyExpand.length-1]) {
-				callback( { 
-					type:historyExpand[historyExpand.length-1].type, 
-					fid:historyExpand[historyExpand.length-1].fid, 
-					sid:historyExpand[historyExpand.length-1].sid 
-				});
+			var parentObj = historyExpand.pop();
 
-				//tween to new orbit center (if no tween then jump)
-				var from = new THREE.Vector3().copy( controls.target );
-				var to = new THREE.Vector3().copy( historyExpand[historyExpand.length-1].position );
+			parentObj.rescaleBack(10,scaleTime);
+			parentObj.repositionSiblingsBack(10,scaleTime);
 
-				var tweenOne = new TWEEN.Tween( from )
-					.to( to, scaleTime )
-					.onUpdate( function() {
-						controls.target.x = from.x;
-						controls.target.y = from.y;
-						controls.target.z = from.z;
-					})
-					.start();
-			}
-
-			var oldDist = camera.position.distanceTo(selectedNode.position);
+			var oldDist = history.pop();
 			var newDist = history[history.length-1];
 
-			var tweenTwo = new TWEEN.Tween( { d:oldDist } )
+			controls.minDistance = oldDist;
+			controls.maxDistance = oldDist;
+
+			if(parentObj.type == 'GS') {
+				
+				callback( { type:parentObj.type, fid:parentObj.fid, sid:parentObj.sid });
+				
+				var from = new THREE.Vector3().copy( controls.target );
+				var to = new THREE.Vector3().copy( parentObj.position );
+
+				var orbitCenterTween = new TWEEN.Tween( from )
+				.to( to, scaleTime )
+				.onUpdate( function() {
+					controls.target.x = from.x;
+					controls.target.y = from.y;
+					controls.target.z = from.z;
+				})
+				.start();
+
+				var zoomTween = new TWEEN.Tween( { d:oldDist } )
 				.to( { d:newDist}, scaleTime  )
 				.onUpdate( function () {
 
@@ -203,42 +165,30 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 				})
 				.onComplete( function() {
 
-					controls.minDistance = selectedNode.minDistToCamera(camera.fov);
+					controls.minDistance = parentObj.minDistToCamera(camera.fov);
 					controls.maxDistance = Infinity;
-					selectedNode.deSelect();
-					selectedNode = null;
 					busy = false;
 				} )
 				.start();
+			} else {
 
-			selectedNode.repositionSiblingsBack(5,scaleTime);
-		}
+				var obj = historyExpand[historyExpand.length-1];
 
-		//rollback Expand
-		else if(selectedNode === null) {
-			
-			busy = true;
+				callback( { type:obj.type, fid:obj.fid, sid:obj.sid });
 
-			if(historyExpand.length > 0) {
+				var from = new THREE.Vector3().copy( controls.target );
+				var to = new THREE.Vector3().copy(  obj.position );
+				
+				var orbitCenterTween = new TWEEN.Tween( from )
+				.to( to, scaleTime )
+				.onUpdate( function() {
+					controls.target.x = from.x;
+					controls.target.y = from.y;
+					controls.target.z = from.z;
+				})
+				.start();
 
-				callback( { 
-					type:historyExpand[historyExpand.length-1].type, 
-					fid:historyExpand[historyExpand.length-1].fid, 
-					sid:historyExpand[historyExpand.length-1].sid 
-				});
-
-				var parentObj = historyExpand.pop();
-
-				parentObj.rescaleBack(10,scaleTime);
-				parentObj.repositionSiblingsBack(15,scaleTime);
-
-				var oldDist = history.pop();
-				var newDist = history[history.length-1];
-
-				controls.minDistance = oldDist;
-				controls.maxDistance = oldDist;
-
-				var tweenTwo = new TWEEN.Tween( { d:oldDist } )
+				var zoomTween = new TWEEN.Tween( { d:oldDist } )
 					.to( { d:newDist}, scaleTime  )
 					.onUpdate( function () {
 
@@ -247,16 +197,17 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 					})
 					.onComplete( function() {
 
-						//controls.minDistance = selectedNode.r * 2.4;
+						controls.minDistance = obj.minChildrenDistToCamera(camera.fov);
 						controls.maxDistance = Infinity;
 						busy = false;
 					} )
 					.start();
-
-				parentObj.expanded = false;
-			} else {
-				busy = false;
 			}
+
+			parentObj.expanded = false;
+		} else {
+
+			busy = false;
 		}
 	};
 	

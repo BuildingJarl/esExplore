@@ -9,14 +9,12 @@ angular.module('esExploreApp')
 			update: false
 		}
 
-		$scope.source = {};
-		$scope.source.global = false;
-
 		//get valid files from RepoService
 		$scope.$on('initSourceViewer', function( event, data ) {
 
 			$scope.files = repositoryService.getValidFilesForView();		
-			
+			$scope.selectedScope = repositoryService.getGlobalScope();
+
 			$scope.toggle.showFiles = true;
 			$scope.toggle.showCurrent = true;
 			$scope.toggle.showChildren = true;
@@ -33,7 +31,6 @@ angular.module('esExploreApp')
 					$scope.selectedScope = repositoryService.getGlobalScope();
 					
 					resetSelectFile();
-					$scope.source.global = true;
 
 				} else if ( data.type === 'FGS' ) {
 
@@ -42,12 +39,9 @@ angular.module('esExploreApp')
 					resetSelectFile();
 					selectFile( $scope.selectedScope.fid );
 
-					$scope.source.global = false;
-
 				} else if ( data.type === 'CS' ) {
 
 					$scope.selectedScope = repositoryService.getChildScope(data.sid);
-
 				}
 			});
 

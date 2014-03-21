@@ -69,14 +69,5 @@ div.sourceViewerPanel.sourceViewerPanelBottom
 	div.title()
 		| Source Code
 	div.sourceCode(ng-show="toggle.showSource")
-		
-		div(ng-show="source.global")
-			h3
-				|Global Scope is currently selected. 
-			h5
-				|To view Source code select a file global scope
-			ul
-				li Left click to select/expand
-				li Right click to undo
 
 		pre(prism-directive)
