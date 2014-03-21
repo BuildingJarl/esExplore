@@ -10,7 +10,6 @@ angular.module('esExploreApp')
 			var containerHeight = element[0].getClientRects()[0].height;
 
 			scope.$watch( 'toggle', function() {
-				console.log("toggel changed")
 
 				var newHeight = containerHeight;
 
@@ -20,7 +19,6 @@ angular.module('esExploreApp')
 					newHeight -= child.getClientRects()[0].height
 				}	
 				
-
 				panel.css({ height: newHeight + 'px' })
 			},true);
 
@@ -38,9 +36,7 @@ angular.module('esExploreApp')
 						newHeight -= child.getClientRects()[0].height
 					}	
 					
-
 					panel.css({ height: newHeight + 'px' })
-
 				}, 50);
 			});
 		}

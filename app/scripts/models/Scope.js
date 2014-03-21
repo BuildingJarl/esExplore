@@ -8,7 +8,6 @@ ES_EX.Scope = function( scope, fid ) {
 	this.children = [];
 	this.fid = fid;
 
-
 	this.startLoc = getStartLoc();
 	this.endLoc = getEndLoc();
 
@@ -43,47 +42,6 @@ ES_EX.Scope = function( scope, fid ) {
 			sid: this.id,
 			children: this.children
 		};
-	};
-
-	function getName() {
-
-		var name = '';
-
-		switch(self.data.block.type){
-
-			case 'FunctionExpression': {
-
-				name += self.data.type + " (";
-
-				for( var i = 0; i < self.data.block.params.length; i++ ) {
-					name += " " + self.data.block.params[i].name;
-					if(i != self.data.block.params.length-1){
-						name += ",";
-					}
-				}
-
-				name += " )";
-				return name;
-				break;
-			}
-			case 'FunctionDeclaration': {
-
-				name += self.data.type + " " + self.data.block.id.name +  " (";
-
-				for( var i = 0; i < self.data.block.params.length; i++ ) {
-					name += " " + self.data.block.params[i].name;
-					if(i != self.data.block.params.length-1){
-						name += ",";
-					}
-				}
-
-				name += " )";
-				return name;
-				break;
-			}
-		}
-
-		return name;
 	};
 
 	function getStartLoc() {

@@ -79,7 +79,4 @@ div.sourceViewerPanel.sourceViewerPanelBottom
 				li Left click to select/expand
 				li Right click to undo
 
-		div(ng-repeat="file in files" ng-show="file.showSource")
-			pre
-				code(class="language-javascript")
-					{{ file.source }}
+		pre(prism-directive)

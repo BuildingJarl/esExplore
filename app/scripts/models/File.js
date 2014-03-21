@@ -10,19 +10,24 @@ ES_EX.File = function( f ) {
 	this.ast;
 	this.scope;
 
-	this.showSource = false;
 	this.selected = false;
 
 	this.addAst = function( ast ) {
 
 		this.ast = ast;
 
+		this.addSource();
+	};
+
+	this.addSource = function() {
+
 		if(this.isValid) {
-			this.source = escodegen.generate(this.ast);
+			this.source = escodegen.generate( this.ast );
 		}
 	};
 
 	this.addScope = function( scope ) {
+		
 		this.scope = new ES_EX.Scope( scope, this.id );
 		this.scope.addChildScopes();
 	};

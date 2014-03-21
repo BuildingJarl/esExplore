@@ -3,7 +3,7 @@
 ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 	this.tree = tree;
-
+	var self = this;
 	var controls;
 	var camera;
 
@@ -26,9 +26,16 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
     	//element.textContent = text;
     	element.className = 'SphereLabel';
     	element.style.display = 'none';
-    	document.getElementById('scopeViewer').appendChild(element);
+    	var cont = document.getElementById('scopeViewer');
+
+    	cont.onmouseout = function() {
+    		self.onHoverOff();
+    	};
+
+    	cont.appendChild(element);
+
     	return element;
-	}
+	};
 
 	this.init = function( ccamera, ccontrols ) {
 
@@ -264,19 +271,15 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 			label.style.top = x + 'px';
 			label.style.left = y + 'px';
 			label.style.display = 'block';
-
-			console.log('added');
 		}
 
 		label.style.top = y + 'px';
 		label.style.left = x + 15 + 'px';
-
 	};
 
 	this.onHoverOff = function( x , y ) {
 
 		if(hoveredNode) {
-			console.log( 'removied' );
 			label.style.display = 'none';
 			hoveredNode = null;
 		}

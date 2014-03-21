@@ -10,11 +10,15 @@ ES_EX.PackedTreeNode = function( node ) {
 	node.selected = false;
 
 	node.minDistToCamera = function( fov ) {
-		
-		var height = (this.r * 2);
-		var vFov = fov * (Math.PI / 180)
-		var dist =  height / (2 * Math.tan( vFov / 2 ));
-		return dist;
+		/*
+			var height = (this.r * 2);
+			var vFov = fov * (Math.PI / 180)
+			var dist =  height / (2 * Math.tan( vFov / 2 ));
+			//var dist =  radius / ( Math.sin( camera.fov * ( Math.PI / 180 ) / 2 ) );
+			return dist;
+		*/
+		var dist =  this.r / (Math.sin( fov * (Math.PI/180) / 2 ));
+		return dist
 	};
 
 	node.minChildrenDistToCamera = function( fov ) {

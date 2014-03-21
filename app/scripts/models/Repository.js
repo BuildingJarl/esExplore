@@ -55,13 +55,13 @@ ES_EX.Repository = function() {
 
 	this.getValidFiles = function() {
 
-		var files = [];
+		var files = {};
 
 		for(var i = 0; i < this.files.length; i ++) {
 
 			if(this.files[i].isValid === true) {
 				
-				files.push(this.files[i]);
+				files[this.files[i].id] = this.files[i];
 			}
 		}
 
