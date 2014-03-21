@@ -32,12 +32,16 @@ angular.module('esExploreApp')
 
 					$scope.selectedScope = repositoryService.getGlobalScope();
 					
+					resetSelectFile();
 					$scope.source.global = true;
 
 				} else if ( data.type === 'FGS' ) {
 
 					$scope.selectedScope = repositoryService.getFileGlobalScope(data.fid);
 					
+					resetSelectFile();
+					selectFile( $scope.selectedScope.fid );
+
 					$scope.source.global = false;
 
 				} else if ( data.type === 'CS' ) {
@@ -49,6 +53,21 @@ angular.module('esExploreApp')
 
 			$scope.toggle.update = !$scope.toggle.update;
 		});
+
+		function selectFile( id ) {
+			
+			$scope.files[id].selected = true;
+			console.log($scope.files[id])
+		};
+
+		function resetSelectFile() {
+		
+			for (var key in $scope.files) {
+			   
+			   var file = $scope.files[key];
+			   file.selected = false;  
+			}
+		};
 });
 
 		 

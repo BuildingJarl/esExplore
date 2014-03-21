@@ -16,7 +16,7 @@ div.sourceViewerPanel
 			div.headerItem.three Lines
 			div.headerItem.three Scopes
 		div.bodyContainer
-			div.bodyRow(ng-repeat="file in files")
+			div.bodyRow(ng-repeat="file in files" ng-class=" {fileSelected: file.selected}")
 				div.bodyItem.three  {{ file.name }}
 				div.bodyItem.three  {{ file.getLineNr() }}
 				div.bodyItem.three  {{ file.getScopeCount() }}

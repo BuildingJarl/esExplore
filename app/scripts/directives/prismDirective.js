@@ -7,7 +7,7 @@ angular.module('esExploreApp')
 
 			var code = angular.element('<code></code>')
 			var currentFileId = -1;
-			var fileHighlightHistory = [];
+			var toglobal = true;
 
 			//elem.scrollTop = elem.scrollHeight; 
 
@@ -22,14 +22,15 @@ angular.module('esExploreApp')
 
 				if( scope.selectedScope.name === 'Global Scope' ) {
 
-
+					code.text('');
+					toglobal = true;
 				} 
 				else {
 
 					var sid = scope.selectedScope.sid;
 					var fid = scope.selectedScope.fid;
 
-					if( currentFileId != fid ) {
+					if( currentFileId != fid || toglobal == true ) {
 
 						code.text(scope.files[fid].source);
 
@@ -37,6 +38,7 @@ angular.module('esExploreApp')
 							currentFileId = fid;
 						});
 
+						toglobal = false;
 					} else {
 
 						var start = scope.selectedScope.startLoc
