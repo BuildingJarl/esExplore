@@ -74,7 +74,8 @@ angular.module('esExploreApp')
 
             if(file.isValid && ast) {
                file.addAst(ast); 
-               file.addScope( escope.analyze( ast ).scopes[0] ); 
+               file.addScope( escope.analyze( ast ).scopes[0] );
+               file.addSource(data);
             }
 
             defer.resolve(file);
