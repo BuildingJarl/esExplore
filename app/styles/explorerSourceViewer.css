@@ -103,12 +103,12 @@
 }
 
 .sourceViewerPanelBottom .sourceCode {
-	overflow:auto;
+	/*overflow:auto;
 	width:100%;
 	position: absolute;
 	top:40px;
 	bottom:15px;
-	/*
+	
 	position: absolute;
 	overflow:auto;
 	
@@ -126,11 +126,11 @@
 	margin-top: 0;
 	padding-bottom: 0;
 	margin-bottom: 0;
-	top:0;
-	bottom:0;
+	top:40px;
+	bottom:15px;
 	left:0;
 	right:0;
-	overflow: initial;
+	overflow: auto;
 	max-height: initial;
 	padding-left: 3em;
 	cursor: default;
