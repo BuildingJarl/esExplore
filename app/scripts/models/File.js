@@ -21,7 +21,7 @@ ES_EX.File = function( f ) {
 
 		if(this.isValid) {
 			//this.source = escodegen.generate( this.ast, ES_EX.File.escodegenOptions );
-			this.source = data;
+			this.source = data.replace(/(\r\n|\r)/gm,"\n");
 		}
 	};
 

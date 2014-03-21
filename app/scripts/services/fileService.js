@@ -35,7 +35,7 @@ angular.module('esExploreApp')
             defer.reject(msg);
          };
 
-         fileReader.readAsBinaryString( file );
+         fileReader.readAsText( file );
 
          return defer.promise;
       };
@@ -75,7 +75,7 @@ angular.module('esExploreApp')
             if(file.isValid && ast) {
                file.addAst(ast); 
                file.addScope( escope.analyze( ast ).scopes[0] );
-               file.addSource(data);
+               file.addSource( data );
             }
 
             defer.resolve(file);
