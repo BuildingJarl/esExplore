@@ -14,14 +14,17 @@ angular.module('esExploreApp')
 
          procideEvents = false;
          rendererCtrl.stopControls();
-         treeCtrl.hideLabel();
+         if(treeCtrl) 
+            treeCtrl.hideLabel();
       };
 
       this.startEvents = function() {
 
          procideEvents = true;
          rendererCtrl.startControls();
-         treeCtrl.showLabel();
+
+         if(treeCtrl) 
+            treeCtrl.showLabel();      
       }
 
    	this.start = function() {

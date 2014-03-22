@@ -5,11 +5,13 @@ angular.module('esExploreApp')
 		//keydown
 
 	var keycodes = {
-		17: 'ctrl'
+		17: 'ctrl',
+      32: 'space'
 	};
 
 	var keys = {
-		ctrl: { isDown:false, callback: undefined }
+		ctrl: { isDown:false, callback: undefined },
+      space: { isDown:false, callback: undefined }
 	};
 
 	this.bindCallback = function( toWhat, cb ) {

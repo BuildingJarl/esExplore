@@ -1,6 +1,6 @@
 #explorerViewport {
 	position: absolute;
-	top: 40px;
+	top: 50px;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -47,16 +47,31 @@
 	bottom: 0;
 	left:0;
 	right:0;
-	background: green;
-	z-index: 999;
+	z-index: 1;
+
+	background: white;
+	
+	-webkit-filter: blur(20px);
+    -moz-filter: blur(20px);
+    -o-filter: blur(20px);
+    -ms-filter: blur(20px);
+    filter: blur(20px);
+    opacity: 0.4;
+}
+#scopeViewer .displayPanelContainer {
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left:0;
+	right:0;
+	z-index: 2;
 }
 
-#scopeViewer .backdrop .displayPanel {
+#scopeViewer .displayPanelContainer pre {
 
-	height: 90%;
-	width: 90%;
-	background: red;
-
+	max-width: 90%;
+	max-height: 90%;
+	overflow: auto;
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 3%;	

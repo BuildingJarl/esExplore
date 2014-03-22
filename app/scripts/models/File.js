@@ -78,7 +78,7 @@ ES_EX.File = function( f ) {
 		var split = this.source.split('\n');
 		var res = '';
 
-		for( var i = from; i < to; i++) {
+		for( var i = from-1; i < to-1; i++) {
 			res += split[i] + '\n';
 		}
 

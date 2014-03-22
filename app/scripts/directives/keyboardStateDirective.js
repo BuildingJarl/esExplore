@@ -9,7 +9,7 @@ angular.module('esExploreApp')
 
 			$document.bind( 'keydown', function( event ){
 
-				event.preventDefault()
+				//event.preventDefault()
 				keyboardStateService.keydown(event.which);
 			});
 

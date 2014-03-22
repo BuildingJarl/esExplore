@@ -1,7 +1,7 @@
 div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCtrl")
 	
 	div.logo
-		| EsExplore
+		img(src="images/Logo.svg")
 
 	div( class="menu" )
 		div( class="menuItem" tooltip content="{{createTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'create' )")
@@ -15,10 +15,10 @@ div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCt
 		div( class="menuItem" )
 			i(class="fa fa-comment")
 
-	div( pageslide="left" ps-size="365px" ps-open="showCreate" ps-target="#createPageSlide" ps-custom-top="41px" )
-	div( pageslide="left" ps-size="365px" ps-open="showSettings" ps-target="#settingsPageSlide" ps-custom-top="41px" )
-	div( pageslide="left" ps-size="365px" ps-open="showHelp" ps-target="#helpPageSlide" ps-custom-top="41px" )
-	div( pageslide="left" ps-size="365px" ps-open="showInfo" ps-target="#infoPageSlide" ps-custom-top="41px" )
+	div( pageslide="left" ps-size="365px" ps-open="showCreate" ps-target="#createPageSlide" ps-custom-top="51px" )
+	div( pageslide="left" ps-size="365px" ps-open="showSettings" ps-target="#settingsPageSlide" ps-custom-top="51px" )
+	div( pageslide="left" ps-size="365px" ps-open="showHelp" ps-target="#helpPageSlide" ps-custom-top="51px" )
+	div( pageslide="left" ps-size="365px" ps-open="showInfo" ps-target="#infoPageSlide" ps-custom-top="51px" )
 
 	div(id="createPageSlide")
 		include sliders/create
