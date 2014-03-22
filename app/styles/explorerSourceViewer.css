@@ -85,13 +85,19 @@
 }
 
 .sourceViewerPanel .tableContainer .bodyContainer .fileSelected {
-	color:red;
+	color:#00FFFF;
 }
 
 .sourceViewerPanel .tableContainer .four:first-child {
 	width:54%;
 	padding-left: 1%;
 }
+
+.sourceViewerPanel .tableContainer .currentName {
+	color: #A6E22E;
+}
+
+
 
 .sourceViewerPanel .tableContainer .four:nth-child(n+2) {
 	width:15%;
