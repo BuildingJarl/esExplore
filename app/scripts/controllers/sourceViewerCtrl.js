@@ -35,6 +35,7 @@ angular.module('esExploreApp')
 				} else if ( data.type === 'FGS' ) {
 
 					$scope.selectedScope = repositoryService.getFileGlobalScope(data.fid);
+					$scope.selectedScope.color = data.color;
 					
 					resetSelectFile();
 					selectFile( $scope.selectedScope.fid );
@@ -42,6 +43,7 @@ angular.module('esExploreApp')
 				} else if ( data.type === 'CS' ) {
 
 					$scope.selectedScope = repositoryService.getChildScope(data.sid);
+					$scope.selectedScope.color = data.color;
 				}
 			});
 

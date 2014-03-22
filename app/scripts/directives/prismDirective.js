@@ -32,6 +32,20 @@ angular.module('esExploreApp')
 						code.text(scope.files[fid].source);
 
 						Prism.highlightElement(code[0], true, function() {
+							
+							$timeout( function() {
+
+								var start = scope.selectedScope.startLoc
+								var end = scope.selectedScope.endLoc;
+								var color = scope.selectedScope.color;
+
+								var span = getLineNrSpan( code.children());
+								resetHighlight( span );
+								highLightScope( start, end, span, color );
+								element[0].scrollTop = (start-1) * 19;
+
+							}, 50)
+
 							currentFileId = fid;
 						});
 
@@ -40,10 +54,11 @@ angular.module('esExploreApp')
 
 						var start = scope.selectedScope.startLoc
 						var end = scope.selectedScope.endLoc;
+						var color = scope.selectedScope.color;
 
 						var span = getLineNrSpan( code.children());
 						resetHighlight( span );
-						highLightScope( start, end, span );
+						highLightScope( start, end, span, color );
 						element[0].scrollTop = (start-1) * 19;
 					}
 				}
@@ -55,18 +70,22 @@ angular.module('esExploreApp')
 
 				for( var i = 0; i <= children.length; i++ ) { 
 					var child = angular.element(children[i]);
-					child.css( { background: 'initial' } );
+					child.css( { backgroundColor: 'initial' } );
+					child.find().css( {color: 'initial'} );
 				}
 			}
 
-			function highLightScope( start, end, container ) {
+			function highLightScope( start, end, container, color ) {
 
 				var children = container.children();
+				var split = color.split(',');
 
 				for( var i = start-1; i <= end-1; i++ ) {
 
 					var child = angular.element(children[i]);
-					child.css( { background:'red' } );
+					child.css( { backgroundColor: 'rgba( +' + split[0] + ',' + split[1] + ',' + split[2] + ', 0.5)' } );
+					child.css( {color: 'rgba(39,40,34,1)!important'} );
+					console.log(child);
 				}
 			}
 

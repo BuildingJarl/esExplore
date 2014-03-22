@@ -77,7 +77,7 @@ ES_EX.PackedSphereCtrl = function( tree, clickCallback, hoverCallback ) {
 
 			busy = true;
 
-			clickCallback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
+			clickCallback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid, color:selectedNode.color });
 
 			var oldDist = camera.position.distanceTo(selectedNode.position);
 			var newDist = selectedNode.minDistToCamera(camera.fov);
@@ -125,7 +125,7 @@ ES_EX.PackedSphereCtrl = function( tree, clickCallback, hoverCallback ) {
 		}
 		else if( !selectedNode.canBeExpanded ) {
 
-			clickCallback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
+			clickCallback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid, color:selectedNode.color });
 
 		}
 	};
@@ -151,7 +151,7 @@ ES_EX.PackedSphereCtrl = function( tree, clickCallback, hoverCallback ) {
 
 			if(parentObj.type == 'GS') {
 				
-				clickCallback( { type:parentObj.type, fid:parentObj.fid, sid:parentObj.sid });
+				clickCallback( { type:parentObj.type, fid:parentObj.fid, sid:parentObj.sid, color:parentObj.color });
 				
 				var from = new THREE.Vector3().copy( controls.target );
 				var to = new THREE.Vector3().copy( parentObj.position );
@@ -183,7 +183,7 @@ ES_EX.PackedSphereCtrl = function( tree, clickCallback, hoverCallback ) {
 
 				var obj = historyExpand[historyExpand.length-1];
 
-				clickCallback( { type:obj.type, fid:obj.fid, sid:obj.sid });
+				clickCallback( { type:obj.type, fid:obj.fid, sid:obj.sid, color:parentObj.color });
 
 				var from = new THREE.Vector3().copy( controls.target );
 				var to = new THREE.Vector3().copy(  obj.position );
@@ -224,7 +224,7 @@ ES_EX.PackedSphereCtrl = function( tree, clickCallback, hoverCallback ) {
 
 		var obj = tree.getNodeById(intersects[0].object.id);
 
-		var data = { type:obj.type, fid:obj.fid, sid:obj.sid }
+		var data = { type: obj.type, fid: obj.fid, sid: obj.sid, color: obj.color }
 
 		hoverCallback( { hover: true, data: data }  );
 

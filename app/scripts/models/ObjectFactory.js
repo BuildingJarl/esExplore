@@ -78,6 +78,7 @@ ES_EX.ObjectFactory = function( ) {
     	sprite.visible = false;
     	obj.add( sprite );
     	obj.position = pos;
+        obj.userData.color = '120,4,166'
     	return obj;
     };
     
@@ -94,6 +95,7 @@ ES_EX.ObjectFactory = function( ) {
 
     	obj.add( sprite );
     	obj.position = pos;
+        obj.userData.color = '23,117,255'
     	return obj;
     };
 
@@ -108,24 +110,28 @@ ES_EX.ObjectFactory = function( ) {
 
     		case 2: {
     			var col = new THREE.Color( 0x00ff00 );
-    			obj.material.uniforms.glowColor.value = col; 
+    			obj.material.uniforms.glowColor.value = col;
+                obj.userData.color = '0,255,0';
     			break;
     		};
     		case 3: {
     			var col = new THREE.Color( 0xF5FF00 );
-    			obj.material.uniforms.glowColor.value = col; 
+    			obj.material.uniforms.glowColor.value = col;
+                obj.userData.color = '245,255,0'; 
     			break;
     		};
 
     		case 4: {
     			var col = new THREE.Color( 0xFF8E00 );
-    			obj.material.uniforms.glowColor.value = col; 
+    			obj.material.uniforms.glowColor.value = col;
+                obj.userData.color = '255,142,0';  
     			break;
     		};
 
     		case 5: {
     			var col = new THREE.Color( 0xFF1E00 );
-    			obj.material.uniforms.glowColor.value = col; 
+    			obj.material.uniforms.glowColor.value = col;
+                obj.userData.color = '255,30,0';  
     			break;
     		};
 
@@ -133,6 +139,7 @@ ES_EX.ObjectFactory = function( ) {
     		default: {
     			var col = new THREE.Color( 0xfffff );
     			obj.material.uniforms.glowColor.value = col;
+                obj.userData.color = '255,255,255'; 
     			break; 
     		};
     	}

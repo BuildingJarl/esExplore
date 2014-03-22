@@ -163,6 +163,7 @@ ES_EX.PackedSphereTreeUtils = function() {
 			}
 
 			node.doid = node.drawObject.id;
+			node.color = node.drawObject.userData.color;
 		}
 	};
 
