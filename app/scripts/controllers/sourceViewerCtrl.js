@@ -22,7 +22,7 @@ angular.module('esExploreApp')
 		});
 
 		//this gets called everytime the user selects a sphere!
-		$scope.$on('objectSelected', function( event, data ) {
+		$scope.$on('threeClickEvent', function( event, data ) {
 
 			$scope.$apply( function() {
 
@@ -46,6 +46,10 @@ angular.module('esExploreApp')
 			});
 
 			$scope.toggle.update = !$scope.toggle.update;
+		});
+
+		$scope.$on( 'threeHoverEvent', function( event, data ) {
+
 		});
 
 		function selectFile( id ) {

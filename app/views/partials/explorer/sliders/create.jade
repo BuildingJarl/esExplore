@@ -12,11 +12,15 @@ div.createPageSlide.Panel
 			span.borderBottom
 				| Add File(s)
 				input( type="file" multiple="" style="display:none;")
+				div.icon
+					i.fa.fa-files-o
 
 		div.buttonBar(uploader)
 			span
 				| Add Folders(s)
 				input( type="file" webkitdirectory style="display:none;")
+				div.icon
+					i.fa.fa-folder-open-o
 
 		div.tableContainer
 				div.row(ng-repeat="file in files")
@@ -30,10 +34,14 @@ div.createPageSlide.Panel
 		div.buttonBar(ng-click="resetRepo()")
 			span.borderBottom
 				|Clear
+				div.icon
+					i.fa.fa-eraser
 
 		div.buttonBar(ng-click="createVisualisation()")
 			span
 				|Create
+				div.icon
+					i.fa.fa-dot-circle-o
 
 
 			

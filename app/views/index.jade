@@ -41,6 +41,7 @@ html(lang="en")
     script(src="scripts/controllers/explorerCtrl.js")
     script(src="scripts/controllers/explorerMenubarCtrl.js")
     script(src="scripts/controllers/sourceViewerCtrl.js")
+    script(src="scripts/controllers/scopeViewerCtrl.js")
 
     script(src="scripts/directives/pageslide.js")
     script(src="scripts/directives/uploader.js")
@@ -49,11 +50,14 @@ html(lang="en")
     script(src="scripts/directives/tooltip.js")
     script(src="scripts/directives/sourceViewerDirective.js")
     script(src="scripts/directives/prismDirective.js")
+    script(src="scripts/directives/keyboardStateDirective.js")
+    script(src="scripts/directives/scopeSourceDirective.js")
 
     script(src="scripts/services/repositoryService.js")
     script(src="scripts/services/fileService.js")
     script(src="scripts/services/layoutService.js")
     script(src="scripts/services/threeService.js")
+    script(src="scripts/services/keyboardStateService.js")
 
     script(src="scripts/models/ES_EX.js")
     script(src="scripts/models/EsprimaExtractor.js")
@@ -68,7 +72,7 @@ html(lang="en")
     script(src="scripts/models/PackedSphereTreeUtils.js")
     script(src="scripts/models/PackedTreeNode.js")
 
-  body(ng-app="esExploreApp")
+  body(ng-app="esExploreApp" keyboard-state-directive)
 
     script(id="vertexShader" type="x-shader/x-vertex").
         uniform vec3 viewVector;

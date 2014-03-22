@@ -7,16 +7,21 @@ angular.module('esExploreApp')
 			explorerMenubar: 'partials/explorerMenubar'
 		};
 
-		function selectCallback( data ) {
+		function clickCallback( data ) {
 			
-			$scope.$broadcast('objectSelected', data );
+			$scope.$broadcast('threeClickEvent', data );
+		};
+
+		function hoverCallback( data ) {
+			
+			$scope.$broadcast('threeHoverEvent', data );
 		};
 
 		$scope.$on('createVisualisation', function( event,data ) {
 
 			$scope.$broadcast('initSourceViewer');
 
-			var visTree = layoutService.create( data, selectCallback );
+			var visTree = layoutService.create( data, clickCallback, hoverCallback );
 
 			threeService.stop();
 			threeService.addData( visTree );

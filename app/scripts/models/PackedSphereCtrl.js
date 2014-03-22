@@ -1,6 +1,6 @@
 'use strict'
 
-ES_EX.PackedSphereCtrl = function( tree, callback ) {
+ES_EX.PackedSphereCtrl = function( tree, clickCallback, hoverCallback ) {
 
 	this.tree = tree;
 	var self = this;
@@ -15,6 +15,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 	var historyExpand = [];
 
 	var hoveredNode = null;
+	var disableOnMouseOut = false;
 
 	var busy = false;
 
@@ -29,7 +30,10 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
     	var cont = document.getElementById('scopeViewer');
 
     	cont.onmouseout = function() {
-    		self.onHoverOff();
+    		
+    		if(!disableOnMouseOut) {
+    			self.onHoverOff();
+    		}
     	};
 
     	cont.appendChild(element);
@@ -73,7 +77,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 			busy = true;
 
-			callback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
+			clickCallback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
 
 			var oldDist = camera.position.distanceTo(selectedNode.position);
 			var newDist = selectedNode.minDistToCamera(camera.fov);
@@ -119,6 +123,11 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 			history.push( newDist );
 			historyExpand.push( selectedNode );	
 		}
+		else if( !selectedNode.canBeExpanded ) {
+
+			clickCallback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid });
+
+		}
 	};
 
 	this.onRightClick = function() {
@@ -142,7 +151,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 			if(parentObj.type == 'GS') {
 				
-				callback( { type:parentObj.type, fid:parentObj.fid, sid:parentObj.sid });
+				clickCallback( { type:parentObj.type, fid:parentObj.fid, sid:parentObj.sid });
 				
 				var from = new THREE.Vector3().copy( controls.target );
 				var to = new THREE.Vector3().copy( parentObj.position );
@@ -174,7 +183,7 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 				var obj = historyExpand[historyExpand.length-1];
 
-				callback( { type:obj.type, fid:obj.fid, sid:obj.sid });
+				clickCallback( { type:obj.type, fid:obj.fid, sid:obj.sid });
 
 				var from = new THREE.Vector3().copy( controls.target );
 				var to = new THREE.Vector3().copy(  obj.position );
@@ -215,6 +224,10 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 		var obj = tree.getNodeById(intersects[0].object.id);
 
+		var data = { type:obj.type, fid:obj.fid, sid:obj.sid }
+
+		hoverCallback( { hover: true, data: data }  );
+
 		if( obj !== hoveredNode ) {
 
 			hoveredNode = obj;
@@ -230,10 +243,24 @@ ES_EX.PackedSphereCtrl = function( tree, callback ) {
 
 	this.onHoverOff = function( x , y ) {
 
+		hoverCallback( { hover: false, data: undefined }  );
+
 		if(hoveredNode) {
 			label.style.display = 'none';
 			hoveredNode = null;
 		}
+	};
+
+	this.hideLabel = function() {
+		
+		disableOnMouseOut = true;
+		label.style.display = 'none';
+		hoveredNode = null;
+	};
+
+	this.showLabel = function() {
+
+    	disableOnMouseOut = false;		
 	};
 	
 };

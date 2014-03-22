@@ -57,15 +57,12 @@ angular.module('esExploreApp')
 					var newPos = x + deltaX;
 						
 					var newRight = lastWinSize.w - newPos;
-					console.log(newRight);
 
 					if( newRight <= maxRight && newRight >= minRight ) {
 						resizebarActive.css( { left: newPos + 'px' } );	
 					} else {
 						//mouseup(event);
-					}
-			
-							
+					}			
 				};
 				
 				function mouseup(event) {

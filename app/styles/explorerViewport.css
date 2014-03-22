@@ -40,3 +40,24 @@
 	cursor: ew-resize;
 	display: none;
 }
+
+#scopeViewer .backdrop {
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left:0;
+	right:0;
+	background: green;
+	z-index: 999;
+}
+
+#scopeViewer .backdrop .displayPanel {
+
+	height: 90%;
+	width: 90%;
+	background: red;
+
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 3%;	
+}

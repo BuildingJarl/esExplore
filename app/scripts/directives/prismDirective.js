@@ -9,9 +9,6 @@ angular.module('esExploreApp')
 			var currentFileId = -1;
 			var toglobal = true;
 
-			//elem.scrollTop = elem.scrollHeight; 
-
-
 			element.addClass('line-numbers language-javascript prism-directive') 
 			element.append(code);
 

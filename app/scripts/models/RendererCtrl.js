@@ -35,6 +35,16 @@ ES_EX.RendererCtrl = function( ) {
       	}
 	};
 
+	this.stopControls = function() {
+		
+		controls.enabled = false;
+	};
+
+	this.startControls = function() {
+		
+		controls.enabled = true;
+	};
+
 	this.addTreeCtrl = function( ctrl ) {
 
 		treeCtrl = ctrl;

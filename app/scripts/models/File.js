@@ -72,6 +72,18 @@ ES_EX.File = function( f ) {
 		scope.name = 'File Global Scope';
 		return scope;
 	};
+
+	this.getSourceFromTo = function( from, to) {
+
+		var split = this.source.split('\n');
+		var res = '';
+
+		for( var i = from; i < to; i++) {
+			res += split[i] + '\n';
+		}
+
+		return res;
+	};
 };
 
 ES_EX.File.escodegenOptions = { 
