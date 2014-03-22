@@ -82,7 +82,7 @@ angular.module('esExploreApp')
 					currentHovered.sid = scope.hoveredObject.data.sid
 
 					if( currentHovered.what === 'GS' ) {
-
+						code.text('');
 					} 
 					else {
 						var startLineNr = repositoryService.repo.scopeSet[currentHovered.sid].startLoc;

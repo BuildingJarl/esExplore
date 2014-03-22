@@ -36,7 +36,7 @@ div.sourceViewerPanel
 			div.headerItem.four Children
 		div.bodyContainer
 			div.bodyRow
-				div.bodyItem.four.currentName {{selectedScope.name}}
+				div.bodyItem.four(ng-style=" { color: currentSelectedNameCol } ") {{selectedScope.name}}
 				div.bodyItem.four {{selectedScope.startLoc}}
 				div.bodyItem.four {{selectedScope.endLoc}}
 				div.bodyItem.four {{selectedScope.children.length}}

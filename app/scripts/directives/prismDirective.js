@@ -84,8 +84,6 @@ angular.module('esExploreApp')
 
 					var child = angular.element(children[i]);
 					child.css( { backgroundColor: 'rgba( +' + split[0] + ',' + split[1] + ',' + split[2] + ', 0.5)' } );
-					child.css( {color: 'rgba(39,40,34,1)!important'} );
-					console.log(child);
 				}
 			}
 

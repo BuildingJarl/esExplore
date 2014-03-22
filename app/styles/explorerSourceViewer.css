@@ -4,6 +4,7 @@
 	bottom:0;
 	right:0;
 	background: #272822;
+	overflow: auto;
 }
 
 .sourceViewerPanel {
@@ -111,22 +112,12 @@
 	position: relative;
 	
 }
+.sourceViewerPanelBottom {
+	padding-bottom:0;
+}
 
 .sourceViewerPanelBottom .sourceCode {
-	/*overflow:auto;
-	width:100%;
-	position: absolute;
-	top:40px;
-	bottom:15px;
 	
-	position: absolute;
-	overflow:auto;
-	
-	bottom:10px;
-	left:0;
-	right:0;
-	top:40px;
-	*/
 }
 
 .sourceViewerPanelBottom .sourceCode .prism-directive {
@@ -137,7 +128,7 @@
 	padding-bottom: 0;
 	margin-bottom: 0;
 	top:40px;
-	bottom:15px;
+	bottom:0;
 	left:0;
 	right:0;
 	overflow: auto;

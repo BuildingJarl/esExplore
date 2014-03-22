@@ -19,7 +19,7 @@ angular.module('esExploreApp')
 					newHeight -= child.getClientRects()[0].height
 				}	
 				
-				panel.css({ height: newHeight + 'px' })
+				panel.css({ height: newHeight-2 + 'px' })
 			},true);
 
 			angular.element($window).bind('resize', function(event) {

@@ -9,6 +9,8 @@ angular.module('esExploreApp')
 			update: false
 		}
 
+		$scope.currentSelectedNameCol = 'inherit';
+
 		//get valid files from RepoService
 		$scope.$on('initSourceViewer', function( event, data ) {
 
@@ -29,13 +31,15 @@ angular.module('esExploreApp')
 				if(data.type === 'GS') {
 
 					$scope.selectedScope = repositoryService.getGlobalScope();
-					
+					$scope.currentSelectedNameCol = setColor(data.color);
+					console.log($scope.currentSelectedNameCol)
 					resetSelectFile();
 
 				} else if ( data.type === 'FGS' ) {
 
 					$scope.selectedScope = repositoryService.getFileGlobalScope(data.fid);
 					$scope.selectedScope.color = data.color;
+					$scope.currentSelectedNameCol = setColor(data.color);
 					
 					resetSelectFile();
 					selectFile( $scope.selectedScope.fid );
@@ -44,6 +48,7 @@ angular.module('esExploreApp')
 
 					$scope.selectedScope = repositoryService.getChildScope(data.sid);
 					$scope.selectedScope.color = data.color;
+					$scope.currentSelectedNameCol = setColor(data.color);
 				}
 			});
 
@@ -53,6 +58,12 @@ angular.module('esExploreApp')
 		$scope.$on( 'threeHoverEvent', function( event, data ) {
 
 		});
+
+		function setColor( color ) {
+			
+			var split = color.split(',');
+			return 'rgba( +' + split[0] + ',' + split[1] + ',' + split[2] + ', 0.8)';
+		}
 
 		function selectFile( id ) {
 			
