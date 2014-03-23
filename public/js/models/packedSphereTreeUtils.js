@@ -1,6 +1,5 @@
 'use strict';
 
-//rename to packedSphereModel!
 ES_EX.PackedSphereTreeUtils = function() {
 
 	this.calculateLayout = function( dim, tree ) {
@@ -166,6 +165,4 @@ ES_EX.PackedSphereTreeUtils = function() {
 			node.color = node.drawObject.userData.color;
 		}
 	};
-
-
 };
