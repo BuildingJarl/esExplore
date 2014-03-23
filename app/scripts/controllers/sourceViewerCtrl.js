@@ -32,7 +32,6 @@ angular.module('esExploreApp')
 
 					$scope.selectedScope = repositoryService.getGlobalScope();
 					$scope.currentSelectedNameCol = setColor(data.color);
-					console.log($scope.currentSelectedNameCol)
 					resetSelectFile();
 
 				} else if ( data.type === 'FGS' ) {
@@ -68,7 +67,6 @@ angular.module('esExploreApp')
 		function selectFile( id ) {
 			
 			$scope.files[id].selected = true;
-			console.log($scope.files[id])
 		};
 
 		function resetSelectFile() {
