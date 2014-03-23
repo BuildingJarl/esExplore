@@ -4,14 +4,14 @@ angular.module('esExploreApp')
 	.controller('explorerMenubarCtrl', function ( $scope, repositoryService ) {
 		
 		$scope.showCreate = false;
-		$scope.showSettings = false
 		$scope.showHelp = false;
-		$scope.showInfo = false;
+		$scope.showAbout = false;
+		$scope.showFeedback = false;
 
 		$scope.createTooltip = 'Create';
-		$scope.settingsTooltip = 'Settings';
-		$scope.infoTooltip = 'Info';
+		$scope.aboutTooltip = 'About';
 		$scope.helpTooltip = 'Help';
+		$scope.feedbackTooltip = 'Feedback';
 
 		$scope.files = repositoryService.repo.files;
 
@@ -23,19 +23,9 @@ angular.module('esExploreApp')
 
 					$scope.showCreate = !$scope.showCreate ;
 
-					$scope.showSettings = false
 					$scope.showHelp = false;
-					$scope.showInfo = false;
-					break;
-				};
-
-				case 'settings': {
-
-					$scope.showSettings = !$scope.showSettings;
-
-					$scope.showCreate = false
-					$scope.showHelp = false;
-					$scope.showInfo = false;
+					$scope.showAbout = false;
+					$scope.showFeedback = false;
 					break;
 				};
 
@@ -43,20 +33,29 @@ angular.module('esExploreApp')
 
 					$scope.showHelp = !$scope.showHelp;
 
-					$scope.showCreate = false
-					$scope.showSettings = false;
-					$scope.showInfo = false;
+					$scope.showCreate = false;
+					$scope.showAbout = false;
+					$scope.showFeedback = false;
 					break;
 				};
 
-				case 'info': {
+				case 'about': {
 
-					$scope.showInfo = !$scope.showInfo;
+					$scope.showAbout = !$scope.showAbout;
 
 					$scope.showCreate = false;
-					$scope.showSettings = false;
 					$scope.showHelp = false;
+					$scope.showFeedback = false;
 					break;
+				}
+
+				case 'feedback': {
+					$scope.showFeedback = !$scope.showFeedback;
+
+					$scope.showCreate = false;
+					$scope.showHelp = false;
+					$scope.showAbout = false;
+					break; 
 				}
 			}
 		};

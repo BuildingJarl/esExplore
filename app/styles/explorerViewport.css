@@ -5,7 +5,12 @@
 	left: 0;
 	right: 0;
 	overflow:hidden;
-	background: blue;
+}
+
+#initialWelcome {
+	height: 100%;
+	width:100%;
+	background: #272822;
 }
 
 #scopeViewer {

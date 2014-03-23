@@ -43,7 +43,6 @@ angular.module('esExploreApp')
 			});
 
 			element.bind('mouseout', function() {
-				console.log('mouseOut')
 
 				$timeout.cancel(prom);
 

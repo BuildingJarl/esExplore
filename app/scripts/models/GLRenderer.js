@@ -14,7 +14,7 @@ ES_EX.GLRenderer = function( ) {
 		console.log(width + " " + height);
 		scene = new THREE.Scene();
 	    camera = ccamera;
-	    renderer = new THREE.WebGLRenderer( {antialias: true } );
+	    renderer = new THREE.WebGLRenderer( {antialias: true, alpha:true } );
 	    renderer.sortObjects = false;
 	    
 	    projector = new THREE.Projector();

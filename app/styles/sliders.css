@@ -1,5 +1,5 @@
 #ng-pageslide {
-	background: #272822;
+	background: #272822;	
 }
 
 #createPageSlide {
@@ -109,4 +109,73 @@
 
 #createPageSlide .pageSlideBody .tableContainer .notValid {
 	color:red;
+}
+
+#ng-pageslide .pageSlideBody {
+	width: 100%;
+}
+
+#ng-pageslide .pageSlideBody .option {
+
+	margin-left: 20px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	background-color: #1B171B;
+	border-radius: 5px;
+	padding: 3px;
+}
+
+#ng-pageslide .pageSlideBody .option .title{
+
+	border-bottom: 1px solid #333434;
+}
+
+#ng-pageslide .pageSlideBody .option .steps {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#ng-pageslide .pageSlideBody .option .steps .step {
+	margin-top: 10px;
+}
+
+#ng-pageslide .pageSlideBody .option .steps .step .stepTitle {
+	margin-bottom: 5px;
+}
+
+#ng-pageslide .pageSlideBody .option .steps .step .stepContent {
+ margin-left: 5px;	
+}
+
+.pageSlideBody .content {
+	margin-left: 17px;
+	width: 320px;
+	text-align: justify;
+}
+.pageSlideBody .content a {
+	text-decoration: none;
+	color:white;
+}
+
+.pageSlideBody .content a:hover {
+	color: #55ffff;
+}
+
+.pageSlideBody .contentFeedback {
+	
+	border-radius: 5px;
+	margin-left: 20px;
+
+}
+
+div.contentFeedback a {
+
+	text-decoration: none;
+	color: #55ffff;
+}
+
+div.contentFeedback a:hover {
+
+	color: white;
 }

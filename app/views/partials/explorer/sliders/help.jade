@@ -1,4 +1,4 @@
-div.createPageSlide.Panel
+div.Panel
 	div.pageSlideHeader
 		
 		div.closeIcon(ng-click="toggleSlider('help')")
@@ -7,3 +7,58 @@ div.createPageSlide.Panel
 			|Help
 
 	div.pageSlideBody
+
+		div.option
+			div.title
+				| How to Use
+			div.steps
+				
+				div.step
+					div.stepTitle
+						|Step 1
+					div.stepContent
+						|Click on the  
+						i.fa.fa-plus-circle
+						|  symbol located on the top menubar
+				div.step
+					div.stepTitle
+						|Step 2
+					div.stepContent
+						|Click on add file(s) 
+						|  or add folder 
+						|  and select desired folder / file(s).
+						br
+						| Currently only Javascript files are supported
+				div.step
+					div.stepTitle
+						|Step 3
+					div.stepContent
+						|Click on create 
+						i.fa.fa-dot-circle-o
+						|  to create a sphere diagram, representing the javascript scope chain hierarchy.
+
+		div.option
+			div.title
+				| Controls
+			div.steps
+				div.step
+					div.stepTitle
+						| Hover
+					div.stepContent
+						| Hover over a sphere to display its name
+				div.step
+					div.stepTitle
+						| Left click
+					div.stepContent
+						| Left click to traverse deeper into the hierarchy
+				div.step
+					div.stepTitle
+						| Right click
+					div.stepContent
+						| Right click to go back to the previous state
+				div.step
+					div.stepTitle
+						|Spacebar
+					div.stepContent
+						| Press and hold the spacebar while hovering over a sphere to dispay its source code
+

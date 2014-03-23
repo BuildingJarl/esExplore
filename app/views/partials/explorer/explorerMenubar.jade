@@ -6,28 +6,26 @@ div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCt
 	div( class="menu" )
 		div( class="menuItem" tooltip content="{{createTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'create' )")
 			i(class="fa fa-plus-circle")
-		div( class="menuItem" tooltip content="{{settingsTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'settings' )")
-			i(class="fa fa-cog")
 		div( class="menuItem" tooltip content="{{helpTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'help' )")
 			i(class="fa fa-question")
-		div( class="menuItem" tooltip content="{{infoTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'info' )")
+		div( class="menuItem" tooltip content="{{aboutTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'about' )")
 			i(class="fa fa-info")
-		div( class="menuItem" )
+		div( class="menuItem" tooltip content="{{feedbackTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'feedback' )")
 			i(class="fa fa-comment")
 
 	div( pageslide="left" ps-size="365px" ps-open="showCreate" ps-target="#createPageSlide" ps-custom-top="51px" )
-	div( pageslide="left" ps-size="365px" ps-open="showSettings" ps-target="#settingsPageSlide" ps-custom-top="51px" )
 	div( pageslide="left" ps-size="365px" ps-open="showHelp" ps-target="#helpPageSlide" ps-custom-top="51px" )
-	div( pageslide="left" ps-size="365px" ps-open="showInfo" ps-target="#infoPageSlide" ps-custom-top="51px" )
+	div( pageslide="left" ps-size="365px" ps-open="showAbout" ps-target="#aboutPageSlide" ps-custom-top="51px" )
+	div( pageslide="left" ps-size="365px" ps-open="showFeedback" ps-target="#feedbackPageSlide" ps-custom-top="51px" )
 
 	div(id="createPageSlide")
 		include sliders/create
 
-	div(id="settingsPageSlide")
-		include sliders/settings
-
 	div(id="helpPageSlide")
 		include sliders/help
 
-	div(id="infoPageSlide")
-		include sliders/info
+	div(id="aboutPageSlide")
+		include sliders/about
+
+	div(id="feedbackPageSlide")
+		include sliders/feedback

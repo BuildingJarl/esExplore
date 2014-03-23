@@ -1,0 +1,46 @@
+div.Panel
+	div.pageSlideHeader
+		
+		div.closeIcon(ng-click="toggleSlider('about')")
+			i.fa.fa-times
+		div.title
+			|About
+
+	div.pageSlideBody
+
+		div.content
+			| EsExplore is web application for visualising the JavaScript scope chain
+			br
+			br
+			| Analysing static source code files can be a time consuming and tedious task, even for experienced developers.
+			br
+			br 
+			| This experiment visualises the JavaScript scope chain hierarchy using interactive packed spheres.
+			br
+			br
+			| Each sphere represents a scope, and its size represents how many children it contains.
+			br
+			br
+			| All rendering is done client-side in Javascript. Try clicking and hovering over spheres.
+			| You can also press and hold the spacebar while hovering to display the corrisponding source code.
+			br
+			br
+			|Built using:
+			br
+			br
+
+			a(href="http://angularjs.org/") AngularJS, 
+
+			a(href="http://threejs.org/") ThreeJs, 
+
+			a(href="http://d3js.org/") D3, 
+
+			a(href="http://esprima.org/") esprima, 
+
+			a(href="https://github.com/Constellation/estraverse") estraverse, 
+
+			a(href="https://github.com/Constellation/escope") escope, 
+
+			|and 
+
+			a(href="http://fortawesome.github.io/Font-Awesome/") font-awesome

@@ -10,6 +10,7 @@ div(explorer-viewport id="explorerViewport" class="Panel")
 	
 	//- container for renderers, three ->directive takes care of init
 	div(id="scopeViewer" three ng-controller="scopeViewerCtrl" scope-source-directive )
+		include explorer/welcome
 
 	//- containers for source code viewer
 	//- controller: sourceViewerCtrl
