@@ -2,7 +2,7 @@ angular.module('esExploreApp')
 	.controller('sourceViewerCtrl', function( $scope, $q , repositoryService ) {
 
 		$scope.toggle = {
-			showFiles: true,
+			showFiles: false,
 			showCurrent: false,
 			showChildren: false,
 			showSource: false,

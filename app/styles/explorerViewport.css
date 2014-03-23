@@ -11,7 +11,35 @@
 	height: 100%;
 	width:100%;
 	background: #272822;
+	overflow: auto;
 }
+
+#initialWelcome .logo {
+
+}
+
+#initialWelcome .about {
+	margin-left: 45px;
+	float: left;
+	width: 385px;
+} 
+
+#initialWelcome .gettingStarted {
+	float: left;
+	margin-left: 45px;
+	width: 380px;
+}
+#initialWelcome .gettingStarted .step {
+	margin-left: 5px;
+	margin-bottom: 10px;
+}
+#initialWelcome .gettingStarted .step .stepTitle {
+	margin-bottom: 7px;
+}
+#initialWelcome .gettingStarted .step .stepContent {
+	margin-left: 5px;
+}
+
 
 #scopeViewer {
 	position: absolute;

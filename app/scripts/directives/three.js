@@ -5,7 +5,7 @@ angular.module('esExploreApp')
 		restrict: "EA",
 		link: function( scope, element, iAttrs ) {
 
-			threeService.init( element[0], true );
+			threeService.init( element[0], false );
 
 			var firstPos = { x:-999, y:-999 };
 			//only left button
