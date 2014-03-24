@@ -24,7 +24,6 @@ ES_EX.GLRenderer = function( ) {
       	renderer.domElement.style.bottom = "0";
       	renderer.domElement.style.left = "0";
       	renderer.domElement.style.zIndex = "0";
-      	renderer.domElement.style.display = "none";
       	renderer.setSize( width, height );
 
 		container.appendChild( renderer.domElement );
@@ -32,10 +31,6 @@ ES_EX.GLRenderer = function( ) {
       	renderer.setClearColor(0x120712, 1);
       	renderer.render( scene, camera );
 	};
-
-	this.display = function() {
-		renderer.domElement.style.display = "block";
-	}
 
 	this.onResize = function( width, height ) {
 

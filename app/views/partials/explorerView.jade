@@ -4,14 +4,24 @@
 //- explorerMenubarCtrl
 include explorer/explorerMenubar
 
+include explorer/welcome
 //- explorerviewport is a directive
 //- split resizable
 div(explorer-viewport id="explorerViewport" class="Panel")
 	
 	//- container for renderers, three ->directive takes care of init
 	div(id="scopeViewer" three ng-controller="scopeViewerCtrl" scope-source-directive )
-		include explorer/welcome
-
+		
+		div#showControls(ng-show="showControlsHelp")
+			div
+				i.fa.fa-times(ng-click="showControlsHelp = !showControlsHelp" )
+			|Right click to expand hovered scope
+			br
+			|Left click to undo expand
+			br
+			|Hover + space to show source code
+		div#hideContols
+			i.fa.fa-info(ng-click="showControlsHelp = !showControlsHelp" ng-hide="showControlsHelp")
 	//- containers for source code viewer
 	//- controller: sourceViewerCtrl
 	div(id="sourceViewer" ng-controller="sourceViewerCtrl" source-viewer-directive )

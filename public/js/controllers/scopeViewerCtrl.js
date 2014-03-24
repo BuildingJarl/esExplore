@@ -8,4 +8,6 @@ angular.module('esExploreApp')
 			})
 			
 		});	
+
+		$scope.showControlsHelp = true;
 });

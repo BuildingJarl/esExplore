@@ -3,6 +3,13 @@
 angular.module('esExploreApp')
 	.controller('explorerCtrl', function ( $scope, repositoryService, layoutService, threeService ) {
 		
+		$scope.showWelcome = true;
+
+		$scope.hideWelcome = function() {
+			
+			$scope.showWelcome = !$scope.showWelcome;
+		}
+
 		$scope.views = {
 			explorerMenubar: 'partials/explorerMenubar'
 		};
@@ -19,6 +26,8 @@ angular.module('esExploreApp')
 
 		$scope.$on('createVisualisation', function( event,data ) {
 
+			$scope.showWelcome = false;
+			
 			$scope.$broadcast('initSourceViewer');
 
 			var visTree = layoutService.create( data, clickCallback, hoverCallback );

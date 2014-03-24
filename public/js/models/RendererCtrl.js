@@ -56,7 +56,6 @@ ES_EX.RendererCtrl = function( ) {
 
 	this.start = function() {
 
-		glRenderer.display();
 		var self = this;
 		console.log("starting loop");
 

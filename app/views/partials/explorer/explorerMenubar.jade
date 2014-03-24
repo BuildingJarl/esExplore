@@ -1,7 +1,7 @@
 div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCtrl")
 	
 	div.logo
-		img(src="img/logo.svg")
+		img(src="img/logo.svg" ng-click="hideWelcome()" style="cursor:pointer;")
 
 	div( class="menu" )
 		div( class="menuItem" tooltip content="{{createTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'create' )")
@@ -23,17 +23,17 @@ div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCt
 	div( pageslide="left" ps-size="365px" ps-open="showFeedback" ps-target="#feedbackPageSlide" ps-custom-top="51px" )
 	div( pageslide="top"  ps-size="500px" ps-open="showDemo" ps-target="#demoPageSlide" ps-custom-top="50px" )
 
-	div(id="createPageSlide")
+	div#createPageSlide.borderRight
 		include sliders/create
 
-	div(id="helpPageSlide")
+	div#helpPageSlide.borderRight
 		include sliders/help
 
-	div(id="aboutPageSlide")
+	div#aboutPageSlide.borderRight
 		include sliders/about
 
-	div(id="feedbackPageSlide")
+	div#feedbackPageSlide.borderRight
 		include sliders/feedback
 
-	div(id="demoPageSlide")
+	div#demoPageSlide
 		include sliders/demo
