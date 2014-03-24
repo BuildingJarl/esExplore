@@ -1,26 +1,7 @@
 div#initialWelcome
 
 	div.logo
-		img(src="img/logo.svg" height="400" width="850")
-
-	div.about
-		div.title
-			h3 What is EsExplore?
-		div.content
-		| EsExplore is web application for visualising the JavaScript scope chain
-		br
-		br
-		| Analysing static source code files can be a time consuming and tedious task, even for experienced developers.
-		br
-		br 
-		| This experiment visualises the JavaScript scope chain hierarchy using interactive packed spheres.
-		br
-		br
-		| Each sphere represents a scope, and its size represents how many children it contains.
-		br
-		br
-		| All rendering is done client-side in Javascript. Try clicking and hovering over spheres.
-		| You can also press and hold the spacebar while hovering to display the corrisponding source code.
+		img.logo(src="img/logo.svg")
 
 	div.gettingStarted
 		div.title
@@ -30,7 +11,7 @@ div#initialWelcome
 				|Step 1
 			div.stepContent
 				|Click on the  
-				i.fa.fa-plus-circle
+				i.fa.fa-plus-circle.fa-2x
 				|  symbol located on the top menubar
 		div.step
 			div.stepTitle
@@ -39,12 +20,16 @@ div#initialWelcome
 				|Click on add file(s) 
 				|  or add folder 
 				|  and select desired folder / file(s).
+				|  Please note that currently only JavaScript files are supported.
+
 				br
-				| Currently only Javascript files are supported
-		div.step
+		div.step.last
 			div.stepTitle
 				|Step 3
 			div.stepContent
 				|Click on create 
 				i.fa.fa-dot-circle-o
 				|  to create a sphere diagram, representing the javascript scope chain hierarchy.
+				br
+				br
+				| Right click to travel into a scope, left click to undo, and hold space while hovering to show source code

@@ -16,26 +16,37 @@
 }
 
 #initialWelcome .logo {
-
+	height:300px; 
+	width:550px;
+	margin-left: auto;
+	margin-right: auto;
 }
-
-#initialWelcome .about {
-	margin-left: 45px;
-	float: left;
-	width: 385px;
-} 
 
 #initialWelcome .gettingStarted {
-	float: left;
-	margin-left: 45px;
-	width: 380px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	background: #1B171B;
+	border-radius: 10px;
+	border: 1px solid #333434;
+	padding: 10px;
 }
+#initialWelcome .gettingStarted .title {
+	font-size: 16pt;
+}
+
 #initialWelcome .gettingStarted .step {
 	margin-left: 5px;
 	margin-bottom: 10px;
+	border-bottom: 1px solid #333434;
+	padding-bottom: 10px;
+}
+#initialWelcome .gettingStarted .last {
+	border-bottom: initial;
 }
 #initialWelcome .gettingStarted .step .stepTitle {
 	margin-bottom: 7px;
+	font-size: 14pt;
 }
 #initialWelcome .gettingStarted .step .stepContent {
 	margin-left: 5px;

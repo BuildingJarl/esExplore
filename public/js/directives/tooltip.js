@@ -28,7 +28,7 @@ angular.module('esExploreApp')
 					tooltip.css({
 						display: 'block'
 					});
-				},500);
+				},100);
 			});
 
 			element.bind('mousemove', function(event) {

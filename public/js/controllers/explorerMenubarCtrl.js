@@ -7,6 +7,7 @@ angular.module('esExploreApp')
 		$scope.showHelp = false;
 		$scope.showAbout = false;
 		$scope.showFeedback = false;
+		$scope.showDemo = false;
 
 		$scope.createTooltip = 'Create';
 		$scope.aboutTooltip = 'About';
@@ -26,6 +27,7 @@ angular.module('esExploreApp')
 					$scope.showHelp = false;
 					$scope.showAbout = false;
 					$scope.showFeedback = false;
+					$scope.showDemo = false;
 					break;
 				};
 
@@ -36,6 +38,7 @@ angular.module('esExploreApp')
 					$scope.showCreate = false;
 					$scope.showAbout = false;
 					$scope.showFeedback = false;
+					$scope.showDemo = false;
 					break;
 				};
 
@@ -46,6 +49,7 @@ angular.module('esExploreApp')
 					$scope.showCreate = false;
 					$scope.showHelp = false;
 					$scope.showFeedback = false;
+					$scope.showDemo = false;
 					break;
 				}
 
@@ -55,6 +59,17 @@ angular.module('esExploreApp')
 					$scope.showCreate = false;
 					$scope.showHelp = false;
 					$scope.showAbout = false;
+					$scope.showDemo = false;
+					break; 
+				}
+
+				case 'demo': {
+					$scope.showDemo = !$scope.showDemo;
+
+					$scope.showCreate = false;
+					$scope.showHelp = false;
+					$scope.showAbout = false;
+					$scope.showFeedback = false;
 					break; 
 				}
 			}

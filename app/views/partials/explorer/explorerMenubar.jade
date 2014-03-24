@@ -13,10 +13,15 @@ div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCt
 		div( class="menuItem" tooltip content="{{feedbackTooltip}}" ttclass="tooltip" ng-click="toggleSlider( 'feedback' )")
 			i(class="fa fa-comment")
 
+	div( class="rightright" )
+		div( class="demoItem" ng-click="toggleSlider( 'demo' )" )
+			|Demo
+
 	div( pageslide="left" ps-size="365px" ps-open="showCreate" ps-target="#createPageSlide" ps-custom-top="51px" )
 	div( pageslide="left" ps-size="365px" ps-open="showHelp" ps-target="#helpPageSlide" ps-custom-top="51px" )
 	div( pageslide="left" ps-size="365px" ps-open="showAbout" ps-target="#aboutPageSlide" ps-custom-top="51px" )
 	div( pageslide="left" ps-size="365px" ps-open="showFeedback" ps-target="#feedbackPageSlide" ps-custom-top="51px" )
+	div( pageslide="top"  ps-size="500px" ps-open="showDemo" ps-target="#demoPageSlide" ps-custom-top="50px" )
 
 	div(id="createPageSlide")
 		include sliders/create
@@ -29,3 +34,6 @@ div(id="explorerMenubarContainer" class="Panel" ng-controller="explorerMenubarCt
 
 	div(id="feedbackPageSlide")
 		include sliders/feedback
+
+	div(id="demoPageSlide")
+		include sliders/demo

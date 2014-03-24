@@ -51,7 +51,6 @@
 	cursor: pointer;
 	width:330px;
 	border-radius: 4px;
-
 }
 
 #createPageSlide .pageSlideBody .buttonBar .icon {
@@ -178,4 +177,10 @@ div.contentFeedback a {
 div.contentFeedback a:hover {
 
 	color: white;
+}
+
+#demoPageSlide {
+	width:100%;
+	height:100%;
+	border-bottom: 2px solid #333434;
 }
