@@ -184,3 +184,13 @@ div.contentFeedback a:hover {
 	height:100%;
 	border-bottom: 2px solid #333434;
 }
+
+#demoPageSlide .container {
+
+	width: 640px;
+	height: 480px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 15px;
+}
+
