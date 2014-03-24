@@ -30,6 +30,10 @@ div.createPageSlide.Panel
 						i.fa.fa-check.valid(ng-show="file.isValid")
 						i.fa.fa-times.notValid(ng-hide="file.isValid")
 
+		div.buttonBar(ng-click="addExample()")
+			span.borderBottom
+				|Example
+
 
 		div.buttonBar(ng-click="resetRepo()")
 			span.borderBottom

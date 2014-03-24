@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('esExploreApp')
-	.controller('explorerMenubarCtrl', function ( $scope, repositoryService ) {
+	.controller('explorerMenubarCtrl', function ( $scope, repositoryService, fileService ) {
 		
 		$scope.showCreate = false;
 		$scope.showHelp = false;
@@ -85,5 +85,12 @@ angular.module('esExploreApp')
 
 			repositoryService.reset();
 			$scope.files = repositoryService.repo.files;
+		};
+
+		$scope.addExample = function() {
+
+			var f = fileService.createExampleFiles();
+
+			repositoryService.addFile(f);
 		};
 });

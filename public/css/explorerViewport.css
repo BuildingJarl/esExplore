@@ -11,7 +11,6 @@
 	height: 100%;
 	width:100%;
 	background: #272822;
-	overflow: auto;
 	z-index: 1;
 }
 
@@ -25,7 +24,7 @@
 #initialWelcome .gettingStarted {
 	margin-left: auto;
 	margin-right: auto;
-	width: 500px;
+	width: 600px;
 	background: #1B171B;
 	border-radius: 10px;
 	border: 1px solid #333434;

@@ -1,5 +1,5 @@
 angular.module('esExploreApp')
-   .service( 'fileService', function( $q ) {
+   .service( 'fileService', function( $q, $document ) {
       
       var esprimaOptions = {
          loc: true, //Nodes have line and column-based location info
@@ -86,4 +86,22 @@ angular.module('esExploreApp')
             file.errorsList.push(msg);
          };
       };
+
+      this.createExampleFiles = function() {
+
+
+         var content = document.getElementById( 'exampleScript' ).textContent;
+         var name = 'ExampleScript.js';
+
+         var file = new ES_EX.File();
+         file.name = name;
+         file.isValid = true;
+         var ast = esprima.parse( content, esprimaOptions );
+         file.addAst(ast); 
+         file.addScope( escope.analyze( ast ).scopes[0] );
+         file.addSource( content );
+
+         return file;
+
+      }
 });

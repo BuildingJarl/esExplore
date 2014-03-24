@@ -10,6 +10,9 @@ angular.module('esExploreApp')
 			$document.bind( 'keydown', function( event ){
 
 				//event.preventDefault()
+				if(event.which == 32) {
+					event.preventDefault()
+				}
 				keyboardStateService.keydown(event.which);
 			});
 
