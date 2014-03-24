@@ -11,7 +11,7 @@ module.exports = function () {
 	app.set('view engine', 'jade');
 
  	app.use(express.logger('dev'));
- 	app.use(express.favicon());
+ 	app.use(express.favicon(path.join(root, '/public/img/favicon.ico')));
   	app.use(express.cookieParser('your secret here'));
   	app.use(express.bodyParser());
   	app.use(express.methodOverride());
