@@ -263,7 +263,10 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 			if(node.children.length === 1) {
 
-				node.children.push({ name:'placeholder', children: [ { name:'placeholder', children:[] }] });
+				node.children.push({ 
+					name:'placeholder', 
+					children: [ { 
+						name:'placeholder', children:[] }] });
 			}
 		}
 	};

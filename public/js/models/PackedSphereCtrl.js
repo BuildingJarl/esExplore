@@ -126,7 +126,6 @@ ES_EX.PackedSphereCtrl = function( tree, clickCallback, hoverCallback ) {
 		else if( !selectedNode.canBeExpanded ) {
 
 			clickCallback({ type:selectedNode.type, fid:selectedNode.fid, sid:selectedNode.sid, color:selectedNode.color });
-
 		}
 	};
 

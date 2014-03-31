@@ -25,7 +25,7 @@ angular.module('esExploreApp')
 
          if(treeCtrl) 
             treeCtrl.showLabel();      
-      }
+      };
 
    	this.start = function() {
 

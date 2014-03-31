@@ -15,8 +15,10 @@ angular.module('esExploreApp')
 				var minRight = 450;
 				var maxRight = 800;
 
-				var lastWinSize = { w: $document[0].documentElement.clientWidth, h: $document[0].documentElement.clientHeight };
-				//var lastWinSize = { w: $window.innerWidth, h: $window.innerHeight };
+				var lastWinSize = { 
+					w: $document[0].documentElement.clientWidth, 
+					h: $document[0].documentElement.clientHeight 
+				};
 
 				var leftSide = angular.element(element.children()[0]);
 				var rightSide = angular.element(element.children()[1]);

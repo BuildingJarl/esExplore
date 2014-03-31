@@ -102,6 +102,5 @@ angular.module('esExploreApp')
          file.addSource( content );
 
          return file;
-
-      }
+      };
 });

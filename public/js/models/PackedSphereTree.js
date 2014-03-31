@@ -12,8 +12,9 @@ ES_EX.PackedSphereTree = function() {
 	};
 
 	this.getRoot = function () {
+		
 		return nodes[0];
-	}
+	};
 
 	this.getGLSceneObjects = function() {
 
