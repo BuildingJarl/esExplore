@@ -1,3 +1,15 @@
+/*
+    Ivan Bacher
+    C10736831
+    ivan.bacher@mydit.ie
+
+    Model
+
+    This model uses the third party TWEEN  library
+    all calls to the library are prefixed with TWEEN.****
+*/
+
+
 'use strict';
 
 ES_EX.PackedTreeNode = function( node ) {
@@ -10,13 +22,7 @@ ES_EX.PackedTreeNode = function( node ) {
 	node.selected = false;
 
 	node.minDistToCamera = function( fov ) {
-		/*
-			var height = (this.r * 2);
-			var vFov = fov * (Math.PI / 180)
-			var dist =  height / (2 * Math.tan( vFov / 2 ));
-			//var dist =  radius / ( Math.sin( camera.fov * ( Math.PI / 180 ) / 2 ) );
-			return dist;
-		*/
+		//http://stackoverflow.com/questions/22500214/calculate-camera-fov-distance-for-sphere
 		var dist =  this.r / (Math.sin( fov * (Math.PI/180) / 2 ));
 		return dist
 	};
@@ -216,10 +222,24 @@ ES_EX.PackedTreeNode = function( node ) {
 	};
 };
 
+
+/*
+    Ivan Bacher
+    C10736831
+    ivan.bacher@mydit.ie
+
+    Model
+
+    This model uses the third party D3.js  library
+    all calls to the library are prefixed with D3.****
+
+*/
+
 ES_EX.PackedSphereTreeUtils = function() {
 
 	this.calculateLayout = function( dim, tree ) {
 
+		//this is from d3.js
 		var packlayout = d3.layout.pack()
 			.size( [dim, dim] )
 			.padding( 50 )
@@ -228,7 +248,7 @@ ES_EX.PackedSphereTreeUtils = function() {
 
 		addPlaceholders(tree);
 
-		var nodes = packlayout( tree );
+		var nodes = packlayout( tree ); //d3.js
 
 		removePlaceholders(nodes);
 

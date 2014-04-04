@@ -8,18 +8,18 @@
 
 'use strict';
 
-describe('Controller: appCtrl', function () {
+describe('Controller: explorerCtrl', function () {
 
   // load the controller's module
   beforeEach(module('esExploreApp'));
 
-  var appCtrl;
+  var explorerCtrl;
   var scope;
 
   // Initialize the controller and a mock scope
   beforeEach( inject( function ( $controller, $rootScope ) {
     scope = $rootScope.$new();
-    appCtrl = $controller('appCtrl', {
+    explorerCtrl = $controller('explorerCtrl', {
       $scope: scope
     });
   }));
@@ -33,5 +33,13 @@ describe('Controller: appCtrl', function () {
     expect(scope.awesomeThings.length).toBe(3);
   });
 	*/
+  it('hideWelcome should alter scope.showWelcome state', function () {
+    
+    expect(scope.showWelcome).toBe(true);
 
+    scope.hideWelcome();
+
+    expect(scope.showWelcome).toBe(false);
+
+  });
 });

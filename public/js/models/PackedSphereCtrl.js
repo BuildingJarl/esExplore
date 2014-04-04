@@ -1,3 +1,17 @@
+/*
+    Ivan Bacher
+    C10736831
+    ivan.bacher@mydit.ie
+
+    Model
+
+    This model uses the third party TWEEN  library
+    all calls to the library are prefixed with TWEEN.****
+
+    controlls are also from third party library OrbitControlls.js form Three.js
+    camera is from Three.js
+*/
+
 'use strict'
 
 ES_EX.PackedSphereCtrl = function( tree, clickCallback, hoverCallback ) {

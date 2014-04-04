@@ -1,3 +1,14 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	Model
+
+	uses thrid party estraverse component for traversing an AST
+	all calls to this component start with estraverse.***
+*/
+
 'use strict'
 
 ES_EX.EsprimaExtractor = function() {

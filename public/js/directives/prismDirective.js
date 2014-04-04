@@ -1,3 +1,15 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	AngularJs Directive created used angular specified way
+	Uses third party component called PRISM
+
+	PRISM is used for syntax highlighting
+	All calls to prism start with Prism.***
+*/
+
 angular.module('esExploreApp')
    .directive( 'prismDirective', function( $timeout )  {
 

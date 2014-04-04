@@ -1,3 +1,14 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	AngularJs Directive created used angular specified way
+	Binds events to the DOM to listen for keyboard input
+*/
+
+'use strict';
+
 angular.module('esExploreApp')
    .directive( 'keyboardStateDirective', function( keyboardStateService, $document )  {
 

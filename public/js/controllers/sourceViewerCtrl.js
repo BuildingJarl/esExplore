@@ -1,3 +1,14 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	AngularJs Controller created used angular specified way
+	Uses methods provided by angular JS such as on and apply
+*/
+
+'use strict';
+
 angular.module('esExploreApp')
 	.controller('sourceViewerCtrl', function( $scope, $q , repositoryService ) {
 
@@ -7,7 +18,7 @@ angular.module('esExploreApp')
 			showChildren: false,
 			showSource: false,
 			update: false
-		}
+		};
 
 		$scope.currentSelectedNameCol = 'inherit';
 

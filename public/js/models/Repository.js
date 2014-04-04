@@ -1,3 +1,11 @@
+/*
+    Ivan Bacher
+    C10736831
+    ivan.bacher@mydit.ie
+
+    Model
+*/
+
 'use strict';
 
 ES_EX.Repository = function() {

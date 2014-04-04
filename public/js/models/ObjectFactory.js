@@ -1,12 +1,21 @@
+/*
+    Ivan Bacher
+    C10736831
+    ivan.bacher@mydit.ie
+
+    Model
+
+    This model uses the threejs rendering library
+    all calls to the library are prefixed with THREE.****
+*/
+
 'use strict'
 
-/*
-var modifier = new THREE.SubdivisionModifier( 2 );
-	modifier.modify( smoothCubeGeom );
-*/
 
 ES_EX.ObjectFactory = function( ) {
 
+
+    //glowing/clear spheres from http://stemkoski.github.io/Three.js/
 	var globalMaterial = new THREE.ShaderMaterial({
 	    uniforms: 
 		{ 
@@ -23,6 +32,7 @@ ES_EX.ObjectFactory = function( ) {
 		depthWrite: true
 	});
 
+    //glowing/clear spheres from http://stemkoski.github.io/Three.js/
 	var fileGlobalMaterial = new THREE.ShaderMaterial({
 	    uniforms: 
 		{ 
@@ -40,6 +50,7 @@ ES_EX.ObjectFactory = function( ) {
 		//wireframe: true
 	});
 
+    //glowing/clear spheres from http://stemkoski.github.io/Three.js/
 	var scopeMaterial = new THREE.ShaderMaterial({
 	    uniforms: 
 		{ 

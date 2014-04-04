@@ -1,3 +1,14 @@
+/*
+    Ivan Bacher
+    C10736831
+    ivan.bacher@mydit.ie
+
+    AngularJs Directive created used angular specified way
+    
+    Initialises visualisation component
+*/
+
+
 angular.module('esExploreApp')
    .directive( 'three', function( $window, threeService )  {
 

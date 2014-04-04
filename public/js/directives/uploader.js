@@ -1,3 +1,13 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	AngularJs Directive created used angular specified way
+	
+	Code is deriinspired form samples on stackoverflow
+*/
+
 angular.module('esExploreApp')
 	.directive('uploader', function ( fileService, repositoryService ) {
     

@@ -1,3 +1,12 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	Config for express server
+	standard way, as found in most tutorials
+*/
+
 var express = require('express');
 var path = require('path');
 

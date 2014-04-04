@@ -1,3 +1,15 @@
+/*
+    Ivan Bacher
+    C10736831
+    ivan.bacher@mydit.ie
+
+    Model
+
+    This model uses the third party THREEJS  library
+    all calls to the library are prefixed with THREE.****
+*/
+
+
 'use strict'
 
 ES_EX.RendererCtrl = function( ) {

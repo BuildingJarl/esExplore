@@ -1,8 +1,11 @@
-'use strict';
-
 /*
-*https://github.com/dpiccone/ng-pageslide/tree/v0.1.5
+    https://github.com/dpiccone/ng-pageslide/tree/v0.1.5
+
+    *****This is thrid party code*****
 */
+
+
+'use strict';
 
 angular.module('esExploreApp')
     .directive('pageslide', [

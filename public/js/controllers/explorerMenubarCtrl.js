@@ -1,3 +1,11 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	AngularJs Controller created used angular specified way
+	Uses methods provided by angular JS such as emit and broadcast
+*/
 'use strict';
 
 angular.module('esExploreApp')

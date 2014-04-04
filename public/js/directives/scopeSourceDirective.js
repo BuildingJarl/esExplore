@@ -1,3 +1,13 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	AngularJs Directive created used angular specified way
+	
+	Also uses Third party PRISM component for syntax highlighting
+*/
+
 angular.module('esExploreApp')
    .directive( 'scopeSourceDirective', function( $timeout, threeService, keyboardStateService, repositoryService )  {
 

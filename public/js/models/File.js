@@ -1,3 +1,11 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	Model
+*/
+
 'use strict'
 
 ES_EX.File = function( f ) {
@@ -20,7 +28,6 @@ ES_EX.File = function( f ) {
 	this.addSource = function( data ) {
 
 		if(this.isValid) {
-			//this.source = escodegen.generate( this.ast, ES_EX.File.escodegenOptions );
 			this.source = data.replace(/(\r\n|\r)/gm,"\n");
 		}
 	};
@@ -84,11 +91,4 @@ ES_EX.File = function( f ) {
 
 		return res;
 	};
-};
-
-ES_EX.File.escodegenOptions = { 
-	format: {
-        newline: '\n\n',
-        semicolons: false
-    }
 };

@@ -1,6 +1,19 @@
+/*
+   Ivan Bacher
+   C10736831
+   ivan.bacher@mydit.ie
+
+   AngularJs service created used angular specified way
+
+   Third party:
+   Esprima
+   Escope
+*/
+
 angular.module('esExploreApp')
    .service( 'fileService', function( $q, $document ) {
       
+      //options for thirs party parser
       var esprimaOptions = {
          loc: true, //Nodes have line and column-based location info
          range: false, //Nodes have an index-based location range (array)
@@ -63,7 +76,7 @@ angular.module('esExploreApp')
 
             try {
                
-               ast = esprima.parse( data, esprimaOptions );
+               ast = esprima.parse( data, esprimaOptions ); //third party
 
             } catch(e) {
 
@@ -74,7 +87,7 @@ angular.module('esExploreApp')
 
             if(file.isValid && ast) {
                file.addAst(ast); 
-               file.addScope( escope.analyze( ast ).scopes[0] );
+               file.addScope( escope.analyze( ast ).scopes[0] ); //third party
                file.addSource( data );
             }
 

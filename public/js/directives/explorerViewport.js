@@ -1,3 +1,14 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	AngularJs Directive created used angular specified way
+	Uses methods provided by angular JS for DOM manipulations
+*/
+
+'use strict';
+
 angular.module('esExploreApp')
 	.directive('explorerViewport', function( $document, $window, threeService ) {
 		
@@ -28,6 +39,7 @@ angular.module('esExploreApp')
 				
 				resizebar.css({ left: lastWinSize.w - minRight + 'px' });
 				
+				//angular element
 				element.append(resizebar);
 				element.append(resizebarActive);
 

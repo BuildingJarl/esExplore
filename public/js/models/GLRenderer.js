@@ -1,3 +1,14 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	Model
+
+	This model uses the threejs rendering library
+	all calls to the library are prefixed with THREE.****
+*/
+
 'use strict'
 
 ES_EX.GLRenderer = function( ) {
@@ -37,6 +48,7 @@ ES_EX.GLRenderer = function( ) {
       	renderer.setSize( width, height );
 	};
 
+	//standard way of checking for intersecting obects as found in many exampels from www.threejs.org
 	this.intersects = function( x1, y1, x2, y2 ) {
 
 		var x = ( x1 / x2  ) * 2 - 1;

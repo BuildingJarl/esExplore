@@ -1,3 +1,14 @@
+/*
+	Ivan Bacher
+	C10736831
+	ivan.bacher@mydit.ie
+
+	AngularJs Directive created used angular specified way
+	represents source view panel in view
+*/
+
+'use strict';
+
 angular.module('esExploreApp')
    .directive( 'sourceViewerDirective', function( $window, $timeout )  {
 

@@ -1,3 +1,11 @@
+/*
+   Ivan Bacher
+   C10736831
+   ivan.bacher@mydit.ie
+
+   AngularJs service created used angular specified way
+*/
+
 angular.module('esExploreApp')
    .service( 'threeService', function( $q ) {
 
